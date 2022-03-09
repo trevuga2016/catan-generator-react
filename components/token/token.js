@@ -1,15 +1,15 @@
 import { Box, Grid } from '@mui/material';
 import styles from '../../styles/token.module.scss'
 
-export const Token = () => {
+export const Token = ({ number, probability }) => {
     return (
         <Box className={styles["token"]}>
             <Grid container direction="column">
                 <Grid item className={styles["token-text"]}>
-                    8
+                    {number}
                 </Grid>
                 <Grid item className={styles["token-prob"]}>
-                    &#8226;&#8226;&#8226;&#8226;&#8226;
+                    {probability}
                 </Grid>
             </Grid>
         </Box>

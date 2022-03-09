@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { Header } from '../components/header/header';
 import Catan from './[game]/catan';
+import generateCatanBoard from '../helpers/catan-logic';
 
-export default function Home() {
+export const Home = ({ data }) => {
   return (
     <div className="container">
       <Head>
@@ -10,7 +11,14 @@ export default function Home() {
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Header></Header>
-      <Catan scenario="catan"></Catan>
+      <Catan props={data}></Catan>
     </div>
   );
 }
+
+export function getServerSideProps() {
+  const data = generateCatanBoard();
+  return { props: { data } };
+}
+
+export default Home;
