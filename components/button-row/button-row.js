@@ -1,16 +1,24 @@
 import Grid from '@mui/material/Grid';
+import { useRouter } from 'next/router';
 
 export const ButtonRow = () => {
+
+    const router = useRouter();
+
+    const refreshData = () => {
+        router.replace(router.asPath);
+    }
+
     return (
         <Grid container direction="row" mt="30px">
             <Grid item sm={4} align="right">
-                <input type="submit" value="Clear" />
+                <button type="submit">Clear</button>
             </Grid>
             <Grid item sm={4} align="center">
-                <input type="submit" value="Generate" />
+                <button type="submit" onClick={refreshData}>Generate</button>
             </Grid>
             <Grid item sm={4} align="left">
-                <input type="submit" value="Reset" />
+                <button type="submit">Reset</button>
             </Grid>
         </Grid>);
 };
