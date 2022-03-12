@@ -2,8 +2,16 @@ import Head from 'next/head';
 import { Header } from '../components/header/header';
 import Catan from './[game]/catan';
 import generateCatanBoard from '../helpers/catan-logic';
+import getDefaultData from '../helpers/default-logic';
+import { ButtonRow } from '../components/button-row/button-row';
+import { useState } from 'react';
 
-export const Home = ({ data }) => {
+export const Home = () => {
+
+  const [data, setData] = useState({
+    props: getDefaultData()
+  });
+
   return (
     <div className="container">
       <Head>
@@ -11,14 +19,13 @@ export const Home = ({ data }) => {
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Header></Header>
-      <Catan props={data}></Catan>
+      <Catan props={data.props}></Catan>
+      <ButtonRow 
+        clear ={() => setData({props: getDefaultData()})}
+        generate={() => setData({props: generateCatanBoard()})} 
+      />
     </div>
   );
-}
-
-export function getServerSideProps() {
-  const data = generateCatanBoard();
-  return { props: { data } };
 }
 
 export default Home;

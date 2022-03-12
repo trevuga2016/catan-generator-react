@@ -2,7 +2,8 @@
     width: 40px;
     height: 40px;
     clip-path: circle(50% at 50% 50%);
-    background-color: beige;
+    background-image: url(../public/catan_beige.png);
+    background-size: contain;
     align-items: center;
     justify-content: center;
     display: flex;
