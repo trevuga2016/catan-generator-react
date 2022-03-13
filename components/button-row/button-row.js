@@ -1,6 +1,10 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
+import { useRouter } from 'next/router';
 
 export const ButtonRow = ({ clear, generate }) => {
+
+    const router = useRouter();
+
     return (
         <Grid container direction="row" mt="30px">
             <Grid item sm={4} align="right">
@@ -10,12 +14,7 @@ export const ButtonRow = ({ clear, generate }) => {
                 <button type="button" onClick={generate}>Generate</button>
             </Grid>
             <Grid item sm={4} align="left">
-                <button type="submit">Reset</button>
-            </Grid>
-            <Grid container direction="column">
-                <Typography variant="body2" textAlign="right" color="black">
-                    2022 &copy; Trevor Richardson
-                </Typography>
+                <button type="button" onClick={() => router.push('/')}>Home</button>
             </Grid>
         </Grid>
     );

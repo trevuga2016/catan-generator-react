@@ -1,10 +1,8 @@
-import Grid from '@mui/material/Grid';
-import { HexRow } from '../../components/hex-row/hex-row';
+import { Grid } from '@mui/material';
+import { HexRow } from '../hex-row/hex-row';
 
-export const Catan = ({ props }) => {
-
+export const GameBoard = ({ props }) => {
     console.log(`Board Properties: ${JSON.stringify(props)}`);
-
     return(
         <Grid container justifyContent="center">
             {props.map((row, index) => {
@@ -14,6 +12,6 @@ export const Catan = ({ props }) => {
             })}
         </Grid>
     );
-};
+}
 
-export default Catan;
+GameBoard.displayName = 'GameBoard';
