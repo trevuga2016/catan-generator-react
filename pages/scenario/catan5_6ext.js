@@ -5,7 +5,7 @@ import { useState } from 'react';
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
 
-export const Catan = () => {
+export const Catan5_6Ext = () => {
 
     const [data, setData] = useState({
         props: getDefaultData(row_config)
@@ -22,28 +22,28 @@ export const Catan = () => {
     );
 };
 
-export default Catan;
+export default Catan5_6Ext;
 
 const numbers_freq = {
-    '2': 1,
-    '3': 2,
-    '4': 2,
-    '5': 2,
-    '6': 2,
-    '8': 2,
-    '9': 2,
-    '10': 2,
-    '11': 2,
-    '12': 1
+    '2': 2,
+    '3': 3,
+    '4': 3,
+    '5': 3,
+    '6': 3,
+    '8': 3,
+    '9': 3,
+    '10': 3,
+    '11': 3,
+    '12': 2
 };
 
 const resources_freq = {
-    'Wheat': 4,
-    'Wood': 4,
-    'Sheep': 4,
-    'Brick': 3,
-    'Ore': 3,
-    'Desert': 1
+    'Wheat': 6,
+    'Wood': 6,
+    'Sheep': 6,
+    'Brick': 5,
+    'Ore': 5,
+    'Desert': 2
 };
 
-const row_config = [3, 4, 5, 4, 3];
+const row_config = [3, 4, 5, 6, 5, 4, 3];

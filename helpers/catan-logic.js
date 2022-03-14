@@ -1,30 +1,4 @@
-let numbers_freq = {
-    '2': 1,
-    '3': 2,
-    '4': 2,
-    '5': 2,
-    '6': 2,
-    '8': 2,
-    '9': 2,
-    '10': 2,
-    '11': 2,
-    '12': 1
-};
-
-let resources_freq = {
-    'Wheat': 4,
-    'Wood': 4,
-    'Sheep': 4,
-    'Brick': 3,
-    'Ore': 3,
-    'Desert': 1
-};
-
-let row_config = [3, 4, 5, 4, 3];
-
-export default function generateCatanBoard() {
-
-    console.log('Generating board values...');
+export default function getBoardData(numbers_freq, resources_freq, row_config) {
 
     let numbers_array = [];
     let resource_array = [];
@@ -43,14 +17,14 @@ export default function generateCatanBoard() {
     }
 
     if (resource_array.length == getTotalNumOfHexes(row_config)) {
-
+        let i = 1;
         row_config.map((value) => {
             let row = [];
-            Array.from(Array(value), (v, i) => {
+            Array.from(Array(value), () => {
                 let resource = getResource(resource_array);
                 let token = getToken(numbers_array, resource);
                 row.push({
-                    hexNumber: i,
+                    hexNumber: i++,
                     resource: resource,
                     token: token
                 });

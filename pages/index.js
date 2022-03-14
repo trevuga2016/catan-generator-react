@@ -13,7 +13,7 @@ export const Home = () => {
       </Head>
       <Header></Header>
       <GameSelect></GameSelect>
-      <Footer></Footer>
+      <Footer position="fixed"></Footer>
     </div>
   );
 }

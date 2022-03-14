@@ -1,12 +1,11 @@
-let row_config = [3, 4, 5, 4, 3];
-
-export default function getDefaultData() {
+export default function getDefaultData(row_config) {
     let hex_values = [];
+    let i = 1;
     row_config.map((value) => {
         let row = [];
-        Array.from(Array(value), (v, i) => {
+        Array.from(Array(value), () => {
             row.push({
-                hexNumber: i,
+                hexNumber: i++,
                 resource: '',
                 token: { number: '', probability: '' }
             });
