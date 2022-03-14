@@ -17,7 +17,7 @@ export const GameSelect = () => {
         <Grid container direction="column" align="center" display="flex">
             <form>
                 <select value={game.value} onChange={(e) => handleChange(e)}>
-                    <option value='' disabled>Select</option>
+                    <option value='' disabled>Select Scenario</option>
                     <option value='catan'>The Settlers of Catan</option>
                     <option value='catan5_6ext'>Catan 5 & 6 Player Extension</option>
                 </select>

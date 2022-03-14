@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Header } from '../../components/header/header';
 import { GameBoard } from '../../components/game-board/game-board';
 import { ButtonRow } from '../../components/button-row/button-row';
@@ -13,6 +14,10 @@ export const Catan = () => {
 
     return(
         <>
+            <Head>
+                <title>Catan Board Generator</title>
+                <link rel="icon" href="/catan-icon.ico" />
+            </Head>
             <Header></Header>
             <GameBoard props={data.props}></GameBoard>
             <ButtonRow 

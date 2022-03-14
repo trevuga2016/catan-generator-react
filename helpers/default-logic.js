@@ -14,5 +14,6 @@ export default function getDefaultData(row_config) {
             row: row
         });
     });
+    console.clear();
     return hex_values;
 }
