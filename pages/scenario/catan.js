@@ -9,7 +9,7 @@ import getDefaultData from '../../helpers/default-logic';
 export const Catan = () => {
 
     const [data, setData] = useState({
-        props: getDefaultData(row_config)
+        props: getDefaultData(row_config, port_config)
     });
 
     return(
@@ -21,8 +21,8 @@ export const Catan = () => {
             <Header></Header>
             <GameBoard props={data.props}></GameBoard>
             <ButtonRow 
-                clear ={() => setData({ props: getDefaultData(row_config) })}
-                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config)})} />
+                clear={() => setData({ props: getDefaultData(row_config, port_config) })}
+                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config)})} />
         </>
     );
 };
@@ -52,3 +52,25 @@ const resources_freq = {
 };
 
 const row_config = [3, 4, 5, 4, 3];
+
+const port_config = {
+    top: [
+        { type: '', rotation: '' },
+        { type: '2for1_wood', rotation: '0deg' },
+        { type: '', rotation: '' },
+        { type: '2for1_wood', rotation: '60deg' }
+    ],
+    ends: [
+        { type: '2for1_wood', rotation: '0deg', position: 1 },
+        { type: '2for1_wood', rotation: '120deg', position: 2 },
+        { type: '2for1_wood', rotation: '-60deg', position: 1 },
+        { type: '2for1_wood', rotation: '120deg', position: 2 },
+        { type: '2for1_wood', rotation: '-120deg', position: 1 }
+    ],
+    bottom: [
+        { type: '', rotation: '' },
+        { type: '2for1_wood', rotation: '-120deg' },
+        { type: '', rotation: '' },
+        { type: '2for1_wood', rotation: '180deg' }
+    ]
+}
