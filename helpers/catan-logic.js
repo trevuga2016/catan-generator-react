@@ -1,4 +1,4 @@
-export default function getBoardData(numbers_freq, resources_freq, row_config, port_config) {
+export default function getBoardData(numbers_freq, resources_freq, row_config, port_config, port) {
 
     let numbers_array = [];
     let resource_array = [];
@@ -19,12 +19,12 @@ export default function getBoardData(numbers_freq, resources_freq, row_config, p
     if (resource_array.length == getTotalNumOfHexes(row_config)) {
         let i = 1;
 
-        hex_values.push(configureTopPorts(row_config, port_config));
+        port != 'hide' ? hex_values.push(configureTopPorts(row_config, port_config)) : undefined;
 
         row_config.map((value, index) => {
             let row = [];
 
-            row.push(configureEndPorts(port_config, index, 1));
+            port != 'hide' ? row.push(configureEndPorts(port_config, index, 1)) : undefined;
 
             Array.from(Array(value), () => {
                 let resource = getResource(resource_array);
@@ -39,10 +39,10 @@ export default function getBoardData(numbers_freq, resources_freq, row_config, p
                 row : row
             });
 
-            row.push(configureEndPorts(port_config, index, 2));
+            port != 'hide' ? row.push(configureEndPorts(port_config, index, 2)) : undefined;
         });
 
-        hex_values.push(configureBottomPorts(row_config, port_config));
+        port != 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config)) : undefined;
     }
 
     return hex_values;

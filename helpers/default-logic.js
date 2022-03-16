@@ -1,14 +1,17 @@
-export default function getDefaultData(row_config, port_config) {
+export default function getDefaultData(row_config, port_config, port) {
+
+    console.log(`PORT VALUE IS: ${port}`);
+
     let hex_values = [];
     let i = 1;
 
-    hex_values.push(configureTopPorts(row_config, port_config));
+    port != 'hide' ? hex_values.push(configureTopPorts(row_config, port_config)) : undefined;
 
     row_config.map((value, index) => {
         
         let row = [];
         
-        row.push(configureEndPorts(port_config, index, 1));
+        port != 'hide' ? row.push(configureEndPorts(port_config, index, 1)) : undefined;
         
         Array.from(Array(value), () => {
             row.push({
@@ -18,14 +21,14 @@ export default function getDefaultData(row_config, port_config) {
             });
         });
         
-        row.push(configureEndPorts(port_config, index, 2));
+        port != 'hide' ? row.push(configureEndPorts(port_config, index, 2)) : undefined;
 
         hex_values.push({
             row: row
         });
     });
 
-    hex_values.push(configureBottomPorts(row_config, port_config));
+    port != 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config)) : undefined;
 
     return hex_values;
 }

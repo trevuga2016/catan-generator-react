@@ -5,11 +5,15 @@ import { ButtonRow } from '../../components/button-row/button-row';
 import { useState } from 'react';
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
+import { useRouter } from 'next/router';
 
 export const Catan = () => {
 
+    const router = useRouter();
+    const { port } = router.query;
+
     const [data, setData] = useState({
-        props: getDefaultData(row_config, port_config)
+        props: getDefaultData(row_config, port_config, port)
     });
 
     return(
@@ -21,8 +25,8 @@ export const Catan = () => {
             <Header></Header>
             <GameBoard props={data.props}></GameBoard>
             <ButtonRow 
-                clear={() => setData({ props: getDefaultData(row_config, port_config) })}
-                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config)})} />
+                clear={() => setData({ props: getDefaultData(row_config, port_config, port) })}
+                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, port)})} />
         </>
     );
 };
