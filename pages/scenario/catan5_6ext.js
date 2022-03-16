@@ -9,7 +9,7 @@ import getDefaultData from '../../helpers/default-logic';
 export const Catan5_6Ext = () => {
 
     const [data, setData] = useState({
-        props: getDefaultData(row_config)
+        props: getBoardData(numbers_freq, resources_freq, row_config)
     });
 
     return(

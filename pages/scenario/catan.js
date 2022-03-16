@@ -13,7 +13,7 @@ export const Catan = () => {
     const { port } = router.query;
 
     const [data, setData] = useState({
-        props: getDefaultData(row_config, port_config, port)
+        props: getBoardData(numbers_freq, resources_freq, row_config, port_config, port)
     });
 
     return(
