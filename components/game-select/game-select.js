@@ -23,7 +23,7 @@ export const GameSelect = () => {
     }
 
     useEffect(() => {
-        setScenario(`/scenario/${game.value}?port=${port.value}`);
+        setScenario(`/scenario/${game.value}?ports=${port.value}`);
     }, [game, port]);
 
     return (

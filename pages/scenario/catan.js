@@ -10,10 +10,10 @@ import { useRouter } from 'next/router';
 export const Catan = () => {
 
     const router = useRouter();
-    const { port } = router.query;
+    const { ports } = router.query;
 
     const [data, setData] = useState({
-        props: getBoardData(numbers_freq, resources_freq, row_config, port_config, port)
+        props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
     });
 
     return(
@@ -25,8 +25,8 @@ export const Catan = () => {
             <Header></Header>
             <GameBoard props={data.props}></GameBoard>
             <ButtonRow 
-                clear={() => setData({ props: getDefaultData(row_config, port_config, port) })}
-                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, port)})} />
+                clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
+                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)})} />
         </>
     );
 };
