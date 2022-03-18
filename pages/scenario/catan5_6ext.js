@@ -5,11 +5,15 @@ import { ButtonRow } from '../../components/button-row/button-row';
 import { useState } from 'react';
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
+import { useRouter } from 'next/router';
 
 export const Catan5_6Ext = () => {
 
+    const router = useRouter();
+    const { ports } = router.query;
+
     const [data, setData] = useState({
-        props: getBoardData(numbers_freq, resources_freq, row_config)
+        props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
     });
 
     return(
@@ -21,8 +25,8 @@ export const Catan5_6Ext = () => {
             <Header></Header>
             <GameBoard props={data.props}></GameBoard>
             <ButtonRow 
-                clear ={() => setData({ props: getDefaultData(row_config) })}
-                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config)})} />
+                clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
+                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)})} />
         </>
     );
 };
@@ -52,3 +56,28 @@ const resources_freq = {
 };
 
 const row_config = [3, 4, 5, 6, 5, 4, 3];
+
+const port_config = {
+    top: [
+        { type: '3for1', rotation: '0deg' },
+        { type: '', rotation: '' },
+        { type: '2for1_sheep', rotation: '60deg' },
+        { type: '', rotation: '' }
+    ],
+    ends: [
+        { type: '3for1', rotation: '60deg', position: 2 },
+        { type: '', rotation: '', position: 0 },
+        { type: '2for1_ore', rotation: '-60deg', position: 1 },
+        { type: '3for1', rotation: '120deg', position: 2 },
+        { type: '3for1', rotation: '-120deg', position: 1 },
+        [{ type: '2for1_wheat', rotation: '-60deg', position: 1 },
+        { type: '2for1_brick', rotation: '180deg', position: 2 }],
+        { type: '2for1_sheep', rotation: '120deg', position: 2 },
+    ],
+    bottom: [
+        { type: '3for1', rotation: '-120deg' },
+        { type: '', rotation: '' },
+        { type: '2for1_wood', rotation: '180deg' },
+        { type: '', rotation: '' }
+    ]
+}

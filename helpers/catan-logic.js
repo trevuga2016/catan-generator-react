@@ -117,7 +117,12 @@ function configureEndPorts(port_config, index, p, ports_list) {
 
     let ends_port_config = port_config.ends;
     let portData = ends_port_config[index];
-    let portPosition = portData.position != undefined ? portData.position : undefined;
+
+    if (Array.isArray(portData)) {
+        portData = portData[p - 1];
+    }
+
+    let portPosition = portData.position != undefined && portData.position != 0 ? portData.position : undefined;
     let isPort = portPosition == p;
     let i = ports_list != undefined && isPort ? Math.floor(Math.random() * ports_list.length) : undefined;
     let portType = ports_list != undefined && isPort ? ports_list[i] : portData.type;
@@ -164,8 +169,14 @@ function getPortTypeList(port_config) {
         }
     })
     port_config.ends.map((value) => {
-        if (value.type != '') {
-            port_types.push(value.type);
+        if (Array.isArray(value)) {
+            value.map((v) => {
+                port_types.push(v.type);
+            })
+        } else {
+            if (value.type != '') {
+                port_types.push(value.type);
+            }
         }
     })
     port_config.bottom.map((value) => {
