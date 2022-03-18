@@ -1,6 +1,5 @@
 import { Grid } from '@mui/material';
 import { useRouter } from 'next/router';
-import { Footer } from '../footer/footer';
 
 export const ButtonRow = ({ clear, generate }) => {
 
@@ -17,7 +16,6 @@ export const ButtonRow = ({ clear, generate }) => {
             <Grid item sm={4} xs={4} align="left">
                 <button type="button" onClick={() => router.push('/')}>Home</button>
             </Grid>
-            <Footer></Footer>
         </Grid>
     );
 };

@@ -1,8 +1,8 @@
-import Grid from '@mui/material/Grid';
+import { Grid } from '@mui/material';
 
 export const Header = () => {
     return(
-        <Grid container justifyContent="center">
+        <Grid container position="relative" justifyContent="center">
             <h1>Catan Board Generator</h1>
         </Grid>
     );

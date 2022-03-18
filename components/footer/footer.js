@@ -1,9 +1,9 @@
 import { Grid, Typography } from '@mui/material';
 
-export const Footer = ({ position }) => {
+export const Footer = () => {
     return(
-        <Grid container direction="column" sx={{ bottom: "0", position: position }}>
-            <Typography variant="body2" textAlign="right" color="black">
+        <Grid container justifyContent="right">
+            <Typography variant="body2" color="black">
                 2022 &copy; Trevor Richardson
             </Typography>
         </Grid>
