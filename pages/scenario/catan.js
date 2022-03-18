@@ -6,6 +6,7 @@ import { useState } from 'react';
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
 import { useRouter } from 'next/router';
+import { Grid } from '@mui/material';
 
 export const Catan = () => {
 
@@ -23,10 +24,12 @@ export const Catan = () => {
                 <link rel="icon" href="/catan-icon.ico" />
             </Head>
             <Header></Header>
-            <GameBoard props={data.props}></GameBoard>
-            <ButtonRow 
+            <Grid container sx={{overflowX: "auto", overflowY: "hidden"}}>
+                <GameBoard props={data.props}></GameBoard>
+            </Grid>
+            <ButtonRow
                 clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
-                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)})} />
+                generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
         </>
     );
 };
