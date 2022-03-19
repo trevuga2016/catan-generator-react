@@ -2,19 +2,25 @@ import Head from 'next/head';
 import { Header } from '../components/header/header';
 import { GameSelect } from '../components/game-select/game-select';
 import { Footer } from '../components/footer/footer';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 export const Home = () => {
 
   return (
-    <Grid container direction="column" className="container">
+    <Grid container direction="column">
       <Head>
         <title>Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
-      <Header />
-      <GameSelect />
-      <Footer />
+      <Grid item textAlign="center" position="relative" top="0">
+        <Header />
+      </Grid>
+      <Grid item>
+        <GameSelect />
+      </Grid>
+      <Grid item position="fixed" bottom="0" right="0">
+        <Footer />
+      </Grid>
     </Grid>
   );
 }

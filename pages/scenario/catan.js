@@ -24,7 +24,7 @@ export const Catan = () => {
                 <title>Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico" />
             </Head>
-            <Grid item>
+            <Grid item textAlign="center" position="relative" top="0">
                 <Header />
             </Grid>
             <Grid item>
@@ -35,7 +35,7 @@ export const Catan = () => {
                     clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
                     generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
             </Grid>
-            <Grid item>
+            <Grid item textAlign="right" position="relative" bottom="0">
                 <Footer />
             </Grid>
         </Grid>
