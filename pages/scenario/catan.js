@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { Header } from '../../components/header/header';
 import { GameBoard } from '../../components/game-board/game-board';
 import { ButtonRow } from '../../components/button-row/button-row';
-import { useState } from 'react';
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
 import { useRouter } from 'next/router';
 import { Footer } from '../../components/footer/footer';
 import { Grid } from '@mui/material';
+import { useState, useRef, useEffect } from 'react';
 
 export const Catan = () => {
 
@@ -18,6 +18,38 @@ export const Catan = () => {
         props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
     });
 
+    const gameBoardRef = useRef();
+    const [aWidth, setAWidth] = useState(null);
+    const [aHeight, setAHeight] = useState(null);
+    const [scale, setScale] = useState(1);
+
+    const updateAvailableWidth = () => {
+        if (typeof window !== "undefined") {
+            const availableWidth = window.innerWidth;
+            setAWidth(availableWidth);
+            const availableHeight = window.innerHeight;
+            setAHeight(availableHeight)
+        }
+    }
+
+    const updateScale = () => {
+        const divWidth = gameBoardRef.current.clientWidth;
+        const divHeight = gameBoardRef.current.clientHeight;
+        let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
+        aWidth <= divWidth ? setScale(nScale) : setScale(1);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", updateAvailableWidth);
+    }, []);
+
+    useEffect(() => {
+        if (aWidth == null && aHeight == null) {
+            updateAvailableWidth();
+        }
+        updateScale();
+    }, [aWidth, aHeight]);
+
     return(
         <Grid container direction="column" alignItems="center">
             <Head>
@@ -27,7 +59,7 @@ export const Catan = () => {
             <Grid item textAlign="center" top="0">
                 <Header />
             </Grid>
-            <Grid item>
+            <Grid item ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
                 <GameBoard props={data.props} />
             </Grid>
             <Grid item mt="35px" width="100%">
