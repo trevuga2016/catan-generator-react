@@ -3,6 +3,7 @@ import styles from '../../styles/hex.module.scss';
 import { Token } from '../token/token';
 
 export const Hex = ({ hex }) => {
+
     let resource = hex.resource;
     let token = hex.token;
     let portType = hex.port != undefined ? hex.port.type : undefined;

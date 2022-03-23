@@ -7,13 +7,13 @@ export const ButtonRow = ({ clear, generate }) => {
 
     return (
         <Grid container direction="row" justifyContent="center">
-            <Grid item sm={4} xs={4} align="right">
+            <Grid item xs={4} align="right">
                 <button type="button" onClick={clear}>Clear</button>
             </Grid>
-            <Grid item sm={4} xs={4} align="center">
+            <Grid item xs={4} align="center">
                 <button type="button" onClick={generate}>Generate</button>
             </Grid>
-            <Grid item sm={4} xs={4} align="left">
+            <Grid item xs={4} align="left">
                 <button type="button" onClick={() => router.push('/')}>Home</button>
             </Grid>
         </Grid>

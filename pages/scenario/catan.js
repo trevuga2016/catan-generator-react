@@ -19,23 +19,23 @@ export const Catan = () => {
     });
 
     return(
-        <Grid container direction="column">
+        <Grid container direction="column" alignItems="center">
             <Head>
                 <title>Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico" />
             </Head>
-            <Grid item textAlign="center" position="relative" top="0">
+            <Grid item textAlign="center" top="0">
                 <Header />
             </Grid>
             <Grid item>
                 <GameBoard props={data.props} />
             </Grid>
-            <Grid item>
+            <Grid item mt="35px" width="100%">
                 <ButtonRow
                     clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
                     generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
             </Grid>
-            <Grid item textAlign="right" position="relative" bottom="0">
+            <Grid item width="100%" textAlign="right" bottom="0">
                 <Footer />
             </Grid>
         </Grid>
