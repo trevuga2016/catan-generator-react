@@ -1,75 +1,24 @@
 import Head from 'next/head';
 import { Header } from '../../components/header/header';
 import { GameBoard } from '../../components/game-board/game-board';
-import { ButtonRow } from '../../components/button-row/button-row';
-import getBoardData from '../../helpers/catan-logic';
-import getDefaultData from '../../helpers/default-logic';
 import { useRouter } from 'next/router';
-import { Footer } from '../../components/footer/footer';
 import { Grid } from '@mui/material';
-import { useState, useRef, useEffect } from 'react';
 
 export const Catan = () => {
 
     const router = useRouter();
     const { ports } = router.query;
 
-    const [data, setData] = useState({
-        props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
-    });
-
-    const gameBoardRef = useRef();
-    const [aWidth, setAWidth] = useState(null);
-    const [aHeight, setAHeight] = useState(null);
-    const [scale, setScale] = useState(1);
-
-    const updateAvailableWidth = () => {
-        if (typeof window !== "undefined") {
-            const availableWidth = window.innerWidth;
-            setAWidth(availableWidth);
-            const availableHeight = window.innerHeight;
-            setAHeight(availableHeight)
-        }
-    }
-
-    const updateScale = () => {
-        const divWidth = gameBoardRef.current.clientWidth;
-        const divHeight = gameBoardRef.current.clientHeight;
-        let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
-        aWidth <= divWidth ? setScale(nScale) : setScale(1);
-    }
-
-    useEffect(() => {
-        window.addEventListener("resize", updateAvailableWidth);
-    }, []);
-
-    useEffect(() => {
-        if (aWidth == null && aHeight == null) {
-            updateAvailableWidth();
-        }
-        updateScale();
-    }, [aWidth, aHeight]);
+    let props = { numbers_freq, resources_freq, row_config, port_config, ports };
 
     return(
-        <Grid container direction="column" alignItems="center">
+        <Grid container height="100vh">
             <Head>
                 <title>Catan Board Generator</title>
-                <link rel="icon" href="/catan-icon.ico" />
+                <link rel="icon" href="/catan-icon.ico"/>
             </Head>
-            <Grid item textAlign="center" top="0">
-                <Header />
-            </Grid>
-            <Grid item ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
-                <GameBoard props={data.props} />
-            </Grid>
-            <Grid item mt="35px" width="100%">
-                <ButtonRow
-                    clear={() => setData({ props: getDefaultData(row_config, port_config, ports) })}
-                    generate={() => setData({ props: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
-            </Grid>
-            <Grid item width="100%" textAlign="right" bottom="0">
-                <Footer />
-            </Grid>
+            <Header/>
+            <GameBoard props={props} />
         </Grid>
     );
 };

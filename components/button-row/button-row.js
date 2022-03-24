@@ -6,7 +6,7 @@ export const ButtonRow = ({ clear, generate }) => {
     const router = useRouter();
 
     return (
-        <Grid container direction="row" justifyContent="center">
+        <Grid container direction="row" position="relative" mt="35px" justifyContent="center">
             <Grid item xs={4} align="right">
                 <button type="button" onClick={clear}>Clear</button>
             </Grid>

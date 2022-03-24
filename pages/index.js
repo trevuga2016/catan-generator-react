@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import { Header } from '../components/header/header';
 import { GameSelect } from '../components/game-select/game-select';
-import { Footer } from '../components/footer/footer';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 
 export const Home = () => {
 
@@ -17,9 +16,6 @@ export const Home = () => {
       </Grid>
       <Grid item>
         <GameSelect />
-      </Grid>
-      <Grid item position="fixed" bottom="0" right="0">
-        <Footer />
       </Grid>
     </Grid>
   );
