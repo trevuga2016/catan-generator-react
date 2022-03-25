@@ -1,11 +1,12 @@
 import { AppBar, Grid, Typography } from '@mui/material';
+import styles from './footer.module.scss';
 
 export const Footer = () => {
     return(
-      <AppBar id="footer" position="absolute" sx={{ top: "auto", bottom: 0, background: "transparent"}}>
-        <Grid container justifyContent="right">
+      <AppBar className={styles["footer"]}>
+        <Grid container className={styles["footer__grid"]}>
           <Grid item>
-            <Typography variant="body2" color="black">
+            <Typography variant="body2" className={styles["footer__color"]}>
               2022 &copy; Trevor Richardson
             </Typography>
           </Grid>

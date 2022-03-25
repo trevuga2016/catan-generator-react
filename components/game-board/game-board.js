@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ButtonRow } from "../button-row/button-row";
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
+import styles from './game-board.module.scss';
 
 export const GameBoard = ({ props }) => {
 
@@ -31,22 +32,16 @@ export const GameBoard = ({ props }) => {
         const divWidth = gameBoardRef.current.clientWidth;
         const divHeight = gameBoardRef.current.clientHeight;
         let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
-        aWidth <= divWidth ? setScale(nScale) : setScale(1);
+        ((aWidth <= divWidth) || (divHeight <= aHeight)) ? setScale(nScale) : setScale(1);
     }
 
     useEffect(() => {
-        window.addEventListener("resize", updateAvailableWidth);
-    }, []);
-
-    useEffect(() => {
-        if (aWidth == null && aHeight == null) {
-            updateAvailableWidth();
-        }
+        updateAvailableWidth();
         updateScale();
     }, [aWidth, aHeight]);
 
     return(
-        <Grid container position="relative" height="fit-content" width="fit-content" ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
+        <Grid container className={styles["game-board"]} ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
             {data.boardData.map((row, index) => {
                 return (
                     <HexRow row={row.row} key={index} />

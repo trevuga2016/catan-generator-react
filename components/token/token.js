@@ -1,12 +1,12 @@
-import { Box, Skeleton, Grid } from '@mui/material';
-import styles from '../../styles/token.module.scss'
+import { Box, Grid } from '@mui/material';
+import styles from './token.module.scss'
 
 export const Token = ({ number, probability }) => {
 
-    const color = number == '6' || number == '8' ? 'red' : 'black';
+    const color = number === '6' || number === '8' ? 'red' : 'black';
 
     return (
-        number != '' &&
+        number !== '' &&
         <Box className={styles["token"]}>
             <Grid container direction="column">
                 <Grid item className={styles["token-text"]} sx={{ color: color }}>

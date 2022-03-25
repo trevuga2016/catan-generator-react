@@ -1,12 +1,13 @@
 import { Grid } from '@mui/material';
 import { useRouter } from 'next/router';
+import styles from './button-row.module.scss';
 
 export const ButtonRow = ({ clear, generate }) => {
 
     const router = useRouter();
 
     return (
-        <Grid container direction="row" position="relative" mt="35px" justifyContent="center">
+        <Grid container direction="row" className={styles["button-row"]}>
             <Grid item xs={4} align="right">
                 <button type="button" onClick={clear}>Clear</button>
             </Grid>

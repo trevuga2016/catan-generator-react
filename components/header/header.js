@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material";
+import styles from './header.module.scss';
 
 export const Header = () => {
     return(
-      <Grid container position="relative" height="fit-content" justifyContent="center">
+      <Grid container className={styles["header"]}>
           <Grid item>
               <h1>Catan Board Generator</h1>
           </Grid>

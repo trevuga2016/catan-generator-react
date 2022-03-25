@@ -1,13 +1,14 @@
 import Grid from '@mui/material/Grid';
-import { Hex } from '../../components/hex/hex';
+import { Hex } from '../hex/hex';
+import styles from './hex-row.module.scss';
 
 export const HexRow = ({ row }) => {
     return (
-        <Grid container direction="row" mb="-26px" justifyContent="center" wrap="nowrap">
+        <Grid container className={styles["hex-row"]} direction="row" wrap="nowrap">
             {row.map((hex, index) => {
                 return (
                     <Grid item key={index}>
-                        <Hex hex={hex}></Hex>
+                        <Hex hex={hex} />
                     </Grid>
                 );
             })}

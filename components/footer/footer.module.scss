@@ -1,0 +1,12 @@
+.footer {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  background: transparent;
+  &__grid {
+    justify-content: right;
+  }
+  &__color {
+    color: black;
+  }
+}
