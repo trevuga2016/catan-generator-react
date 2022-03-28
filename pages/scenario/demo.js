@@ -30,12 +30,12 @@ export const Demo = () => {
             console.log(`SCALE FALSE - setting scale to 1`);
             setScale(1);
         }
-    });
+    }, []);
 
     const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}}
 
     return(
-        <Grid container direction="column" alignItems="center" sx={{ border: "1px dashed blue"}} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
+        <Grid container direction="column" alignItems="center" sx={{ border: "1px dashed blue", transform: `scale(${scale})`, transformOrigin: "0 0"}}>
             <Head>
                 <title>Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
