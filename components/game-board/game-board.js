@@ -15,23 +15,34 @@ export const GameBoard = ({ props }) => {
     });
 
     const gameBoardRef = useRef();
-    const [aWidth, setAWidth] = useState((typeof screen !== "undefined") ? screen.width : null);
-    const [aHeight, setAHeight] = useState((typeof screen !== "undefined") ? screen.height : null);
+    const [aWidth, setAWidth] = useState((typeof window !== "undefined") ? window.innerWidth : null);
+    const [aHeight, setAHeight] = useState((typeof window !== "undefined") ? window.innerHeight : null);
     const [scale, setScale] = useState(1);
 
     const updateAvailableWidth = () => {
         if (typeof screen !== "undefined") {
-            const availableWidth = screen.width;
+            const availableWidth = window.innerWidth;
+            console.log(`AVAILABLE WIDTH: ${availableWidth}`);
             setAWidth(availableWidth);
-            const availableHeight = screen.height;
+            const availableHeight = window.innerHeight;
+            console.log(`AVAILABLE HEIGHT: ${availableHeight}`);
             setAHeight(availableHeight)
         }
     }
 
     const updateScale = () => {
         const divWidth = gameBoardRef.current.clientWidth;
+        console.log(`DIV WIDTH: ${divWidth}`);
         const divHeight = gameBoardRef.current.clientHeight;
+        console.log(`DIV HEIGHT: ${divHeight}`);
         let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
+        console.log(`aWidth: ${aWidth}`);
+        console.log(`aHeight: ${aHeight}`);
+        console.log(`aWidth / divWidth: ${aWidth / divWidth}`);
+        console.log(`aHeight / divHeight: ${aHeight / divHeight}`);
+        console.log(`SCALE: ${nScale}`);
+        console.log(`aWidth < divWidth: ${(aWidth <= divWidth)}`);
+        console.log(`divHeight < aHeight: ${(divHeight >= aHeight)}`);
         ((aWidth <= divWidth) || (divHeight >= aHeight)) ? setScale(nScale) : setScale(1);
     }
 
