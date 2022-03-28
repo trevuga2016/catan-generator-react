@@ -43,7 +43,7 @@ export const GameBoard = ({ props }) => {
         console.log(`SCALE: ${nScale}`);
         console.log(`aWidth < divWidth: ${(aWidth <= divWidth)}`);
         console.log(`divHeight < aHeight: ${(divHeight >= aHeight)}`);
-        ((aWidth <= divWidth) || (divHeight >= aHeight)) ? setScale(nScale) : setScale(1);
+        aWidth <= divWidth ? setScale(nScale) : setScale(1);
     }
 
     useEffect(() => {
