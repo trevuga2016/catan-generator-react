@@ -15,15 +15,15 @@ export const GameBoard = ({ props }) => {
     });
 
     const gameBoardRef = useRef();
-    const [aWidth, setAWidth] = useState(null);
-    const [aHeight, setAHeight] = useState(null);
+    const [aWidth, setAWidth] = useState((typeof screen !== "undefined") ? screen.width : null);
+    const [aHeight, setAHeight] = useState((typeof screen !== "undefined") ? screen.height : null);
     const [scale, setScale] = useState(1);
 
     const updateAvailableWidth = () => {
-        if (typeof window !== "undefined") {
-            const availableWidth = window.innerWidth;
+        if (typeof screen !== "undefined") {
+            const availableWidth = screen.width;
             setAWidth(availableWidth);
-            const availableHeight = window.innerHeight;
+            const availableHeight = screen.height;
             setAHeight(availableHeight)
         }
     }
@@ -32,13 +32,13 @@ export const GameBoard = ({ props }) => {
         const divWidth = gameBoardRef.current.clientWidth;
         const divHeight = gameBoardRef.current.clientHeight;
         let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
-        ((aWidth <= divWidth) || (divHeight <= aHeight)) ? setScale(nScale) : setScale(1);
+        ((aWidth <= divWidth) || (divHeight >= aHeight)) ? setScale(nScale) : setScale(1);
     }
 
     useEffect(() => {
         updateAvailableWidth();
         updateScale();
-    }, [aWidth, aHeight]);
+    }, []);
 
     return(
         <Grid container className={styles["game-board"]} ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
