@@ -11,7 +11,7 @@ export const Home = () => {
         <title>Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
-      <Grid item textAlign="center" position="relative" top="0">
+      <Grid item>
         <Header />
       </Grid>
       <Grid item>
