@@ -43,8 +43,16 @@ export const Demo = () => {
             <Grid item>
                 <Header />
             </Grid>
-            <Grid item  >
-                <Grid container direction={"row"} ref={rowRef}  wrap={"nowrap"}>
+            <Grid item ref={rowRef} >
+                <Grid container direction={"row"}   wrap={"nowrap"}>
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction={"row"}   wrap={"nowrap"}>
+                    <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
