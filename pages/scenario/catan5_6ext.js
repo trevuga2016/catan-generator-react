@@ -1,9 +1,5 @@
-import Head from 'next/head';
-import { Header } from '../../components/header/header';
 import { GameBoard } from '../../components/game-board/game-board';
 import { useRouter } from 'next/router';
-import { Grid } from '@mui/material';
-import styles from "../../styles/catan.module.css";
 
 export const Catan5_6Ext = () => {
 
@@ -13,14 +9,7 @@ export const Catan5_6Ext = () => {
     let props = { numbers_freq, resources_freq, row_config, port_config, ports };
 
     return(
-        <Grid container className={styles["catan"]}>
-            <Head>
-                <title>Catan Board Generator</title>
-                <link rel="icon" href="/catan-icon.ico"/>
-            </Head>
-            <Header/>
-            <GameBoard props={props} />
-        </Grid>
+        <GameBoard props={props} />
     );
 };
 

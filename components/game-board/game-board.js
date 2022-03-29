@@ -5,6 +5,8 @@ import { ButtonRow } from "../button-row/button-row";
 import getBoardData from '../../helpers/catan-logic';
 import getDefaultData from '../../helpers/default-logic';
 import styles from './game-board.module.scss';
+import Head from "next/head";
+import { Header } from "../header/header";
 
 export const GameBoard = ({ props }) => {
 
@@ -15,49 +17,31 @@ export const GameBoard = ({ props }) => {
     });
 
     const gameBoardRef = useRef();
-    const [aWidth, setAWidth] = useState((typeof window !== "undefined") ? window.innerWidth : null);
-    const [aHeight, setAHeight] = useState((typeof window !== "undefined") ? window.innerHeight : null);
+    const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
+    const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? screen.width : 0);
     const [scale, setScale] = useState(1);
 
-    const updateAvailableWidth = () => {
-        if (typeof screen !== "undefined") {
-            const availableWidth = window.innerWidth;
-            console.log(`AVAILABLE WIDTH: ${availableWidth}`);
-            setAWidth(availableWidth);
-            const availableHeight = window.innerHeight;
-            console.log(`AVAILABLE HEIGHT: ${availableHeight}`);
-            setAHeight(availableHeight)
-        }
-    }
-
-    const updateScale = () => {
-        const divWidth = gameBoardRef.current.clientWidth;
-        console.log(`DIV WIDTH: ${divWidth}`);
-        const divHeight = gameBoardRef.current.clientHeight;
-        console.log(`DIV HEIGHT: ${divHeight}`);
-        let nScale = Math.min(aWidth / divWidth, aHeight / divHeight);
-        console.log(`aWidth: ${aWidth}`);
-        console.log(`aHeight: ${aHeight}`);
-        console.log(`aWidth / divWidth: ${aWidth / divWidth}`);
-        console.log(`aHeight / divHeight: ${aHeight / divHeight}`);
-        console.log(`SCALE: ${nScale}`);
-        console.log(`aWidth < divWidth: ${(aWidth <= divWidth)}`);
-        console.log(`divHeight < aHeight: ${(divHeight >= aHeight)}`);
-        aWidth <= divWidth ? setScale(nScale) : setScale(1);
-    }
-
     useEffect(() => {
-        updateAvailableWidth();
-        updateScale();
+        const rowWidth = gameBoardRef.current.clientWidth;
+        (availableWidth <= rowWidth) ? setScale(screenWidth / rowWidth) : setScale(1);
     }, []);
 
     return(
-        <Grid container className={styles["game-board"]} ref={gameBoardRef} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
-            {data.boardData.map((row, index) => {
-                return (
-                    <HexRow row={row.row} key={index} />
-                )
-            })}
+        <Grid container direction="column" className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
+            <Head>
+                <title>Catan Board Generator</title>
+                <link rel="icon" href="/catan-icon.ico"/>
+            </Head>
+            <Grid item>
+                <Header />
+            </Grid>
+            <Grid item ref={gameBoardRef}>
+                {data.boardData.map((row, index) => {
+                    return (
+                        <HexRow row={row.row} key={index} />
+                    )
+                })}
+            </Grid>
             <ButtonRow clear={() => setData({ boardData: getDefaultData(row_config, port_config, ports) })}
                        generate={() => setData({ boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
         </Grid>

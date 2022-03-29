@@ -35,7 +35,7 @@ export const Demo = () => {
     const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}}
 
     return(
-        <Grid container direction="column" alignItems="center" height="100%" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
+        <Grid container direction="column" alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
             <Head>
                 <title>Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
