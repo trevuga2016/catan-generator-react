@@ -8,7 +8,7 @@ export const GameSelect = () => {
     const [game, setGame] = useState({ value: '' });
     const [port, setPort] = useState({ value: 'hide' });
     const [scenario, setScenario] = useState('');
-    const enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO;
+    let enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO === 'true';
 
     const handleGameChange = (e) => {
         setGame({ value: e.target.value });
@@ -53,7 +53,7 @@ export const GameSelect = () => {
                         <label htmlFor="port2">Randomize</label>
                     </Grid>
                     <Grid item>
-                        <input type="radio" id="port3" name="port" value="hide" onChange={(e) => handlePortChange(e)} checked={port.value == 'hide'} />
+                        <input type="radio" id="port3" name="port" value="hide" onChange={(e) => handlePortChange(e)} checked={port.value === 'hide'} />
                         <label htmlFor="port3">Hide</label>
                     </Grid>
                 </Grid>
