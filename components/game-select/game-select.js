@@ -8,6 +8,7 @@ export const GameSelect = () => {
     const [game, setGame] = useState({ value: '' });
     const [port, setPort] = useState({ value: 'hide' });
     const [scenario, setScenario] = useState('');
+    const enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO;
 
     const handleGameChange = (e) => {
         setGame({ value: e.target.value });
@@ -20,6 +21,10 @@ export const GameSelect = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         router.push(scenario);
+    }
+
+    const goToDemo = () => {
+     router.push('/scenario/demo');
     }
 
     useEffect(() => {
@@ -56,6 +61,12 @@ export const GameSelect = () => {
             <Grid item>
                 <button type="submit">Submit</button>
             </Grid>
+            {
+                enableDemo &&
+                <Grid item pt={4}>
+                    <button type="submit" onClick={goToDemo}>Demo</button>
+                </Grid>
+            }
         </Grid>
         </form>
     );

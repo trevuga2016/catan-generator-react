@@ -3,6 +3,7 @@ import { Header } from "../../components/header/header";
 import Head from "next/head";
 import { Hex } from "../../components/hex/hex";
 import { useEffect, useRef, useState } from "react";
+import { ButtonRow } from "../../components/button-row/button-row";
 
 export const Demo = () => {
 
@@ -89,6 +90,7 @@ export const Demo = () => {
                     <Hex hex={hex} />
                 </Grid>
             </Grid>
+            <ButtonRow />
         </Grid>
     );
 }
