@@ -43,18 +43,47 @@ export const Demo = () => {
             <Grid item>
                 <Header />
             </Grid>
-            <Grid item ref={rowRef} >
-                <Grid container direction={"row"}   wrap={"nowrap"}>
+            <Grid item ref={rowRef}>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                 </Grid>
-                <Grid container direction={"row"}   wrap={"nowrap"}>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
