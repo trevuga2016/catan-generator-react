@@ -12,9 +12,7 @@ export const GameBoard = ({ props }) => {
 
     const { numbers_freq, resources_freq, row_config, port_config, ports, title } = props;
 
-    const [data, setData] = useState({
-        boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
-    });
+    const [data, setData] = useState(null);
 
     const gameBoardRef = useRef();
     const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
@@ -24,6 +22,12 @@ export const GameBoard = ({ props }) => {
     useEffect(() => {
         const rowWidth = gameBoardRef.current.clientWidth;
         (availableWidth <= rowWidth) ? setScale(screenWidth / rowWidth) : setScale(1);
+    }, []);
+
+    useEffect(() => {
+        setData({
+            boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
+        });
     }, []);
 
     return(
@@ -36,7 +40,7 @@ export const GameBoard = ({ props }) => {
                 <Header title={title} />
             </Grid>
             <Grid item ref={gameBoardRef}>
-                {data.boardData.map((row, index) => {
+                {data?.boardData?.map((row, index) => {
                     return (
                         <HexRow row={row.row} key={index} />
                     )
