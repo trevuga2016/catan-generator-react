@@ -6,7 +6,7 @@ import { Grid } from '@mui/material';
 export const Home = () => {
 
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" alignItems="center">
       <Head>
         <title>Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />

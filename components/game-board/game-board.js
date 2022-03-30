@@ -17,17 +17,26 @@ export const GameBoard = ({ props }) => {
     });
 
     const gameBoardRef = useRef();
+    const heightRef = useRef();
     const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
+    const [availableHeight, setAvailableHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 0);
     const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? screen.width : 0);
     const [scale, setScale] = useState(1);
 
     useEffect(() => {
         const rowWidth = gameBoardRef.current.clientWidth;
-        (availableWidth <= rowWidth) ? setScale(screenWidth / rowWidth) : setScale(1);
+        const boardHeight = heightRef.current.clientHeight;
+        if (availableWidth <= rowWidth) {
+            setScale(screenWidth / rowWidth)
+        } else if (boardHeight > availableHeight) {
+            setScale(availableHeight / boardHeight)
+        } else {
+            setScale(1);
+        }
     }, []);
 
     return(
-        <Grid container direction="column" className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
+        <Grid container direction="column" ref={heightRef} className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
             <Head>
                 <title>{title} | Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
@@ -41,9 +50,9 @@ export const GameBoard = ({ props }) => {
                         <HexRow row={row.row} key={index} />
                     )
                 })}
+                <ButtonRow clear={() => setData({ boardData: getDefaultData(row_config, port_config, ports) })}
+                           generate={() => setData({ boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
             </Grid>
-            <ButtonRow clear={() => setData({ boardData: getDefaultData(row_config, port_config, ports) })}
-                       generate={() => setData({ boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports) })} />
         </Grid>
     );
 }

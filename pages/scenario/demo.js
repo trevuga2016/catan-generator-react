@@ -8,27 +8,36 @@ import { ButtonRow } from "../../components/button-row/button-row";
 export const Demo = () => {
 
     const rowRef = useRef();
+    const heightRef = useRef();
     const [scale, setScale] = useState(0);
     const title = 'The Settlers of Catan Demo';
 
     useEffect(() => {
         let availableWidth = 0;
+        let availableHeight = 0;
         let screenWidth = 0;
         if (typeof window !== "undefined") {
             availableWidth = window.innerWidth;
             console.log(`AVAILABLE WIDTH: ${availableWidth}`);
-            const availableHeight = window.innerHeight;
+            availableHeight = window.innerHeight;
             console.log(`AVAILABLE HEIGHT: ${availableHeight}`);
             screenWidth = screen.width;
             console.log(`SCREEN WIDTH: ${screenWidth}`);
         }
         const rowWidth = rowRef.current.clientWidth;
+        const rowHeight = heightRef.current.clientHeight;
         console.log(`ROW WIDTH: ${rowWidth}`);
+        console.log(`ROW HEIGHT: ${rowHeight}`);
         if (availableWidth <= rowWidth) {
-            console.log(`SCALE TRUE`);
-            const nScale = screenWidth / rowWidth;
-            setScale(nScale);
-            console.log(`SCALE: ${nScale}`);
+            console.log(`SCALE WIDTH TRUE`);
+            const wScale = screenWidth / rowWidth;
+            setScale(wScale);
+            console.log(`W SCALE: ${wScale}`);
+        } else if (rowHeight > availableHeight) {
+            console.log(`SCALE HEIGHT TRUE`);
+            const hScale = (availableHeight) / rowHeight;
+            setScale(hScale);
+            console.log(`H SCALE: ${hScale}`);
         } else {
             console.log(`SCALE FALSE - setting scale to 1`);
             setScale(1);
@@ -38,7 +47,7 @@ export const Demo = () => {
     const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}};
 
     return(
-        <Grid container direction="column" alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
+        <Grid container direction="column" ref={heightRef} alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
             <Head>
                 <title>{title} | Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
@@ -60,8 +69,8 @@ export const Demo = () => {
                         );
                     })
                 }
+                <ButtonRow />
             </Grid>
-            <ButtonRow />
         </Grid>
     );
 }
