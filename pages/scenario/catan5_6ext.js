@@ -51,7 +51,7 @@ const port_config = {
         { type: '3for1', rotation: '60deg', position: 2 },
         { type: '', rotation: '', position: 0 },
         { type: '2for1_ore', rotation: '-60deg', position: 1 },
-        { type: '3for1', rotation: '120deg', position: 2 },
+        { type: '3for1_left', rotation: '0deg', position: 2 },
         { type: '3for1', rotation: '-120deg', position: 1 },
         [{ type: '2for1_wheat', rotation: '-60deg', position: 1 },
         { type: '2for1_brick', rotation: '180deg', position: 2 }],

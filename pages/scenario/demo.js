@@ -1,4 +1,4 @@
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Header } from "../../components/header/header";
 import Head from "next/head";
 import { Hex } from "../../components/hex/hex";
@@ -35,7 +35,7 @@ export const Demo = () => {
         }
     }, []);
 
-    const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}}
+    const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}};
 
     return(
         <Grid container direction="column" alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
@@ -47,76 +47,19 @@ export const Demo = () => {
                 <Header title={title} />
             </Grid>
             <Grid item ref={rowRef}>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                </Grid>
+                {
+                    row_config.map((value, index) => {
+                        return(
+                            <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px" key={index}>
+                                {
+                                    Array.from(Array(value), (e, i) => {
+                                        return(<Hex hex={hex} key={i} />);
+                                    })
+                                }
+                            </Grid>
+                        );
+                    })
+                }
             </Grid>
             <ButtonRow />
         </Grid>
@@ -126,3 +69,5 @@ export const Demo = () => {
 export default Demo;
 
 Demo.displayName = 'Demo';
+
+const row_config = [4,5,6,7,8,7,6,5,4];

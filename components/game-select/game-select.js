@@ -59,7 +59,7 @@ export const GameSelect = () => {
                 </Grid>
             </Grid>
             <Grid item>
-                <button type="submit">Submit</button>
+                <button type="submit">Generate</button>
             </Grid>
             {
                 enableDemo &&
