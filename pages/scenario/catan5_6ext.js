@@ -5,8 +5,9 @@ export const Catan5_6Ext = () => {
 
     const router = useRouter();
     const { ports } = router.query;
+    const title = 'Catan 5 & 6 Player Extension';
 
-    let props = { numbers_freq, resources_freq, row_config, port_config, ports };
+    let props = { numbers_freq, resources_freq, row_config, port_config, ports, title };
 
     return(
         <GameBoard props={props} />
@@ -63,3 +64,5 @@ const port_config = {
         { type: '', rotation: '' }
     ]
 }
+
+Catan5_6Ext.displayName = 'Catan5_6Ext';

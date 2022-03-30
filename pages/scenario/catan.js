@@ -5,8 +5,9 @@ export const Catan = () => {
 
     const router = useRouter();
     const { ports } = router.query;
+    const title = 'The Settlers of Catan';
 
-    let props = { numbers_freq, resources_freq, row_config, port_config, ports };
+    let props = { numbers_freq, resources_freq, row_config, port_config, ports, title };
 
     return(
         <GameBoard props={props} />
@@ -60,3 +61,5 @@ const port_config = {
         { type: '3for1', rotation: '180deg' }
     ]
 }
+
+Catan.displayName = 'Catan';

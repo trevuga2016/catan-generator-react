@@ -9,6 +9,7 @@ export const Demo = () => {
 
     const rowRef = useRef();
     const [scale, setScale] = useState(0);
+    const title = 'The Settlers of Catan Demo';
 
     useEffect(() => {
         let availableWidth = 0;
@@ -25,8 +26,9 @@ export const Demo = () => {
         console.log(`ROW WIDTH: ${rowWidth}`);
         if (availableWidth <= rowWidth) {
             console.log(`SCALE TRUE`);
-            setScale(screenWidth / rowWidth);
-            console.log(`SCALE: ${scale}`);
+            const nScale = screenWidth / rowWidth;
+            setScale(nScale);
+            console.log(`SCALE: ${nScale}`);
         } else {
             console.log(`SCALE FALSE - setting scale to 1`);
             setScale(1);
@@ -38,22 +40,17 @@ export const Demo = () => {
     return(
         <Grid container direction="column" alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
             <Head>
-                <title>Catan Board Generator</title>
+                <title>{title} | Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
             </Head>
             <Grid item>
-                <Header />
+                <Header title={title} />
             </Grid>
             <Grid item ref={rowRef}>
                 <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
-                </Grid>
-                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
-                    <Hex hex={hex} />
                     <Hex hex={hex} />
                 </Grid>
                 <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
@@ -77,14 +74,45 @@ export const Demo = () => {
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
                 </Grid>
                 <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
                 </Grid>
                 <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                    <Hex hex={hex} />
+                </Grid>
+                <Grid container direction="row" wrap="nowrap" justifyContent="center" mb="-26px">
+                    <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />
                     <Hex hex={hex} />

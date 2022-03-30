@@ -10,7 +10,7 @@ import { Header } from "../header/header";
 
 export const GameBoard = ({ props }) => {
 
-    const { numbers_freq, resources_freq, row_config, port_config, ports } = props;
+    const { numbers_freq, resources_freq, row_config, port_config, ports, title } = props;
 
     const [data, setData] = useState({
         boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
@@ -29,11 +29,11 @@ export const GameBoard = ({ props }) => {
     return(
         <Grid container direction="column" className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
             <Head>
-                <title>Catan Board Generator</title>
+                <title>{title} | Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
             </Head>
             <Grid item>
-                <Header />
+                <Header title={title} />
             </Grid>
             <Grid item ref={gameBoardRef}>
                 {data.boardData.map((row, index) => {

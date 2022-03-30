@@ -12,7 +12,7 @@ export const Home = () => {
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid item>
-        <Header />
+        <Header title='Catan Board Generator' />
       </Grid>
       <Grid item>
         <GameSelect />

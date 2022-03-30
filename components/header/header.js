@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
 import styles from './header.module.scss';
 
-export const Header = () => {
+export const Header = ({ title }) => {
     return(
       <Grid container className={styles["header"]}>
           <Grid item>
-              <h1>Catan Board Generator</h1>
+              <h1>{title}</h1>
           </Grid>
       </Grid>
 
