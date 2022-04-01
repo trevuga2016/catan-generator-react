@@ -2,8 +2,9 @@
   position: absolute;
   top: auto;
   bottom: 0;
-  justify-content: right;
+  justify-content: flex-end;
   &__color {
     color: black;
+    font-family: Luminari, serif;
   }
 }

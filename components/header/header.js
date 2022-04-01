@@ -8,11 +8,11 @@ export const Header = ({ title }) => {
 
     const goHome = () => {
         router.push('/');
-    }
+    };
 
     return(
       <Grid container className={styles["header"]}>
-          <Grid item onClick={goHome} sx={{cursor: "pointer"}}>
+          <Grid item onClick={goHome} className={styles["header__title"]}>
               <h1>{title}</h1>
           </Grid>
       </Grid>

@@ -2,4 +2,11 @@
   justify-content: center;
   text-align: center;
   inline-size: max-content;
+  &__title {
+    cursor: pointer;
+    :hover {
+      background-color: #b6a8bd;
+      border-radius: 15px;
+    }
+  }
 }
