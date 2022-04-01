@@ -21,8 +21,6 @@ Demo mode is disabled in production, but still accessible via url
 
 ## Legal
 
-The contents of this application are original work developed by me and are not to be used without my permission.
+The contents of this application are original work and are not to be used without permission.
 
-All Catan images, names, and associated likenesses are all registered and licensed trademarks of Catan GmbH and Catan Studio.
-
-This game is published by Catan Studio and this application is meant purely for fun and not to profit, in any way, using Catan licensed content.
+All Catan images, names, and associated likenesses are licensed trademarks of Catan GmbH and Catan Studio.
