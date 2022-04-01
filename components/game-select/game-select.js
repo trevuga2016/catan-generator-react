@@ -39,6 +39,7 @@ export const GameSelect = () => {
                     <option value='' disabled>Select Scenario</option>
                     <option value='catan'>The Settlers of Catan</option>
                     <option value='catan5_6ext'>Catan 5 & 6 Player Extension</option>
+                    <option value='' disabled>More coming soon!</option>
                 </select>
             </Grid>
             <Grid item py={3}>

@@ -1,13 +1,10 @@
 import { GameBoard } from '../../components/game-board/game-board';
-import { useRouter } from 'next/router';
 
 export const Catan5_6Ext = () => {
 
-    const router = useRouter();
-    const { ports } = router.query;
     const title = 'Catan 5 & 6 Player Extension';
 
-    let props = { numbers_freq, resources_freq, row_config, port_config, ports, title };
+    let props = { numbers_freq, resources_freq, row_config, port_config, title };
 
     return(
         <GameBoard props={props} />

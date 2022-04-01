@@ -7,10 +7,12 @@ import getDefaultData from '../../helpers/default-logic';
 import styles from './game-board.module.scss';
 import Head from "next/head";
 import { Header } from "../header/header";
+import { useRouter } from "next/router";
 
 export const GameBoard = ({ props }) => {
 
-    const { numbers_freq, resources_freq, row_config, port_config, ports, title } = props;
+    const router = useRouter();
+    const { numbers_freq, resources_freq, row_config, port_config, title } = props;
     const gameBoardRef = useRef();
     const heightRef = useRef();
     const [data, setData] = useState(null);
@@ -18,6 +20,18 @@ export const GameBoard = ({ props }) => {
     const [availableHeight, setAvailableHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 0);
     const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? screen.width : 0);
     const [scale, setScale] = useState(1);
+
+    let portsState = router.query['ports'];
+    if (portsState) {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('ports', portsState);
+        }
+    } else {
+        if (typeof window !== 'undefined') {
+            portsState = localStorage.getItem('ports');
+        }
+    }
+    const [ports, setPorts] = useState(portsState);
 
     useEffect(() => {
         setData({
