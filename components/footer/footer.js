@@ -1,4 +1,4 @@
-import { Grid, Link } from '@mui/material';
+import { Grid, Link, Tooltip } from '@mui/material';
 import styles from './footer.module.scss';
 import { useRouter } from "next/router";
 
@@ -15,9 +15,11 @@ export const Footer = () => {
             <Grid xs={6} item align="left">
                 <Link onClick={onClick} sx={{ cursor: "pointer" }}>LEGAL</Link>
             </Grid>
+            <Tooltip title="Hey Rebecca :)" placement="top-end">
             <Grid xs={6} item align="right">
                 2022 &copy; Trevor Richardson
             </Grid>
+            </Tooltip>
         </Grid>
     );
 }
