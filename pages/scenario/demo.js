@@ -10,6 +10,7 @@ export const Demo = () => {
     const rowRef = useRef();
     const heightRef = useRef();
     const [scale, setScale] = useState(0);
+    const [transformOrigin, setTransformOrigin] = useState(null);
     const title = 'The Settlers of Catan Demo';
 
     useEffect(() => {
@@ -32,11 +33,13 @@ export const Demo = () => {
             console.log(`SCALE WIDTH TRUE`);
             const wScale = screenWidth / rowWidth;
             setScale(wScale);
+            setTransformOrigin('top left');
             console.log(`W SCALE: ${wScale}`);
         } else if (rowHeight > availableHeight) {
             console.log(`SCALE HEIGHT TRUE`);
-            const hScale = (availableHeight) / rowHeight;
+            const hScale = availableHeight / rowHeight;
             setScale(hScale);
+            setTransformOrigin('top center');
             console.log(`H SCALE: ${hScale}`);
         } else {
             console.log(`SCALE FALSE - setting scale to 1`);
@@ -47,7 +50,7 @@ export const Demo = () => {
     const hex = { resource: 'Ore', token: { number: '8', probability: '\u2022\u2022\u2022\u2022\u2022'}};
 
     return(
-        <Grid container direction="column" ref={heightRef} alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: "0 0"}}>
+        <Grid container direction="column" ref={heightRef} alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: `${transformOrigin}`}}>
             <Head>
                 <title>{title} | Catan Board Generator</title>
                 <link rel="icon" href="/catan-icon.ico"/>
