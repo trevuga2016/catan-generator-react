@@ -11,17 +11,19 @@ import { Header } from "../header/header";
 export const GameBoard = ({ props }) => {
 
     const { numbers_freq, resources_freq, row_config, port_config, ports, title } = props;
-
-    const [data, setData] = useState({
-        boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
-    });
-
     const gameBoardRef = useRef();
     const heightRef = useRef();
+    const [data, setData] = useState(null);
     const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
     const [availableHeight, setAvailableHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 0);
     const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? screen.width : 0);
     const [scale, setScale] = useState(1);
+
+    useEffect(() => {
+        setData({
+            boardData: getBoardData(numbers_freq, resources_freq, row_config, port_config, ports)
+        });
+    }, []);
 
     useEffect(() => {
         const rowWidth = gameBoardRef.current.clientWidth;
@@ -33,7 +35,7 @@ export const GameBoard = ({ props }) => {
         } else {
             setScale(1);
         }
-    }, []);
+    }, [data]);
 
     return(
         <Grid container direction="column" ref={heightRef} className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: "0 0" }}>
@@ -45,7 +47,7 @@ export const GameBoard = ({ props }) => {
                 <Header title={title} />
             </Grid>
             <Grid item ref={gameBoardRef}>
-                {data.boardData.map((row, index) => {
+                {data?.boardData?.map((row, index) => {
                     return (
                         <HexRow row={row.row} key={index} />
                     )
