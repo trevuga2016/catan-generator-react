@@ -25,7 +25,7 @@ export const GameBoard = ({ props }) => {
         }
     }
 
-    const { boardData, generateBoardData, clearBoardData } = useCatanLogic(numbers_freq, resources_freq, row_config, port_config, ports);
+    const { boardData, stats, generateBoardData, clearBoardData } = useCatanLogic(numbers_freq, resources_freq, row_config, port_config, ports);
 
     const gameBoardRef = useRef();
     const heightRef = useRef();
@@ -65,7 +65,7 @@ export const GameBoard = ({ props }) => {
                         <HexRow row={row.row} key={index} />
                     )
                 })}
-                <ButtonRow clear={() => clearBoardData()} generate={() => generateBoardData()} />
+                <ButtonRow clear={() => clearBoardData()} generate={() => generateBoardData()} stats={stats} />
             </Grid>
         </Grid>
     );

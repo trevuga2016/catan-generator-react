@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 import styles from './button-row.module.scss';
-import { useState } from "react";
-import { StatsModal } from "../stats-modal/stats-modal";
+import { useState } from 'react';
+import { StatsModal } from '../stats-modal/stats-modal';
 
-export const ButtonRow = ({ clear, generate }) => {
+export const ButtonRow = ({ clear, generate, stats }) => {
 
     const router = useRouter();
     const [open, setOpen] = useState(false);
@@ -24,7 +24,7 @@ export const ButtonRow = ({ clear, generate }) => {
             </Grid>
             <Grid item xs={3}>
                 <button type="button" onClick={handleOpen}>Statistics</button>
-                <StatsModal open={open} onClose={handleClose} />
+                <StatsModal open={open} onClose={handleClose} stats={stats} />
             </Grid>
         </Grid>
     );
