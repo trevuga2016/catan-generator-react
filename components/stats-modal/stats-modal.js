@@ -9,7 +9,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
 
     return(
         <Modal open={open} onClose={onClose}>
-            <Box className={styles["modal"]} sx={{ transform: `translate(-50%, -50%) scale()`}}>
+            <Box className={styles["modal"]}>
                 <Grid container direction="column" className={styles["modal__container"]} p={5}>
                     <Typography variant="h4">Board Statistics</Typography>
                     <Typography variant="h6">Frequency of Resource per Turn</Typography>

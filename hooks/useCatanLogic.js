@@ -53,7 +53,7 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
             port !== 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config, ports_list)) : undefined;
         }
         setBoardData(hex_values);
-        generateBoardStats(hex_values);
+        generateBoardStats(hex_values, resources_freq);
     };
 
     const clearBoardData = () => {
@@ -85,52 +85,59 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
 
         port !== 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config, undefined)) : undefined;
         setBoardData(hex_values);
-        generateBoardStats(hex_values);
+        generateBoardStats(hex_values, resources_freq);
     }
 
-    const generateBoardStats = (hex_values) => {
-        let resourceArray = [];
-        let statsArray = [];
-        let mStats = [];
-        if (hex_values) {
-            hex_values.map((row) => {
-                const rowData = row?.row;
-                rowData.map((hex) => {
-                    if (hex.resource !== '' && hex.resource !== 'Desert') {
-                        let number = parseInt(hex?.token?.number);
-                        resourceArray.push(hex.resource);
-                        statsArray.push({
-                            resource: hex.resource,
-                            number: number
-                        });
-                    }
-                });
-            });
-            const unique = (value, index, self) => {
-                return self.indexOf(value) === index
+    const generateBoardStats = (hex_values, resources_freq) => {
+
+        const resource_array = [];
+        const boardStats = [];
+
+        for (const [key, freq] of Object.entries(resources_freq)) {
+            for (let i = 1; i <= freq; i++) {
+                resource_array.push(key);
             }
-            const uResourceArray = resourceArray.filter(unique);
+        }
+
+        const unique = (value, index, self) => {
+            return self.indexOf(value) === index
+        }
+
+        const uResourceArray = resource_array.filter(unique);
+        if (uResourceArray.includes('Desert')) {
+            uResourceArray.splice(uResourceArray.indexOf('Desert'), 1);
+        }
+
+        if (hex_values) {
             uResourceArray.map((resource) => {
+                let numbers = [];
                 let probability = 0;
-                statsArray.map((stat) => {
-                    if (stat.resource === resource) {
-                        probability = probability + getProbability(stat.number);
-                    }
+                hex_values.map((row) => {
+                    const rowData = row?.row;
+                    rowData.map((hex) => {
+                        if (hex.resource === resource) {
+                            numbers.push(hex?.token?.number);
+                        }
+                    });
+                });
+                let uNumbers = numbers.filter(unique);
+                uNumbers.map((num) => {
+                    probability = probability + getProbability(parseInt(num));
                 });
                 probability = (probability * 100).toFixed(3);
-                mStats.push({
+                boardStats.push({
                     resource: resource,
                     probability: probability
                 });
             });
         } else {
-            mStats.push({
+            boardStats.push({
                 resource: '',
                 probability: ''
             });
         }
-        mStats.sort((a, b) => b.probability - a.probability);
-        setStats(mStats);
+        boardStats.sort((a, b) => b.probability - a.probability);
+        setStats(boardStats);
     }
 
     useEffect(() => {
