@@ -12,8 +12,8 @@
   width: 75vh;
   &__container {
     text-align: center;
+    align-items: center;
     &__stats {
-      align-self: center;
       width: fit-content;
     }
   }

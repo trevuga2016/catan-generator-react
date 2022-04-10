@@ -43,6 +43,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                             );
                         })
                     }
+                    </Grid>
                     {
                         highestProb !== '0.000' &&
                             <>
@@ -91,7 +92,6 @@ export const StatsModal = ({ open, onClose, stats }) => {
                             </Grid>
                         </>
                     }
-                    </Grid>
                 </Grid>
             </Box>
         </Modal>
