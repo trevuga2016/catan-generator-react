@@ -1,11 +1,24 @@
 import { Avatar, Box, Grid, ListItem, ListItemAvatar, ListItemText, Modal, Typography } from '@mui/material';
 import styles from './stats-modal.module.scss';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 
 export const StatsModal = ({ open, onClose, stats }) => {
 
-    const maResource = stats?.[0]?.probability !== '0.000' ? stats?.[0]?.resource : undefined;
-    const laResource = stats?.[stats?.length - 1]?.probability !== '0.000' ? stats?.[stats?.length - 1]?.resource : undefined;
+    const maResources = [stats?.[0]?.resource];
+    const highestProb = stats?.[0]?.probability;
+    const laResources = [stats?.[stats?.length - 1]?.resource];
+    const lowestProb = stats?.[stats?.length - 1]?.probability;
+
+    stats?.forEach((stat, i) => {
+        if (i > 0 && stat?.probability === highestProb) {
+            maResources.push(stat?.resource);
+        }
+    });
+
+    for (let i = stats?.length - 1; i >= 0; i--) {
+        if (i < stats?.length - 1 && stats?.[i]?.probability === lowestProb) {
+            laResources.push(stats[i].resource);
+        }
+    }
 
     return(
         <Modal open={open} onClose={onClose}>
@@ -31,34 +44,50 @@ export const StatsModal = ({ open, onClose, stats }) => {
                         })
                     }
                     {
-                        maResource &&
-                        <>
-                            <Typography variant="h6">The Most Abundant Resource:</Typography>
-                            <Grid item className={styles["modal__container__stats"]}>
-                                <ListItem>
-                                    <ListItemAvatar>
-                                        { maResource !== '--' ? <Avatar src={`/${maResource}_icon.jpg`} /> : <Avatar><InsertPhotoOutlinedIcon /></Avatar> }
-                                    </ListItemAvatar>
-                                    <ListItemText>
-                                        <Typography variant="h6">{maResource}</Typography>
-                                    </ListItemText>
-                                </ListItem>
+                        highestProb !== '0.000' &&
+                            <>
+                            <Typography variant="h6">The Most Abundant Resource{maResources.length > 1 ? 's:' : ':'}</Typography>
+                            <Grid container direction="row" className={styles["modal__container__stats"]}>
+                                {
+                                    maResources.map((resource, i) => {
+                                        return(
+                                            <Grid item key={i}>
+                                                <ListItem>
+                                                    <ListItemAvatar>
+                                                        <Avatar src={`/${resource}_icon.jpg`} />
+                                                    </ListItemAvatar>
+                                                    <ListItemText>
+                                                        <Typography variant="h6">{resource}</Typography>
+                                                    </ListItemText>
+                                                </ListItem>
+                                            </Grid>
+                                        )
+                                    })
+                                }
                             </Grid>
-                        </>
+                            </>
                     }
                     {
-                        laResource &&
+                        lowestProb !== '0.000' &&
                         <>
-                            <Typography variant="h6">The Least Abundant Resource:</Typography>
-                            <Grid item className={styles["modal__container__stats"]}>
-                                <ListItem>
-                                    <ListItemAvatar>
-                                        { laResource !== '--' ? <Avatar src={`/${laResource}_icon.jpg`} /> : <Avatar><InsertPhotoOutlinedIcon /></Avatar> }
-                                    </ListItemAvatar>
-                                    <ListItemText>
-                                        <Typography variant="h6">{laResource}</Typography>
-                                    </ListItemText>
-                                </ListItem>
+                            <Typography variant="h6">The Least Abundant Resource{laResources.length > 1 ? 's:' : ':'}</Typography>
+                            <Grid container direction="row" className={styles["modal__container__stats"]}>
+                                {
+                                    laResources.map((resource, i) => {
+                                        return(
+                                            <Grid item key={i}>
+                                                <ListItem>
+                                                    <ListItemAvatar>
+                                                        <Avatar src={`/${resource}_icon.jpg`} />
+                                                    </ListItemAvatar>
+                                                    <ListItemText>
+                                                        <Typography variant="h6">{resource}</Typography>
+                                                    </ListItemText>
+                                                </ListItem>
+                                            </Grid>
+                                        )
+                                    })
+                                }
                             </Grid>
                         </>
                     }
