@@ -11,10 +11,12 @@
   box-shadow: #b6a8bd;
   width: 75vh;
   &__container {
-    text-align: center;
     align-items: center;
     &__stats {
       width: fit-content;
+    }
+    &__freq {
+      justify-content: center;
     }
   }
 }

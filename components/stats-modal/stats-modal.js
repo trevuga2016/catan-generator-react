@@ -48,7 +48,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                         highestProb !== '0.000' &&
                             <>
                             <Typography variant="h6">The Most Abundant Resource{maResources.length > 1 ? 's:' : ':'}</Typography>
-                            <Grid container direction="row" className={styles["modal__container__stats"]}>
+                            <Grid container direction="row" className={styles["modal__container__freq"]}>
                                 {
                                     maResources.map((resource, i) => {
                                         return(
@@ -72,7 +72,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                         lowestProb !== '0.000' &&
                         <>
                             <Typography variant="h6">The Least Abundant Resource{laResources.length > 1 ? 's:' : ':'}</Typography>
-                            <Grid container direction="row" className={styles["modal__container__stats"]}>
+                            <Grid container direction="row" className={styles["modal__container__freq"]}>
                                 {
                                     laResources.map((resource, i) => {
                                         return(
