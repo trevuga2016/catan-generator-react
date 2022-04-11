@@ -13,7 +13,7 @@
   &__container {
     align-items: center;
     &__stats {
-      width: fit-content;
+      width: fit-content !important;
     }
     &__freq {
       justify-content: center;
