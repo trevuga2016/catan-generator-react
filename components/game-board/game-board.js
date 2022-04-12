@@ -50,6 +50,8 @@ export const GameBoard = ({ props }) => {
         }
     }, [boardData]);
 
+    // console.log(JSON.stringify(boardData));
+
     return(
         <Grid container direction="column" ref={heightRef} className={styles["game-board"]} sx={{ transform: `scale(${scale})`, transformOrigin: `${transformOrigin}` }}>
             <Head>

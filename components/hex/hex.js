@@ -1,47 +1,29 @@
-import { Box } from '@mui/material';
+import { Box, Button, ButtonBase, Modal } from '@mui/material';
 import styles from './hex.module.scss';
 import { Token } from '../token/token';
+import { useState } from "react";
+import { HexModal } from "../hex-modal/hex-modal";
 
 export const Hex = ({ hex }) => {
 
-    let resource = hex.resource;
-    let token = hex.token;
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     let portType = hex.port !== undefined ? hex.port.type : undefined;
     let rotation = hex.port !== undefined ? hex.port.rotation : undefined;
-    let imageUrl = 'url(../sea_2.png)';
-    let transform = 'rotate(0deg)';
-
-    if (resource === 'Ore') {
-        let background = 'ore_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (resource === 'Wheat') {
-        let background = 'wheat_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (resource === 'Brick') {
-        let background = 'brick_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (resource === 'Wood') {
-        let background = 'wood_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (resource === 'Sheep') {
-        let background = 'sheep_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (resource === 'Desert') {
-        let background = 'desert_2.png';
-        imageUrl = `url(../${background})`;
-    } else if (portType !== undefined) {
-        let background = `${portType}.png`;
-        imageUrl = `url(../${background})`;
-    }
-
-    if (rotation !== undefined) {
-        transform = `rotate(${rotation})`;
-    }
+    let imageUrl = portType !== undefined ? `url(../${portType}.png)` : `url(../${hex?.resource}_2.png)`;
+    let transform = rotation !== undefined ? `rotate(${rotation})` : 'rotate(0deg)';
     
     return(
-        <Box className={styles["hex"]} sx={{ backgroundImage: imageUrl, transform: transform }}>
-            <Token number={token.number} probability={token.probability} />
-        </Box>
+        <>
+        <ButtonBase className={styles["hex__button"]} onClick={handleOpen}>
+            <Box className={styles["hex"]} sx={{ backgroundImage: imageUrl, transform: transform }}>
+                <Token number={hex?.token?.number} probability={hex?.token?.probability} />
+            </Box>
+        </ButtonBase>
+        <HexModal open={open} onClose={handleClose} hex={hex} />
+        </>
     );
 };
 

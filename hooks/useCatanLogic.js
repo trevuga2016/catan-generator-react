@@ -231,7 +231,7 @@ function configureEndPorts(port_config, index, p, ports_list) {
         hexNumber: 0,
         resource: '',
         token: { number: '', probability: '' },
-        port: isPort ? { type: portType, rotation: portData.rotation } : undefined
+        port: isPort ? { type: portType, rotation: portData.rotation } : { type: 'sea', rotation: '' }
     };
 }
 

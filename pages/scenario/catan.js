@@ -39,9 +39,9 @@ const row_config = [3, 4, 5, 4, 3];
 
 const port_config = {
     top: [
-        { type: '', rotation: '' },
+        { type: 'sea', rotation: '' },
         { type: '3for1', rotation: '0deg' },
-        { type: '', rotation: '' },
+        { type: 'sea', rotation: '' },
         { type: '3for1', rotation: '60deg' }
     ],
     ends: [
@@ -52,9 +52,9 @@ const port_config = {
         { type: '2for1_ore', rotation: '-120deg', position: 1 }
     ],
     bottom: [
-        { type: '', rotation: '' },
+        { type: 'sea', rotation: '' },
         { type: '2for1_wheat', rotation: '-120deg' },
-        { type: '', rotation: '' },
+        { type: 'sea', rotation: '' },
         { type: '3for1', rotation: '180deg' }
     ]
 }
