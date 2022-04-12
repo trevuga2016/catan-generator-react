@@ -40,25 +40,24 @@ const row_config = [3, 4, 5, 6, 5, 4, 3];
 const port_config = {
     top: [
         { type: '3for1', rotation: '0deg' },
-        { type: 'sea', rotation: '' },
+        { type: '', rotation: '' },
         { type: '2for1_sheep', rotation: '60deg' },
-        { type: 'sea', rotation: '' }
+        { type: '', rotation: '' }
     ],
     ends: [
-        { type: '3for1', rotation: '60deg', position: 2 },
-        { type: 'sea', rotation: '', position: 0 },
-        { type: '2for1_ore', rotation: '-60deg', position: 1 },
-        { type: '3for1_left', rotation: '0deg', position: 2 },
-        { type: '3for1', rotation: '-120deg', position: 1 },
-        [{ type: '2for1_wheat', rotation: '-60deg', position: 1 },
-        { type: '2for1_brick', rotation: '180deg', position: 2 }],
-        { type: '2for1_sheep', rotation: '120deg', position: 2 },
+        [{ type: '', rotation: '', position: 1 }, { type: '3for1', rotation: '60deg', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '', rotation: '', position: 2 }],
+        [{ type: '2for1_ore', rotation: '-60deg', position: 1 }, { type: '', rotation: '', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '3for1_left', rotation: '0deg', position: 2 }],
+        [{ type: '3for1', rotation: '-120deg', position: 1 }, { type: '', rotation: '', position: 2 }],
+        [{ type: '2for1_wheat', rotation: '-60deg', position: 1 }, { type: '2for1_brick', rotation: '180deg', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '2for1_sheep', rotation: '120deg', position: 2 }]
     ],
     bottom: [
         { type: '3for1', rotation: '-120deg' },
-        { type: 'sea', rotation: '' },
+        { type: '', rotation: '' },
         { type: '2for1_wood', rotation: '180deg' },
-        { type: 'sea', rotation: '' }
+        { type: '', rotation: '' }
     ]
 }
 

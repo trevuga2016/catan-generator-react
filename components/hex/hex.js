@@ -10,10 +10,8 @@ export const Hex = ({ hex }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    let portType = hex.port !== undefined ? hex.port.type : undefined;
-    let rotation = hex.port !== undefined ? hex.port.rotation : undefined;
-    let imageUrl = portType !== undefined ? `url(../${portType}.png)` : `url(../${hex?.resource}_2.png)`;
-    let transform = rotation !== undefined ? `rotate(${rotation})` : 'rotate(0deg)';
+    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}_hex.png)` : `url(../sea.png)`;
+    let transform = hex?.rotation !== undefined || hex?.rotation === '' ? `rotate(${hex?.rotation})` : 'rotate(0deg)';
     
     return(
         <>

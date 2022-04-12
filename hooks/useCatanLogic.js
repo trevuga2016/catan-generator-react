@@ -25,7 +25,6 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
         }
 
         if (resource_array.length === getTotalNumOfHexes(row_config)) {
-            let i = 1;
 
             port !== 'hide' ? hex_values.push(configureTopPorts(row_config, port_config, ports_list)) : undefined;
 
@@ -38,7 +37,6 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
                     let resource = getResource(resource_array);
                     let token = getToken(numbers_array, resource);
                     row.push({
-                        hexNumber: i++,
                         resource: resource,
                         token: token
                     });
@@ -58,7 +56,6 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
 
     const clearBoardData = () => {
         let hex_values = [];
-        let i = 1;
 
         port !== 'hide' ? hex_values.push(configureTopPorts(row_config, port_config, undefined)) : undefined;
 
@@ -70,7 +67,6 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
 
             Array.from(Array(value), () => {
                 row.push({
-                    hexNumber: i++,
                     resource: '',
                     token: { number: '', probability: '' }
                 });
@@ -190,18 +186,17 @@ function getTotalNumOfHexes(row_config) {
 function configureTopPorts(row_config, port_config, ports_list) {
 
     let first_row = [];
-    let top_port_config = port_config.top;
+    let topPortConfig = port_config?.top;
 
-    Array.from(Array(row_config[0] + 1), (k, v) => {
-        let portData = top_port_config[v];
-        let isPort = portData.type !== '';
-        let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list.length) : undefined;
-        let portType = ports_list !== undefined && isPort ? ports_list[i] : portData.type;
+    Array.from(Array(topPortConfig.length), (k, v) => {
+        let portData = topPortConfig[v];
+        let isPort = portData?.type !== '';
+        let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list?.length) : undefined;
+        let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
         first_row.push({
-            hexNumber: 0,
-            resource: '',
+            resource: portType,
             token: { number: '', probability: '' },
-            port: isPort ? { type: portType, rotation: portData.rotation } : undefined
+            rotation: portData?.rotation
         });
         if (ports_list !== undefined && i !== undefined) {
             ports_list.splice(i, 1);
@@ -213,43 +208,37 @@ function configureTopPorts(row_config, port_config, ports_list) {
 
 function configureEndPorts(port_config, index, p, ports_list) {
 
-    let ends_port_config = port_config.ends;
-    let portData = ends_port_config[index];
+    let endsPortConfig = port_config?.ends;
+    let rowPortData = endsPortConfig[index];
+    let portData = rowPortData[p - 1];
+    let isPort = portData?.type !== '';
 
-    if (Array.isArray(portData)) {
-        portData = portData[p - 1];
-    }
-
-    let portPosition = portData.position !== undefined && portData.position !== 0 ? portData.position : undefined;
-    let isPort = portPosition === p;
-    let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list.length) : undefined;
-    let portType = ports_list !== undefined && isPort ? ports_list[i] : portData.type;
+    let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list?.length) : undefined;
+    let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
     if (ports_list !== undefined && i !== undefined) {
         ports_list.splice(i, 1);
     }
     return {
-        hexNumber: 0,
-        resource: '',
+        resource: portType,
         token: { number: '', probability: '' },
-        port: isPort ? { type: portType, rotation: portData.rotation } : { type: 'sea', rotation: '' }
+        rotation: portData?.rotation
     };
 }
 
 function configureBottomPorts(row_config, port_config, ports_list) {
 
     let last_row = [];
-    let bottom_port_config = port_config.bottom;
+    let bottomPortConfig = port_config?.bottom;
 
-    Array.from(Array(row_config[row_config.length - 1] + 1), (k, v) => {
-        let portData = bottom_port_config[v];
-        let isPort = portData.type !== '';
+    Array.from(Array(bottomPortConfig?.length), (k, v) => {
+        let portData = bottomPortConfig[v];
+        let isPort = portData?.type !== '';
         let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list.length) : undefined;
-        let portType = ports_list !== undefined && isPort ? ports_list[i] : portData.type;
+        let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
         last_row.push({
-            hexNumber: 0,
-            resource: '',
+            resource: portType,
             token: { number: '', probability: '' },
-            port: isPort ? { type: portType, rotation: portData.rotation } : undefined
+            rotation: portData?.rotation
         });
         if (ports_list !== undefined && i !== undefined) {
             ports_list.splice(i, 1);
@@ -265,23 +254,19 @@ function getPortTypeList(port_config) {
         if (value.type !== '') {
             port_types.push(value.type);
         }
-    })
+    });
     port_config.ends.map((value) => {
-        if (Array.isArray(value)) {
-            value.map((v) => {
+        value.map((v) => {
+            if (v.type !== '') {
                 port_types.push(v.type);
-            })
-        } else {
-            if (value.type !== '') {
-                port_types.push(value.type);
             }
-        }
-    })
+        });
+    });
     port_config.bottom.map((value) => {
         if (value.type !== '') {
             port_types.push(value.type);
         }
-    })
+    });
     return port_types;
 }
 
