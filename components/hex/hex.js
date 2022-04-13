@@ -1,8 +1,8 @@
-import { Box, Button, ButtonBase, Modal } from '@mui/material';
+import { Box, ButtonBase } from '@mui/material';
 import styles from './hex.module.scss';
 import { Token } from '../token/token';
-import { useState } from "react";
-import { HexModal } from "../hex-modal/hex-modal";
+import { useState } from 'react';
+import { HexModal } from '../hex-modal/hex-modal';
 
 export const Hex = ({ hex }) => {
 
@@ -10,7 +10,7 @@ export const Hex = ({ hex }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}_hex.png)` : `url(../sea.png)`;
+    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}/hex.png)` : `url(../sea.png)`;
     let transform = hex?.rotation !== undefined || hex?.rotation === '' ? `rotate(${hex?.rotation})` : 'rotate(0deg)';
     
     return(

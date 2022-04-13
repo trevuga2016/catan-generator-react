@@ -33,7 +33,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                                 <Grid item key={i}>
                                     <ListItem>
                                         <ListItemAvatar>
-                                            <Avatar src={`/${stat.resource}_icon.jpg`} />
+                                            <Avatar src={`/${stat.resource}/icon.jpg`} />
                                         </ListItemAvatar>
                                         <ListItemText>
                                             <Typography variant="h6">Probability of {stat.resource}: {stat.probability}%</Typography>
@@ -55,7 +55,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                                             <Grid item key={i}>
                                                 <ListItem>
                                                     <ListItemAvatar>
-                                                        <Avatar src={`/${resource}_icon.jpg`} />
+                                                        <Avatar src={`/${resource}/icon.jpg`} />
                                                     </ListItemAvatar>
                                                     <ListItemText>
                                                         <Typography variant="h6">{resource}</Typography>
@@ -79,7 +79,7 @@ export const StatsModal = ({ open, onClose, stats }) => {
                                             <Grid item key={i}>
                                                 <ListItem>
                                                     <ListItemAvatar>
-                                                        <Avatar src={`/${resource}_icon.jpg`} />
+                                                        <Avatar src={`/${resource}/icon.jpg`} />
                                                     </ListItemAvatar>
                                                     <ListItemText>
                                                         <Typography variant="h6">{resource}</Typography>

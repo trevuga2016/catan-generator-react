@@ -3,7 +3,7 @@ import styles from './hex-modal.module.scss';
 
 export const HexModal = ({ open, onClose, hex }) => {
 
-    let modalUrl = `url(../${hex?.resource}_card.jpg)`;
+    let modalUrl = `url(../${hex?.resource}/card.jpg)`;
     
     return(
         <Modal open={open} onClose={onClose}>

@@ -27,9 +27,9 @@ const numbers_freq = {
 };
 
 const resources_freq = {
-    'Wheat': 6,
-    'Wood': 6,
-    'Sheep': 6,
+    'Grain': 6,
+    'Lumber': 6,
+    'Wool': 6,
     'Brick': 5,
     'Ore': 5,
     'Desert': 2
@@ -41,7 +41,7 @@ const port_config = {
     top: [
         { type: '3for1', rotation: '0deg' },
         { type: '', rotation: '' },
-        { type: '2for1_sheep', rotation: '60deg' },
+        { type: '2for1_wool', rotation: '60deg' },
         { type: '', rotation: '' }
     ],
     ends: [
@@ -50,13 +50,13 @@ const port_config = {
         [{ type: '2for1_ore', rotation: '-60deg', position: 1 }, { type: '', rotation: '', position: 2 }],
         [{ type: '', rotation: '', position: 1 }, { type: '3for1_left', rotation: '0deg', position: 2 }],
         [{ type: '3for1', rotation: '-120deg', position: 1 }, { type: '', rotation: '', position: 2 }],
-        [{ type: '2for1_wheat', rotation: '-60deg', position: 1 }, { type: '2for1_brick', rotation: '180deg', position: 2 }],
-        [{ type: '', rotation: '', position: 1 }, { type: '2for1_sheep', rotation: '120deg', position: 2 }]
+        [{ type: '2for1_grain', rotation: '-60deg', position: 1 }, { type: '2for1_brick', rotation: '180deg', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '2for1_wool', rotation: '120deg', position: 2 }]
     ],
     bottom: [
         { type: '3for1', rotation: '-120deg' },
         { type: '', rotation: '' },
-        { type: '2for1_wood', rotation: '180deg' },
+        { type: '2for1_lumber', rotation: '180deg' },
         { type: '', rotation: '' }
     ]
 }
