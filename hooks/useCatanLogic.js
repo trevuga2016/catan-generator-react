@@ -35,9 +35,11 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
 
                 Array.from(Array(value), () => {
                     let resource = getResource(resource_array);
+                    let terrain = getTerrain(resource);
                     let token = getToken(numbers_array, resource);
                     row.push({
                         resource: resource,
+                        terrain: terrain,
                         token: token
                     });
                 });
@@ -68,6 +70,7 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
             Array.from(Array(value), () => {
                 row.push({
                     resource: '',
+                    terrain: '',
                     token: { number: '', probability: '' }
                 });
             });
@@ -120,7 +123,7 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
                 uNumbers.map((num) => {
                     probability = probability + getProbability(parseInt(num));
                 });
-                probability = (probability * 100).toFixed(3);
+                probability = (probability * 100).toFixed(2);
                 boardStats.push({
                     resource: resource,
                     probability: probability
@@ -148,6 +151,22 @@ function getResource(resource_array) {
     let r = resource_array[i];
     resource_array.splice(i, 1);
     return r;
+}
+
+function getTerrain(resource) {
+    if (resource === 'Desert') {
+        return 'Desert';
+    } else if (resource === 'Brick') {
+        return 'Hills';
+    } else if (resource === 'Wool') {
+        return 'Pastures';
+    } else if (resource === 'Ore') {
+        return 'Mountains';
+    } else if (resource === 'Grain') {
+        return 'Fields';
+    } else if (resource === 'Lumber') {
+        return 'Forests';
+    }
 }
 
 function getToken(numbers_array, resource) {
@@ -193,8 +212,10 @@ function configureTopPorts(row_config, port_config, ports_list) {
         let isPort = portData?.type !== '';
         let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list?.length) : undefined;
         let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
+        let terrain = portType ? 'Harbor' : '';
         first_row.push({
             resource: portType,
+            terrain: terrain,
             token: { number: '', probability: '' },
             rotation: portData?.rotation
         });
@@ -215,11 +236,13 @@ function configureEndPorts(port_config, index, p, ports_list) {
 
     let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list?.length) : undefined;
     let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
+    let terrain = portType ? 'Harbor' : '';
     if (ports_list !== undefined && i !== undefined) {
         ports_list.splice(i, 1);
     }
     return {
         resource: portType,
+        terrain: terrain,
         token: { number: '', probability: '' },
         rotation: portData?.rotation
     };
@@ -235,8 +258,10 @@ function configureBottomPorts(row_config, port_config, ports_list) {
         let isPort = portData?.type !== '';
         let i = ports_list !== undefined && isPort ? Math.floor(Math.random() * ports_list.length) : undefined;
         let portType = ports_list !== undefined && isPort ? ports_list[i] : portData?.type;
+        let terrain = portType ? 'Harbor' : '';
         last_row.push({
             resource: portType,
+            terrain: terrain,
             token: { number: '', probability: '' },
             rotation: portData?.rotation
         });

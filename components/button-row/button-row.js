@@ -14,7 +14,7 @@ export const ButtonRow = ({ clear, generate, stats }) => {
     return (
         <Grid container direction="row" className={styles["button-row"]}>
             <Grid item xs={3}>
-                <button type="button" onClick={clear}>Clear</button>
+                <button type="button" onClick={clear} disabled>Clear</button>
             </Grid>
             <Grid item xs={3}>
                 <button type="button" onClick={generate}>Generate</button>

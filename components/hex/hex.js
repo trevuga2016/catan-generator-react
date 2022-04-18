@@ -10,7 +10,7 @@ export const Hex = ({ hex }) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}/hex.png)` : `url(../sea.png)`;
+    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}/hex.png)` : `url(../sea_hex.png)`;
     let transform = hex?.rotation !== undefined || hex?.rotation === '' ? `rotate(${hex?.rotation})` : 'rotate(0deg)';
     
     return(
