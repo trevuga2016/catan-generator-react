@@ -36,7 +36,7 @@ export const BuildingCosts = ({ open, onClose }) => {
                                         {
                                             cost.costs.map((resource, k) => {
                                                 return(
-                                                    <Grid item align="center">
+                                                    <Grid item align="center" key={k}>
                                                         <ListItemAvatar>
                                                           <Avatar src={`/${resource}/icon.jpg`} />
                                                         </ListItemAvatar>
