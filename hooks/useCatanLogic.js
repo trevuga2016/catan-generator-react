@@ -56,37 +56,6 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
         generateBoardStats(hex_values, resources_freq);
     };
 
-    const clearBoardData = () => {
-        let hex_values = [];
-
-        port !== 'hide' ? hex_values.push(configureTopPorts(row_config, port_config, undefined)) : undefined;
-
-        row_config.map((value, index) => {
-
-            let row = [];
-
-            port !== 'hide' ? row.push(configureEndPorts(port_config, index, 1, undefined)) : undefined;
-
-            Array.from(Array(value), () => {
-                row.push({
-                    resource: '',
-                    terrain: '',
-                    token: { number: '', probability: '' }
-                });
-            });
-
-            port !== 'hide' ? row.push(configureEndPorts(port_config, index, 2, undefined)) : undefined;
-
-            hex_values.push({
-                row: row
-            });
-        });
-
-        port !== 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config, undefined)) : undefined;
-        setBoardData(hex_values);
-        generateBoardStats(hex_values, resources_freq);
-    }
-
     const generateBoardStats = (hex_values, resources_freq) => {
 
         const resource_array = [];
@@ -143,17 +112,17 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
         generateBoardData();
     }, [numbers_freq, resources_freq, row_config, port_config, port]);
 
-    return { boardData, stats, generateBoardData, clearBoardData };
+    return { boardData, stats, generateBoardData };
 }
 
-function getResource(resource_array) {
+const getResource = (resource_array) => {
     let i = Math.floor(Math.random() * resource_array.length);
     let r = resource_array[i];
     resource_array.splice(i, 1);
     return r;
 }
 
-function getTerrain(resource) {
+const getTerrain = (resource) => {
     if (resource === 'Desert') {
         return 'Desert';
     } else if (resource === 'Brick') {
@@ -169,7 +138,7 @@ function getTerrain(resource) {
     }
 }
 
-function getToken(numbers_array, resource) {
+const getToken = (numbers_array, resource) => {
     if (resource === 'Desert') {
         return { number: '', probability: '' }
     } else {
@@ -192,7 +161,7 @@ function getToken(numbers_array, resource) {
     }
 }
 
-function getTotalNumOfHexes(row_config) {
+const getTotalNumOfHexes = (row_config) => {
     let count = 0;
     row_config.map((value) => {
         Array.from(Array(value), () => {
@@ -202,7 +171,7 @@ function getTotalNumOfHexes(row_config) {
     return count;
 }
 
-function configureTopPorts(row_config, port_config, ports_list) {
+const configureTopPorts = (row_config, port_config, ports_list) => {
 
     let first_row = [];
     let topPortConfig = port_config?.top;
@@ -227,7 +196,7 @@ function configureTopPorts(row_config, port_config, ports_list) {
     return { row: first_row };
 }
 
-function configureEndPorts(port_config, index, p, ports_list) {
+const configureEndPorts = (port_config, index, p, ports_list) => {
 
     let endsPortConfig = port_config?.ends;
     let rowPortData = endsPortConfig[index];
@@ -248,7 +217,7 @@ function configureEndPorts(port_config, index, p, ports_list) {
     };
 }
 
-function configureBottomPorts(row_config, port_config, ports_list) {
+const configureBottomPorts = (row_config, port_config, ports_list) => {
 
     let last_row = [];
     let bottomPortConfig = port_config?.bottom;
@@ -273,7 +242,7 @@ function configureBottomPorts(row_config, port_config, ports_list) {
     return { row: last_row };
 }
 
-function getPortTypeList(port_config) {
+const getPortTypeList = (port_config) => {
     let port_types = [];
     port_config.top.map((value) => {
         if (value.type !== '') {
