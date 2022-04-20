@@ -1,9 +1,11 @@
 import Head from 'next/head';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 import { Footer } from '../components/footer/footer';
+import HomeIcon from '@mui/icons-material/Home';
+import { Header } from '../components/header/header';
 
-export default function Custom404() {
+export const Custom404 = () => {
 
     const router = useRouter();
 
@@ -15,19 +17,25 @@ export default function Custom404() {
             </Head>
             <Grid container direction="column" align="center">
                 <Grid item>
-                    <h1>404 - Page Not Found</h1>
+                    <Header title='404 - Page Not Found' />
                 </Grid>
                 <Grid item mb={2}>
                     The page you are looking for does not exist.
                 </Grid>
                 <Grid item mb={2}>
-                    <img src="/klaus.png"></img>
+                    <img src="/klaus.png"/>
                 </Grid>
                 <Grid item>
-                    <button type="button" onClick={() => router.push('/')}>Home</button>
+                  <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans' }}>
+                    Home
+                  </Button>
                 </Grid>
             </Grid>
-            <Footer position="fixed"></Footer>
+            <Footer position="fixed"/>
         </>
     ); 
 }
+
+export default Custom404;
+
+Custom404.displayName = 'Custom404';

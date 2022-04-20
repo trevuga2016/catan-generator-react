@@ -1,7 +1,8 @@
-import Head from "next/head";
-import { Grid, Link } from "@mui/material";
-import { Header } from "../components/header/header";
-import { useRouter } from "next/router";
+import Head from 'next/head';
+import { Button, Grid, Link } from '@mui/material';
+import { Header } from '../components/header/header';
+import { useRouter } from 'next/router';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const Legal = () => {
 
@@ -26,10 +27,14 @@ export const Legal = () => {
                 Check out the project over on <Link href="https://github.com/trevuga2016/catan-generator-react">GitHub</Link>!
             </Grid>
             <Grid item>
-                <button type="button" onClick={() => router.push('/')}>Home</button>
+                <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans' }}>
+                  Home
+                </Button>
             </Grid>
         </Grid>
     );
 }
 
 export default Legal;
+
+Legal.displayName = 'Legal';

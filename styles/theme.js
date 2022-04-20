@@ -1,9 +1,18 @@
 import { createTheme } from '@mui/material';
 
 export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#83B5DA',
+    },
+    secondary: {
+      main: '#E7E2AB',
+    }
+  },
   typography: {
     fontFamily: [
       'Luminari_Regular',
+      'Gill Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',

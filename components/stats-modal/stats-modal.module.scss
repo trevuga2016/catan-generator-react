@@ -6,9 +6,9 @@
   @media only screen and (max-width: 600px) {
     transform: translate(-50%, -50%) scale(0.5);
   }
-  background-image: url(../../public/catan_beige.png);
+  background-color: #E7E2AB;
   border: 2px solid #000;
-  box-shadow: #b6a8bd;
+  box-shadow: #83B5DA;
   width: 75vh;
   &__container {
     align-items: center;
