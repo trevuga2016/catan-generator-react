@@ -1,4 +1,16 @@
-import { Button, Grid, Typography } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select
+} from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -11,10 +23,12 @@ export const GameSelect = () => {
     const [game, setGame] = useState({ value: '' });
     const [port, setPort] = useState({ value: 'hide' });
     const [scenario, setScenario] = useState('');
+    const [disabled, setDisabled] = useState(true);
     let enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO === 'true';
 
     const handleGameChange = (e) => {
         setGame({ value: e.target.value });
+        setDisabled(false);
     }
 
     const handlePortChange = (e) => {
@@ -34,44 +48,30 @@ export const GameSelect = () => {
         setScenario(`/scenario/${game.value}?ports=${port.value}`);
     }, [game, port]);
 
-    return (
-        <form onSubmit={(e) => handleSubmit(e)}>
-        <Grid container direction="column" alignItems="center">
-            <Grid item>
-                <select value={game.value} onChange={(e) => handleGameChange(e)} required>
-                    <option value='' disabled>Select Scenario</option>
-                    <option value='catan'>The Settlers of Catan</option>
-                    <option value='catan5_6ext'>Catan 5 & 6 Player Extension</option>
-                    <option value='' disabled>More coming soon!</option>
-                </select>
+    return(
+        <FormControl onSubmit={(e) => handleSubmit(e)} size="small">
+            <InputLabel>Scenario</InputLabel>
+            <Select value={game.value} onChange={(e) => handleGameChange(e)} label="Scenario" sx={{ minWidth: 300 }}>
+                <MenuItem value='catan'>The Settlers of Catan</MenuItem>
+                <MenuItem value='catan5_6ext'>Catan 5 & 6 Player Extension</MenuItem>
+                <MenuItem value='' disabled>More coming soon!</MenuItem>
+            </Select>
+            <FormHelperText sx={{ textAlign: 'right' }}>Required</FormHelperText>
+            <Grid container direction="column" p={1}>
+                <FormLabel sx={{ textAlign: 'center'}}>Select Harbor Option:</FormLabel>
+                <RadioGroup defaultValue="hide" onChange={(e) => handlePortChange(e)} sx={{ alignContent: 'center' }}>
+                    <FormControlLabel value="show" control={<Radio />} label="Show Default Harbors" />
+                    <FormControlLabel value="randomize" control={<Radio />} label="Randomize Harbors" />
+                    <FormControlLabel value="hide" control={<Radio />} label="Hide Harbors" />
+                </RadioGroup>
             </Grid>
-            <Grid item py={3}>
-                <Grid container direction="column" spacing={1} width="fit-content">
-                    <Typography variant="body1" textAlign="center">Select Harbor Option:</Typography>
-                    <Grid item>
-                        <input type="radio" id="port1" name="port" value="show" onChange={(e) => handlePortChange(e)} />
-                        <label htmlFor="port1" title="Show the default, out of the box, harbor setup">Show Default Harbors</label>
-                    </Grid>
-                    <Grid item>
-                        <input type="radio" id="port2" name="port" value="randomize" onChange={(e) => handlePortChange(e)} />
-                        <label htmlFor="port2" title="Harbors are completely randomized">Randomize Harbors</label>
-                    </Grid>
-                    <Grid item>
-                        <input type="radio" id="port3" name="port" value="hide" onChange={(e) => handlePortChange(e)} checked={port.value === 'hide'} />
-                        <label htmlFor="port3" title="Harbors are not displayed">Hide Harbors</label>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid item>
-                <Button variant="contained" type="submit" size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>Generate</Button>
-            </Grid>
+            <Button variant="contained" onClick={handleSubmit} disabled={disabled} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>Generate</Button>
             {
-                enableDemo &&
-                <Grid item pt={4}>
-                    <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
-                </Grid>
+              enableDemo &&
+              <Grid container pt={4} justifyContent="center">
+                <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
+              </Grid>
             }
-        </Grid>
-        </form>
+        </FormControl>
     );
 }
