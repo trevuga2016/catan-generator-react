@@ -27,7 +27,7 @@ export const Legal = () => {
                 Check out the project over on <Link href="https://github.com/trevuga2016/catan-generator-react">GitHub</Link>!
             </Grid>
             <Grid item>
-                <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'GillSans_Regular' }}>
+                <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>
                   Home
                 </Button>
             </Grid>

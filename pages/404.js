@@ -26,7 +26,7 @@ export const Custom404 = () => {
                     <img src="/klaus.png"/>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'GillSans_Regular' }}>
+                  <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>
                     Home
                   </Button>
                 </Grid>

@@ -12,7 +12,7 @@ export const theme = createTheme({
   typography: {
     fontFamily: [
       'Luminari_Regular',
-      'GillSans_Regular',
+      'Gill Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
