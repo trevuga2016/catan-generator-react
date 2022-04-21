@@ -1,4 +1,5 @@
 import { GameBoard } from '../../components/game-board/game-board';
+import { Grid } from '@mui/material';
 
 export const Catan5_6Ext = () => {
 
@@ -7,7 +8,9 @@ export const Catan5_6Ext = () => {
     let props = { numbers_freq, resources_freq, row_config, port_config, title };
 
     return(
+      <Grid container justifyContent="center">
         <GameBoard props={props} />
+      </Grid>
     );
 };
 

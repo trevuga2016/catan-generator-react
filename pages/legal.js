@@ -21,10 +21,12 @@ export const Legal = () => {
                 The contents of this application are original work and are not to be used without permission.
             </Grid>
             <Grid item xs={12}>
-                All Catan images, names, and associated likenesses are licensed trademarks of <Link href="https://www.catan.com/">Catan GmbH and Catan Studio</Link>.
+                All Catan images, names, and associated likenesses are licensed trademarks of&nbsp;
+                <Link href="https://www.catan.com/" color="secondary">Catan GmbH and Catan Studio</Link>.
             </Grid>
             <Grid item xs={12}>
-                Check out the project over on <Link href="https://github.com/trevuga2016/catan-generator-react">GitHub</Link>!
+                Check out the project over on&nbsp;
+                <Link href="https://github.com/trevuga2016/catan-generator-react" color="secondary">GitHub</Link>!
             </Grid>
             <Grid item>
                 <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>

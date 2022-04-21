@@ -20,7 +20,7 @@ export const ButtonRow = ({ generate, stats }) => {
     const handleCloseCosts = () => setOpenCosts(false);
 
     return (
-        <Grid container direction="row" className={styles["button-row"]} columnSpacing={5}>
+        <Grid container direction="row" className={styles["button-row"]} columnSpacing={{xs: 3, sm: 5, md: 10}}>
             <Grid item>
                 <Button variant="contained" onClick={handleOpenCosts} size="small" endIcon={<ConstructionIcon />} className={styles["button-row__button"]}>
                   Building Costs

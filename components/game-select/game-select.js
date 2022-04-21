@@ -49,29 +49,41 @@ export const GameSelect = () => {
     }, [game, port]);
 
     return(
-        <FormControl onSubmit={(e) => handleSubmit(e)} size="small">
-            <InputLabel>Scenario</InputLabel>
-            <Select value={game.value} onChange={(e) => handleGameChange(e)} label="Scenario" sx={{ minWidth: 300 }}>
-                <MenuItem value='catan'>The Settlers of Catan</MenuItem>
-                <MenuItem value='catan5_6ext'>Catan 5 & 6 Player Extension</MenuItem>
-                <MenuItem value='' disabled>More coming soon!</MenuItem>
-            </Select>
-            <FormHelperText sx={{ textAlign: 'right' }}>Required</FormHelperText>
-            <Grid container direction="column" p={1}>
-                <FormLabel sx={{ textAlign: 'center'}}>Select Harbor Option:</FormLabel>
-                <RadioGroup defaultValue="hide" onChange={(e) => handlePortChange(e)} sx={{ alignContent: 'center' }}>
-                    <FormControlLabel value="show" control={<Radio />} label="Show Default Harbors" />
-                    <FormControlLabel value="randomize" control={<Radio />} label="Randomize Harbors" />
-                    <FormControlLabel value="hide" control={<Radio />} label="Hide Harbors" />
-                </RadioGroup>
-            </Grid>
-            <Button variant="contained" onClick={handleSubmit} disabled={disabled} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>Generate</Button>
-            {
-              enableDemo &&
-              <Grid container pt={4} justifyContent="center">
-                <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
+      <Grid container direction="column" alignItems="center">
+        <Grid item>
+          <FormControl size="small">
+              <InputLabel>Scenario</InputLabel>
+              <Select value={game.value} onChange={(e) => handleGameChange(e)} label="Scenario" sx={{ minWidth: 300 }}>
+                  <MenuItem value='catan'>The Settlers of Catan</MenuItem>
+                  <MenuItem value='catan5_6ext'>Catan 5 & 6 Player Extension</MenuItem>
+                  <MenuItem value='' disabled>More coming soon!</MenuItem>
+              </Select>
+              <FormHelperText sx={{ textAlign: 'right' }}>Required</FormHelperText>
+          </FormControl>
+        </Grid>
+        <Grid item>
+          <FormControl size="small">
+              <Grid container direction="column" p={1}>
+                  <FormLabel sx={{ textAlign: 'center'}}>Select Harbor Option:</FormLabel>
+                  <RadioGroup defaultValue="hide" onChange={(e) => handlePortChange(e)} sx={{ alignContent: 'center' }}>
+                      <FormControlLabel value="show" control={<Radio />} label="Show Default Harbors" />
+                      <FormControlLabel value="randomize" control={<Radio />} label="Randomize Harbors" />
+                      <FormControlLabel value="hide" control={<Radio />} label="Hide Harbors" />
+                  </RadioGroup>
               </Grid>
-            }
-        </FormControl>
+          </FormControl>
+        </Grid>
+        <Grid item width="100%">
+          <Button variant="contained" onClick={handleSubmit} disabled={disabled} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>
+            Generate
+          </Button>
+        </Grid>
+        {
+          enableDemo &&
+          <Grid item pt={4}>
+            <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
+          </Grid>
+        }
+      </Grid>
     );
 }

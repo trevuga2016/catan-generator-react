@@ -22,7 +22,7 @@ export const Footer = () => {
     return(
         <Grid container direction="row" className={styles["footer"]}>
             <Grid xs={6} item align="left">
-                <Link onClick={onClick} sx={{ cursor: "pointer" }}>LEGAL</Link>
+                <Link onClick={onClick} color="secondary" sx={{ cursor: "pointer" }}>LEGAL</Link>
             </Grid>
             <Tooltip title="Hey Rebecca :)" placement="top-end" classes={{tooltip: classes.tooltip}}>
             <Grid xs={6} item align="right">
