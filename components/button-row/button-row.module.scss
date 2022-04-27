@@ -1,7 +1,7 @@
 .button-row {
   position: absolute;
   bottom: auto;
-  width: 75vw;
+  width: 75vw !important;
   @media only screen and (max-width: 600px) {
     width: 100vw;
   }
