@@ -1,22 +1,15 @@
-import { Grid } from "@mui/material";
+import { Typography } from '@mui/material';
 import styles from './header.module.scss';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 export const Header = ({ title }) => {
 
     const router = useRouter();
 
-    const goHome = () => {
-        router.push('/');
-    };
-
     return(
-      <Grid container className={styles["header"]}>
-          <Grid item onClick={goHome} className={styles["header__title"]}>
-              <h1>{title}</h1>
-          </Grid>
-      </Grid>
-
+        <Typography variant="h4" className={styles["header"]} m={3} onClick={() => router.push('/')}>
+          {title}
+        </Typography>
     );
 };
 
