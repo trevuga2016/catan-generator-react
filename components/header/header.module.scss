@@ -1,14 +1,8 @@
 .header {
-  justify-content: center;
-  &__text {
-    text-align: center;
-    cursor: pointer;
-    @media(hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: #83B5DA;
-        border-radius: 15px;
-      }
-    }
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+   background: #83B5DA;
+   border-radius: 15px;
   }
-
 }
