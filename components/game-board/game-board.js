@@ -27,8 +27,9 @@ export const GameBoard = ({ props }) => {
     const { boardData, stats, generateBoardData } = useCatanLogic(numbers_freq, resources_freq, row_config, port_config, ports);
 
     const titleRef = useRef();
-    const gameBoardRef = useRef();
-    const heightRef = useRef();
+    const gameBoardHeight = useRef();
+    const gameBoardWidth = useRef();
+    const buttonRef = useRef();
 
     const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
     const [availableHeight, setAvailableHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 0);
@@ -38,20 +39,26 @@ export const GameBoard = ({ props }) => {
     const [transformOrigin, setTransformOrigin] = useState(null);
 
     useEffect(() => {
-        const rowWidth = gameBoardRef.current.clientWidth;
-        const boardHeight = heightRef.current.clientHeight;
-        const totalHeight = boardHeight + titleRef.current.clientHeight + 161;
-        if (availableWidth <= rowWidth) {
-            setScale(screenWidth / rowWidth);
-            setTransformOrigin('top left');
-            setTopMargin((boardHeight * (screenWidth / rowWidth)) + titleRef.current.clientHeight + 30);
-        } else if (totalHeight > availableHeight) {
-            setScale(availableHeight / totalHeight);
+        const titleHeight = titleRef.current.clientHeight;
+        const boardWidth = gameBoardWidth.current.clientWidth;
+        const boardHeight = gameBoardHeight.current.clientHeight;
+        const buttonHeight = buttonRef.current.clientHeight;
+        const totalHeight = titleHeight + boardHeight + buttonHeight;
+        if (availableWidth < boardWidth) {
+            const scale = screenWidth / boardWidth;
+            setScale(scale);
+            const boardScale = boardWidth * scale;
             setTransformOrigin('top center');
-            setTopMargin((boardHeight * (availableHeight / totalHeight)) + titleRef.current.clientHeight + 30);
+            setTopMargin(titleHeight + boardScale + 30);
+        } else if (totalHeight > availableHeight) {
+            const scale = availableHeight / (totalHeight + 100);
+            setScale(scale);
+            const boardScale = boardHeight * scale;
+            setTransformOrigin('top center');
+            setTopMargin(titleHeight + boardScale + 30);
         } else {
             setScale(1);
-            setTopMargin(boardHeight + titleRef.current.clientHeight + 30);
+            setTopMargin(titleHeight + boardHeight + 30);
         }
     }, [boardData]);
 
@@ -61,13 +68,11 @@ export const GameBoard = ({ props }) => {
               <title>{title} | Catan Board Generator</title>
               <link rel="icon" href="/catan-icon.ico"/>
           </Head>
-          <Grid container direction="column" alignItems="center" ref={titleRef}>
-              <Grid item >
-                  <Header title={title} />
-              </Grid>
+          <Grid container alignItems="center" ref={titleRef}>
+              <Header title={title} />
           </Grid>
-          <Grid container direction="column" ref={heightRef} alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: `${transformOrigin}` }}>
-              <Grid item ref={gameBoardRef}>
+          <Grid container ref={gameBoardHeight} justifyContent="center" sx={{ transform: `scale(${scale})`, transformOrigin: `${transformOrigin}` }}>
+              <Grid item ref={gameBoardWidth}>
                   {boardData?.map((row, index) => {
                       return (
                         <HexRow row={row.row} key={index} />
@@ -75,8 +80,8 @@ export const GameBoard = ({ props }) => {
                   })}
               </Grid>
           </Grid>
-          <Grid container direction="column" alignItems="center">
-              <ButtonRow generate={() => generateBoardData()} stats={stats} top={topMargin} />
+          <Grid container justifyContent="center" ref={buttonRef} top={topMargin} position="fixed">
+              <ButtonRow generate={() => generateBoardData()} stats={stats} />
           </Grid>
       </>
     );
