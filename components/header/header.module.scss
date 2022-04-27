@@ -1,8 +1,10 @@
 .header {
   text-align: center;
   cursor: pointer;
-  &:hover {
-   background: #83B5DA;
-   border-radius: 15px;
+  @media(hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: #83B5DA;
+      border-radius: 15px;
+    }
   }
 }
