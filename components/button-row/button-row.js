@@ -66,7 +66,7 @@ export const ButtonRow = ({ generate, stats, top }) => {
                   <DialogTitle>Are you sure?</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      By clicking on "Generate" you will randomly generate a new board and this board will be lost forever. Are you sure you want to proceed?
+                      By clicking on &quot;Generate&quot; you will randomly generate a new board and this board will be lost forever. Are you sure you want to proceed?
                     </DialogContentText>
                     <FormGroup>
                       <FormControlLabel control={<Checkbox onChange={handleAlertOption} />} label="Do not ask again" />
