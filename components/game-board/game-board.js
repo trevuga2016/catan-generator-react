@@ -27,24 +27,28 @@ export const GameBoard = ({ props }) => {
     const { boardData, stats, generateBoardData } = useCatanLogic(numbers_freq, resources_freq, row_config, port_config, ports);
 
     const titleRef = useRef();
-    const gameBoardRef = useRef();
+    const widthRef = useRef();
     const heightRef = useRef();
 
-    const [availableWidth, setAvailableWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 0);
-    const [availableHeight, setAvailableHeight] = useState(typeof window !== "undefined" ? window.innerHeight : 0);
-    const [screenWidth, setScreenWidth] = useState(typeof window !== "undefined" ? screen.width : 0);
+    const [availableWidth, setAvailableWidth] = useState(0);
+    const [availableHeight, setAvailableHeight] = useState(0);
     const [scale, setScale] = useState(1);
     const [topMargin, setTopMargin] = useState(0);
     const [transformOrigin, setTransformOrigin] = useState(null);
 
     useEffect(() => {
-        const rowWidth = gameBoardRef.current.clientWidth;
+        setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);
+        setAvailableHeight(typeof window !== "undefined" ? window.innerHeight : 0);
+    }, [availableWidth, availableHeight]);
+
+    useEffect(() => {
+        const boardWidth = widthRef.current.clientWidth;
         const boardHeight = heightRef.current.clientHeight;
         const totalHeight = boardHeight + titleRef.current.clientHeight + 161;
-        if (availableWidth <= rowWidth) {
-            setScale(screenWidth / rowWidth);
+        if (availableWidth < boardWidth) {
+            setScale(availableWidth / boardWidth);
             setTransformOrigin('top left');
-            setTopMargin((boardHeight * (screenWidth / rowWidth)) + titleRef.current.clientHeight + 30);
+            setTopMargin((boardHeight * (availableWidth / boardWidth)) + titleRef.current.clientHeight + 30);
         } else if (totalHeight > availableHeight) {
             setScale(availableHeight / totalHeight);
             setTransformOrigin('top center');
@@ -62,12 +66,12 @@ export const GameBoard = ({ props }) => {
               <link rel="icon" href="/catan-icon.ico"/>
           </Head>
           <Grid container direction="column" alignItems="center" ref={titleRef}>
-              <Grid item >
+              <Grid item>
                   <Header title={title} />
               </Grid>
           </Grid>
           <Grid container direction="column" ref={heightRef} alignItems="center" sx={{ transform: `scale(${scale})`, transformOrigin: `${transformOrigin}` }}>
-              <Grid item ref={gameBoardRef}>
+              <Grid item ref={widthRef}>
                   {boardData?.map((row, index) => {
                       return (
                         <HexRow row={row.row} key={index} />

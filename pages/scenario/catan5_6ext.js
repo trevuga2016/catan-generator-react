@@ -39,24 +39,24 @@ const row_config = [3, 4, 5, 6, 5, 4, 3];
 
 const port_config = {
     top: [
-        { type: '3for1', rotation: '0deg' },
+        { type: '3for1', rotation: 'br' },
         { type: '', rotation: '' },
-        { type: '2for1_wool', rotation: '60deg' },
+        { type: '2for1_wool', rotation: 'bl' },
         { type: '', rotation: '' }
     ],
     ends: [
-        [{ type: '', rotation: '', position: 1 }, { type: '3for1', rotation: '60deg', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '3for1', rotation: 'bl', position: 2 }],
         [{ type: '', rotation: '', position: 1 }, { type: '', rotation: '', position: 2 }],
-        [{ type: '2for1_ore', rotation: '-60deg', position: 1 }, { type: '', rotation: '', position: 2 }],
-        [{ type: '', rotation: '', position: 1 }, { type: '3for1', rotation: '120deg', position: 2 }],
-        [{ type: '3for1', rotation: '-120deg', position: 1 }, { type: '', rotation: '', position: 2 }],
-        [{ type: '2for1_grain', rotation: '-60deg', position: 1 }, { type: '2for1_brick', rotation: '180deg', position: 2 }],
-        [{ type: '', rotation: '', position: 1 }, { type: '2for1_wool', rotation: '120deg', position: 2 }]
+        [{ type: '2for1_ore', rotation: 'r', position: 1 }, { type: '', rotation: '', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '3for1', rotation: 'l', position: 2 }],
+        [{ type: '3for1', rotation: 'tr', position: 1 }, { type: '', rotation: '', position: 2 }],
+        [{ type: '2for1_grain', rotation: 'r', position: 1 }, { type: '2for1_brick', rotation: 'tl', position: 2 }],
+        [{ type: '', rotation: '', position: 1 }, { type: '2for1_wool', rotation: 'l', position: 2 }]
     ],
     bottom: [
-        { type: '3for1', rotation: '-120deg' },
+        { type: '3for1', rotation: 'tr' },
         { type: '', rotation: '' },
-        { type: '2for1_lumber', rotation: '180deg' },
+        { type: '2for1_lumber', rotation: 'tl' },
         { type: '', rotation: '' }
     ]
 }
