@@ -32,7 +32,6 @@ export const ButtonRow = ({ generate, stats, top }) => {
     const handleOpenCosts = () => setOpenCosts(true);
     const handleCloseCosts = () => setOpenCosts(false);
     const handleOpenGenAlert = () => setOpenGenAlert(true);
-    const handleCloseGenAlert = () => setOpenGenAlert(false);
 
     const handleGenerateAlert = () => {
       setOpenGenAlert(false);
@@ -68,7 +67,7 @@ export const ButtonRow = ({ generate, stats, top }) => {
                 <Button variant="contained" onClick={ isAskAgain === 'true' ? handleOpenGenAlert : generate } size="small" endIcon={<AutorenewIcon />} className={styles["button-row__button"]}>
                   Generate
                 </Button>
-                <Dialog open={openGenAlert} onClose={handleCloseGenAlert}>
+                <Dialog open={openGenAlert} onClose={handleCancelGenAlert}>
                   <DialogTitle>Are you sure?</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
