@@ -39,9 +39,15 @@ export const ButtonRow = ({ generate, stats, top }) => {
       generate();
     }
 
+    const handleCancelGenAlert = () => {
+      setOpenGenAlert(false);
+      setIsAskAgain('true');
+      localStorage.setItem('genAYS', 'true');
+    }
+
     const handleAlertOption = (event) => {
       setIsAskAgain(!event.target.checked);
-      typeof window !== 'undefined' ? localStorage.setItem('genAYS', 'false') : undefined;
+      typeof window !== 'undefined' ? localStorage.setItem('genAYS', (!event.target.checked).toString()) : undefined;
     }
 
     useEffect(() => {
@@ -73,7 +79,7 @@ export const ButtonRow = ({ generate, stats, top }) => {
                     </FormGroup>
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleCloseGenAlert}>Cancel</Button>
+                    <Button onClick={handleCancelGenAlert}>Cancel</Button>
                     <Button onClick={handleGenerateAlert}>Continue</Button>
                   </DialogActions>
                 </Dialog>
