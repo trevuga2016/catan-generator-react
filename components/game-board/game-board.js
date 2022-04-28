@@ -13,14 +13,14 @@ export const GameBoard = ({ props }) => {
 
     const router = useRouter();
 
-    let ports = router.query['ports'];
+    let ports = router?.query['ports'];
     if (ports) {
         if (typeof window !== 'undefined') {
-            localStorage.setItem('ports', ports);
+            sessionStorage?.setItem('ports', ports);
         }
     } else {
         if (typeof window !== 'undefined') {
-            ports = localStorage.getItem('ports');
+            ports = sessionStorage?.getItem('ports');
         }
     }
 

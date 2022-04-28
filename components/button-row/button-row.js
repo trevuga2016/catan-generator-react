@@ -26,13 +26,11 @@ export const ButtonRow = ({ generate, stats, top }) => {
     const [openStats, setOpenStats] = useState(false);
     const [openCosts, setOpenCosts] = useState(false);
     const [openGenAlert, setOpenGenAlert] = useState(false);
-    const [isAskAgain, setIsAskAgain] = useState(null);
     const handleOpenStats = () => setOpenStats(true);
     const handleCloseStats = () => setOpenStats(false);
     const handleOpenCosts = () => setOpenCosts(true);
     const handleCloseCosts = () => setOpenCosts(false);
     const handleOpenGenAlert = () => setOpenGenAlert(true);
-    const handleCloseGenAlert = () => setOpenGenAlert(false);
 
     const handleGenerateAlert = () => {
       setOpenGenAlert(false);
@@ -41,19 +39,16 @@ export const ButtonRow = ({ generate, stats, top }) => {
 
     const handleCancelGenAlert = () => {
       setOpenGenAlert(false);
-      setIsAskAgain('true');
-      localStorage.setItem('genAYS', 'true');
+      sessionStorage.setItem('genAYS', 'true');
     }
 
     const handleAlertOption = (event) => {
-      setIsAskAgain(!event.target.checked);
-      typeof window !== 'undefined' ? localStorage.setItem('genAYS', (!event.target.checked).toString()) : undefined;
+      sessionStorage.setItem('genAYS', (!event.target.checked).toString());
     }
 
     useEffect(() => {
-      if ((typeof window !== 'undefined' && localStorage.getItem('genAYS') === null) || localStorage.getItem('genAYS') === undefined) {
-        localStorage.setItem('genAYS', 'true');
-        setIsAskAgain('true');
+      if (sessionStorage.getItem('genAYS') === null || sessionStorage.getItem('genAYS') === undefined) {
+        sessionStorage.setItem('genAYS', 'true');
       }
     }, []);
 
@@ -65,10 +60,10 @@ export const ButtonRow = ({ generate, stats, top }) => {
               </Button>
             </Grid>
             <Grid item xs={6} md={3} className={styles["button-row__item"]}>
-                <Button variant="contained" onClick={ isAskAgain === 'true' ? handleOpenGenAlert : generate } size="small" endIcon={<AutorenewIcon />} className={styles["button-row__button"]}>
+                <Button variant="contained" onClick={ typeof window !== 'undefined' && sessionStorage?.getItem('genAYS') === 'true' ? handleOpenGenAlert : generate } size="small" endIcon={<AutorenewIcon />} className={styles["button-row__button"]}>
                   Generate
                 </Button>
-                <Dialog open={openGenAlert} onClose={handleCloseGenAlert}>
+                <Dialog open={openGenAlert} onClose={handleCancelGenAlert}>
                   <DialogTitle>Are you sure?</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
