@@ -9,14 +9,18 @@ export const Hex = ({ hex }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    let imageUrl = 'url(../sea_hex.png)';
 
-    let imageUrl = hex?.resource !== '' ? `url(../${hex?.resource}/hex.png)` : `url(../sea_hex.png)`;
-    let transform = hex?.rotation !== undefined || hex?.rotation === '' ? `rotate(${hex?.rotation})` : 'rotate(0deg)';
-    
+    if (hex?.resource?.includes('3for1') || hex?.resource?.includes('2for1')) {
+        imageUrl = `url(../${hex?.resource}/${hex?.resource}_${hex?.rotation}.png)`;
+    } else if (hex?.resource !== '') {
+        imageUrl = `url(../${hex?.resource}/hex.png)`;
+    }
+
     return(
         <>
         <ButtonBase className={styles["hex__button"]} onClick={handleOpen}>
-            <Box className={styles["hex"]} sx={{ backgroundImage: imageUrl, transform: transform }}>
+            <Box className={styles["hex"]} sx={{ backgroundImage: imageUrl }}>
                 <Token number={hex?.token?.number} probability={hex?.token?.probability} />
             </Box>
         </ButtonBase>
