@@ -24,7 +24,8 @@ export const GameSelect = () => {
     const [port, setPort] = useState({ value: 'hide' });
     const [scenario, setScenario] = useState('');
     const [disabled, setDisabled] = useState(true);
-    let enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO === 'true';
+    const [isDemo, setIsDemo] = useState(false);
+    const enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO === 'true';
 
     const handleGameChange = (e) => {
         setGame({ value: e.target.value });
@@ -40,13 +41,18 @@ export const GameSelect = () => {
         router.push(scenario);
     }
 
-    const goToDemo = () => {
-     router.push('/scenario/demo');
-    }
-
     useEffect(() => {
         setScenario(`/scenario/${game.value}?ports=${port.value}`);
     }, [game, port]);
+
+    useEffect(() => {
+      if (game.value === 'demo') {
+        setIsDemo(true);
+        setScenario('/scenario/demo');
+      } else {
+        setIsDemo(false);
+      }
+    }, [game])
 
     return(
       <Grid container direction="column" alignItems="center">
@@ -56,13 +62,16 @@ export const GameSelect = () => {
               <Select value={game.value} onChange={(e) => handleGameChange(e)} label="Scenario" sx={{ minWidth: 300 }}>
                   <MenuItem value='catan'>The Settlers of Catan</MenuItem>
                   <MenuItem value='catan5_6ext'>Catan 5 & 6 Player Extension</MenuItem>
+                  {
+                    enableDemo && <MenuItem value='demo'>Demo</MenuItem>
+                  }
                   <MenuItem value='' disabled>More coming soon!</MenuItem>
               </Select>
               <FormHelperText sx={{ textAlign: 'right' }}>Required</FormHelperText>
           </FormControl>
         </Grid>
         <Grid item>
-          <FormControl size="small">
+          <FormControl size="small" disabled={isDemo}>
               <Grid container direction="column" p={1}>
                   <FormLabel sx={{ textAlign: 'center'}}>Select Harbor Option:</FormLabel>
                   <RadioGroup defaultValue="hide" onChange={(e) => handlePortChange(e)} sx={{ alignContent: 'center' }}>
@@ -78,12 +87,12 @@ export const GameSelect = () => {
             Generate
           </Button>
         </Grid>
-        {
-          enableDemo &&
-          <Grid item pt={4}>
-            <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
-          </Grid>
-        }
+        {/*{*/}
+        {/*  enableDemo &&*/}
+        {/*  <Grid item p={4}>*/}
+        {/*    <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>*/}
+        {/*  </Grid>*/}
+        {/*}*/}
       </Grid>
     );
 }
