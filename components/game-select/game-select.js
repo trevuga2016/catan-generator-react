@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import styles from './game-select.module.scss';
+import { ShareButtons } from '../share-buttons/share-buttons';
 
 export const GameSelect = () => {
 
@@ -78,9 +79,12 @@ export const GameSelect = () => {
             Generate
           </Button>
         </Grid>
+        <Grid item p={4}>
+          <ShareButtons />
+        </Grid>
         {
           enableDemo &&
-          <Grid item pt={4}>
+          <Grid item>
             <Button variant="contained" onClick={goToDemo} size="small" endIcon={<ConstructionIcon />} className={styles["button"]}>Demo</Button>
           </Grid>
         }
