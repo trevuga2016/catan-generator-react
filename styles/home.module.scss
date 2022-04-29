@@ -1,0 +1,8 @@
+.share-buttons {
+  padding: 32px;
+  @media only screen and (max-width: 600px) {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+  }
+}
