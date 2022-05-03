@@ -1,9 +1,9 @@
 .scenarios {
-  width: 50vw;
+  width: 50vw !important;
   justify-content: center;
   text-align: center;
   @media only screen and (max-width: 600px) {
-    width: 100vw;
+    width: 100vw !important;
   }
 }
 
