@@ -13,7 +13,7 @@ export const Scenarios = () => {
         descriptions?.map((description, i) => {
           return(
             <Grid item xs={6} md={4} key={i}>
-              <ScenarioDetail title={description?.title} subtitle={description?.subtitle} />
+              <ScenarioDetail description={description} />
             </Grid>
           );
         })

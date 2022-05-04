@@ -36,7 +36,7 @@ export const GameSelect = () => {
               </Button>
           </Grid>
           <Grid item width="100%" p={1}>
-            <Button variant="contained" onClick={() => router.push('/scenario')} disabled={scenario !== ''} size="small" endIcon={<ExploreIcon />} className={styles["button"]}>
+            <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<ExploreIcon />} className={styles["button"]}>
               Scenario Selection
             </Button>
           </Grid>
