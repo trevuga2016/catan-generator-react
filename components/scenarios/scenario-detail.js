@@ -1,25 +1,18 @@
-import { Box, Button, ButtonBase, Divider, Grid, Modal, Typography } from '@mui/material';
+import { ButtonBase, Divider, Grid, Modal, Typography } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { useEffect, useState } from 'react';
-import { HarborSelect } from '../game-select/harbor-select';
-import { useRouter } from 'next/router';
 import { useGameContext } from '../game-select/game-context';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
+import { HarborModal } from './harbor-modal';
 
 export const ScenarioDetail = ({ description }) => {
 
-  const { title, subtitle, imageUrl } = description;
+  const { title, subtitle, imageUrl, pageUrl } = description;
   const [open, setOpen] = useState(false);
-  const router = useRouter();
-  const { scenario, setScenario, harbors, setHarbors } = useGameContext();
+  const { setScenario, setHarbors } = useGameContext();
 
   const handleButtonClick = () => {
     setOpen(true);
-    'The Settlers of Catan' === title ? setScenario('catan') : setScenario('catan5_6ext');
-  }
-
-  const handleSubmit = () => {
-    router.push(`/scenario/${scenario}?ports=${harbors}`);
+    setScenario(pageUrl);
   }
 
   useEffect(() => {
@@ -32,7 +25,7 @@ export const ScenarioDetail = ({ description }) => {
     <ButtonBase sx={{ height: '100%' }} onClick={handleButtonClick}>
       <Grid container direction="column" className={styles["detail"]}>
         <Grid item>
-          <img className={styles["detail__image"]} src="https://tomkingskennel.com/wp-content/uploads/2020/04/cream2.jpg" alt="altText" />
+          <img className={styles["detail__image"]} src={imageUrl} alt={imageUrl} />
         </Grid>
         <Grid item pt={1}>
           <Typography variant="h6" lineHeight="1">{title}</Typography>
@@ -49,18 +42,7 @@ export const ScenarioDetail = ({ description }) => {
       </Grid>
     </ButtonBase>
     <Modal open={open} onClose={() => setOpen(false)}>
-      <Box className={styles["harbor-modal"]}>
-        <Grid container direction="column">
-          <Grid item>
-            <HarborSelect />
-          </Grid>
-          <Grid item>
-            <Button variant="contained" onClick={handleSubmit} size="small" endIcon={<AutorenewIcon />} className={styles["harbor-modal__button"]}>
-              Generate
-            </Button>
-          </Grid>
-        </Grid>
-      </Box>
+      <HarborModal />
     </Modal>
     </>
   );

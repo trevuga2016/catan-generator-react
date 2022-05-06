@@ -6,7 +6,6 @@ import styles from './game-select.module.scss';
 import { useGameContext } from './game-context';
 import { ScenarioSelect } from './scenario-select';
 import { HarborSelect } from './harbor-select';
-import ExploreIcon from '@mui/icons-material/Explore';
 
 export const GameSelect = () => {
 
@@ -23,11 +22,13 @@ export const GameSelect = () => {
     }, []);
 
     return(
-        <Grid container direction="column" alignItems="center">
-          <Grid item>
+      <Grid container direction="column">
+        <fieldset>
+          <legend>&nbsp;Quick Select:&nbsp;</legend>
+          <Grid item px={1} pt={1}>
             <ScenarioSelect />
           </Grid>
-          <Grid item>
+          <Grid item textAlign="center">
             <HarborSelect isDemo={scenario === 'demo'} />
           </Grid>
           <Grid item width="100%" p={1}>
@@ -35,11 +36,7 @@ export const GameSelect = () => {
                 Generate
               </Button>
           </Grid>
-          <Grid item width="100%" p={1}>
-            <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<ExploreIcon />} className={styles["button"]}>
-              Scenario Selection
-            </Button>
-          </Grid>
-        </Grid>
+        </fieldset>
+      </Grid>
     );
 }
