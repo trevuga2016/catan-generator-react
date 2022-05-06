@@ -18,7 +18,7 @@ export const HarborModal = () => {
     <Box className={styles["harbor-modal"]}>
       <Grid container direction="column">
         <Grid item>
-          <HarborSelect />
+          <HarborSelect isScenarioSelect="true" />
         </Grid>
         <Grid item>
           <Button variant="contained" onClick={handleSubmit} size="small" endIcon={<AutorenewIcon />} className={styles["harbor-modal__button"]}>
