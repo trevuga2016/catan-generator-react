@@ -3,8 +3,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 50vw;
   @media only screen and (max-width: 600px) {
-    transform: translate(-50%, -50%) scale(0.5);
+    width: 75vw;
   }
   background-color: #E7E2AB;
   border: 2px solid #000;
