@@ -5,7 +5,7 @@ import { useGameDescriptions } from '../../hooks/useGameDescriptions';
 
 export const Scenarios = () => {
 
-  const { descriptions } = useGameDescriptions();
+  const { descriptions, isLoading } = useGameDescriptions();
 
   return(
     <Grid container direction="row" className={styles["scenarios"]} spacing={2}>
@@ -13,7 +13,7 @@ export const Scenarios = () => {
         descriptions?.map((description, i) => {
           return(
             <Grid item xs={6} md={4} key={i}>
-              <ScenarioDetail description={description} />
+              <ScenarioDetail description={description} isLoading={isLoading} />
             </Grid>
           );
         })

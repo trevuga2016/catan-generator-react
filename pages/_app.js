@@ -3,14 +3,17 @@ import { Footer } from '../components/footer/footer';
 import { theme } from '../styles/theme';
 import { ThemeProvider } from '@emotion/react';
 import { GameProvider } from '../components/game-select/game-context';
+import { ContentfulProvider } from '../contexts/contentful-context';
 
 function CatanGenerator({ Component, pageProps }) {
   return(
     <ThemeProvider theme={theme}>
+      <ContentfulProvider>
       <GameProvider>
         <Component {...pageProps} />
         <Footer />
       </GameProvider>
+      </ContentfulProvider>
     </ThemeProvider>
   );
 }
