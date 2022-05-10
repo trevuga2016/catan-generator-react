@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useContentfulContext } from '../contexts/contentful-context';
 
-export const useGameDescriptions = () => {
+export const useScenarioContent = () => {
 
   const [descriptions, setDescriptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +9,7 @@ export const useGameDescriptions = () => {
 
   const getScenarioDescription = async() => {
     let results = await client.getEntries({
-      content_type: 'scenarioDescription'
+      content_type: 'scenario'
     });
     const { items } = results;
     return (items || []).map(item => item.fields).sort((a, b) => a.order - b.order);

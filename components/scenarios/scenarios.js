@@ -1,11 +1,11 @@
 import { Divider, Grid, Skeleton } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { ScenarioDetail } from './scenario-detail';
-import { useGameDescriptions } from '../../hooks/useGameDescriptions';
+import { useScenarioContent } from '../../hooks/useScenarioContent';
 
 export const Scenarios = () => {
 
-  const { descriptions, isLoading } = useGameDescriptions();
+  const { descriptions, isLoading } = useScenarioContent();
 
   if (isLoading) {
     return(
