@@ -3,7 +3,7 @@ import { useContentfulContext } from '../contexts/contentful-context';
 
 export const useScenarioContent = () => {
 
-  const [descriptions, setDescriptions] = useState(null);
+  const [scenarios, setScenarios] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { client } = useContentfulContext();
 
@@ -18,17 +18,16 @@ export const useScenarioContent = () => {
   useEffect(() => {
     getScenarioDescription().then((data) => {
       const desc = data?.map(description => {
-        const { image } = description;
-        const imageUrl = `https:${image?.fields?.file?.url}`;
+        const imageUrl = `https:${description?.image?.fields?.file?.url}`;
         return {
           ...description,
           imageUrl: imageUrl
         }
       });
-      setDescriptions(desc);
+      setScenarios(desc);
       setIsLoading(false);
     }).catch(() => {});
   }, []);
 
-  return { descriptions, isLoading };
+  return { scenarios, isLoading };
 }

@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useGameContext } from '../game-select/game-context';
 import { HarborModal } from './harbor-modal';
 
-export const ScenarioDetail = ({ description }) => {
+export const ScenarioDetail = ({ scenario }) => {
 
-  const { title, subtitle, imageUrl, pageUrl } = description;
+  const { title, subtitle, imageUrl, pageUrl } = scenario;
   const [open, setOpen] = useState(false);
   const { setScenario, setHarbors } = useGameContext();
 

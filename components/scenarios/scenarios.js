@@ -5,7 +5,7 @@ import { useScenarioContent } from '../../hooks/useScenarioContent';
 
 export const Scenarios = () => {
 
-  const { descriptions, isLoading } = useScenarioContent();
+  const { scenarios, isLoading } = useScenarioContent();
 
   if (isLoading) {
     return(
@@ -33,10 +33,10 @@ export const Scenarios = () => {
   return(
     <Grid container direction="row" className={styles["scenarios"]} spacing={2}>
       {
-        descriptions?.map((description, i) => {
+        scenarios?.map((scenario, i) => {
           return(
             <Grid item xs={6} md={4} key={i}>
-              <ScenarioDetail description={description} />
+              <ScenarioDetail scenario={scenario} />
             </Grid>
           );
         })
