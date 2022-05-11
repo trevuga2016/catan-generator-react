@@ -1,7 +1,7 @@
 import { ButtonBase, Divider, Grid, Modal, Typography } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { useEffect, useState } from 'react';
-import { useGameContext } from '../game-select/game-context';
+import { useGameContext } from '../../contexts/game-context';
 import { HarborModal } from './harbor-modal';
 
 export const ScenarioDetail = ({ scenario }) => {
