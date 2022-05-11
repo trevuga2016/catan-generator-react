@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Header } from '../components/header/header';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { ShareButtons } from '../components/share-buttons/share-buttons';
 import styles from '../styles/home.module.scss';
 import { Scenarios } from '../components/scenarios/scenarios';
@@ -15,6 +15,9 @@ export const Home = () => {
         </Head>
         <Grid item>
           <Header title='Catan Board Generator' />
+        </Grid>
+        <Grid item pb={2}>
+          <Typography variant="body1">Select a Scenario:</Typography>
         </Grid>
         <Grid item>
           <Scenarios />

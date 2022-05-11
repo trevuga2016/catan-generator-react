@@ -6,7 +6,7 @@ import { HarborModal } from './harbor-modal';
 
 export const ScenarioDetail = ({ scenario }) => {
 
-  const { title, subtitle, imageUrl, pageUrl } = scenario;
+  const { title, subtitle, imageUrl, pageUrl, disabled } = scenario;
   const [open, setOpen] = useState(false);
   const { setScenario, setHarbors } = useGameContext();
 
@@ -22,7 +22,7 @@ export const ScenarioDetail = ({ scenario }) => {
 
   return(
     <>
-    <ButtonBase sx={{ height: '100%' }} onClick={handleButtonClick}>
+    <ButtonBase sx={{ height: '100%' }} onClick={handleButtonClick} disabled={disabled}>
       <Grid container direction="column" className={styles["detail"]}>
         <Grid item>
           <img className={styles["detail__image"]} src={imageUrl} alt={imageUrl}/>
