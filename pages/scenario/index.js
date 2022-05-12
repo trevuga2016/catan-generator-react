@@ -4,6 +4,8 @@ import { Header } from '../../components/header/header';
 import { Scenarios } from '../../components/scenarios/scenarios';
 import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from 'next/router';
+import { ShareButtons } from '../../components/share-buttons/share-buttons';
+import styles from './../../styles/home.module.scss';
 
 export const ScenarioPage = () => {
 
@@ -22,10 +24,13 @@ export const ScenarioPage = () => {
       <Grid item>
         <Scenarios />
       </Grid>
-      <Grid item p={3}>
-        <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important', border: '1px solid #E7E2AB' }}>
+      <Grid item p={3} className={styles["scenario-home"]}>
+        <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} className={styles["scenario-home__button"]}>
           Home
         </Button>
+      </Grid>
+      <Grid item p={1}>
+        <ShareButtons />
       </Grid>
     </Grid>
   );
