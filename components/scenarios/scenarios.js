@@ -17,6 +17,9 @@ export const Scenarios = () => {
         <Grid item xs={6} md={4}>
           <ScenarioSkeleton />
         </Grid>
+        <Grid item xs={6} md={4}>
+          <ScenarioSkeleton />
+        </Grid>
       </Grid>
     );
   }
