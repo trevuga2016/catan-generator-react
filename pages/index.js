@@ -1,11 +1,16 @@
 import Head from 'next/head';
 import { Header } from '../components/header/header';
-import { Grid, Typography } from '@mui/material';
+import { GameSelect } from '../components/game-select/game-select';
+import { Button, Grid } from '@mui/material';
 import { ShareButtons } from '../components/share-buttons/share-buttons';
 import styles from '../styles/home.module.scss';
-import { Scenarios } from '../components/scenarios/scenarios';
+import ExploreIcon from '@mui/icons-material/Explore';
+import { useRouter } from 'next/router';
 
 export const Home = () => {
+
+  const router = useRouter();
+
   return (
     <Grid container justifyContent="center">
       <Grid container direction="column" alignItems="center" width="max-content">
@@ -16,11 +21,13 @@ export const Home = () => {
         <Grid item>
           <Header title='Catan Board Generator' />
         </Grid>
-        <Grid item pb={2}>
-          <Typography variant="body1">Select a Scenario:</Typography>
+        <Grid item pb={4} width="75%">
+          <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<ExploreIcon />} className={styles["scenario-selection"]}>
+            Select a Scenario
+          </Button>
         </Grid>
         <Grid item>
-          <Scenarios />
+          <GameSelect />
         </Grid>
         <Grid item p={4} className={styles["share-buttons"]}>
           <ShareButtons />

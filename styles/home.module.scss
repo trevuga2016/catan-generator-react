@@ -11,3 +11,13 @@
     bottom: 0;
   }
 }
+
+.scenario-home {
+  width: 25vw;
+  @media only screen and (max-width: 600px) {
+    width: 75vw !important;
+  }
+  &__button {
+    width: 100% !important;
+  }
+}

@@ -1,5 +1,5 @@
-import styles from "./scenarios.module.scss";
-import { Divider, Grid, Skeleton } from "@mui/material";
+import styles from './scenarios.module.scss';
+import { Divider, Grid, Skeleton } from '@mui/material';
 
 export const ScenarioSkeleton = () => {
   return(
