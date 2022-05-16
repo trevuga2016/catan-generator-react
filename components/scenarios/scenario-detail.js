@@ -42,7 +42,9 @@ export const ScenarioDetail = ({ scenario }) => {
       </Grid>
     </ButtonBase>
     <Modal open={open} onClose={() => setOpen(false)}>
-      <HarborModal />
+      <div>
+        <HarborModal />
+      </div>
     </Modal>
     </>
   );

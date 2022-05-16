@@ -1,12 +1,12 @@
 import { Grid } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { ScenarioDetail } from './scenario-detail';
-import { useScenarioContent } from '../../hooks/useScenarioContent';
 import { ScenarioSkeleton } from './scenario-skeleton';
+import { useScenarioContext } from '../../contexts/scenario-context';
 
 export const Scenarios = () => {
 
-  const { scenarios, isLoading } = useScenarioContent();
+  const { scenarios, isLoading } = useScenarioContext();
 
   if (isLoading) {
     return(
