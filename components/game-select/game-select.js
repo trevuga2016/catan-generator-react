@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Skeleton } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -6,11 +6,13 @@ import styles from './game-select.module.scss';
 import { useGameContext } from './game-context';
 import { ScenarioSelect } from './scenario-select';
 import { HarborSelect } from './harbor-select';
+import { useScenarioContext } from '../../contexts/scenario-context';
 
 export const GameSelect = () => {
 
     const router = useRouter();
     const { scenario, setScenario, harbors, setHarbors } = useGameContext();
+    const { scenarios, isLoading } = useScenarioContext();
 
     const handleSubmit = () => {
         router.push(`/scenario/${scenario}?ports=${harbors}`);
@@ -25,17 +27,17 @@ export const GameSelect = () => {
       <Grid container direction="column">
         <fieldset>
           <legend>&nbsp;Quick Select:&nbsp;</legend>
-          <Grid item px={1} pt={1}>
-            <ScenarioSelect />
-          </Grid>
-          <Grid item textAlign="center">
-            <HarborSelect isDemo={scenario === 'demo'} />
-          </Grid>
-          <Grid item width="100%" p={1}>
+            <Grid item px={1} pt={1}>
+              { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
+            </Grid>
+            <Grid item textAlign="center">
+              { !isLoading ? <HarborSelect isDemo={scenario === 'demo'}/> : <Skeleton variant="rectangular" width={250} height={200} animation="wave" /> }
+            </Grid>
+            <Grid item width="100%" p={1}>
               <Button variant="contained" onClick={handleSubmit} disabled={scenario === ''} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>
                 Generate
               </Button>
-          </Grid>
+            </Grid>
         </fieldset>
       </Grid>
     );
