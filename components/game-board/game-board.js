@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 export const GameBoard = ({ props }) => {
 
-    const { numbers_freq, resources_freq, row_config, port_config, title } = props;
+    const { numbersFrequency, resourcesFrequency, rowConfig, portConfig, title } = props;
 
     const router = useRouter();
 
@@ -24,7 +24,7 @@ export const GameBoard = ({ props }) => {
         }
     }
 
-    const { boardData, stats, generateBoardData } = useCatanLogic(numbers_freq, resources_freq, row_config, port_config, ports);
+    const { boardData, stats, generateBoardData } = useCatanLogic(numbersFrequency, resourcesFrequency, rowConfig, portConfig, ports);
 
     const titleRef = useRef();
     const widthRef = useRef();

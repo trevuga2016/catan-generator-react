@@ -24,12 +24,12 @@ export const ScenarioPage = () => {
       <Grid item>
         <Scenarios />
       </Grid>
-      <Grid item p={3} className={styles["scenario-home"]}>
+      <Grid item p={4} className={styles["scenario-home"]}>
         <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} className={styles["scenario-home__button"]}>
           Home
         </Button>
       </Grid>
-      <Grid item p={1}>
+      <Grid item pb={4}>
         <ShareButtons />
       </Grid>
     </Grid>

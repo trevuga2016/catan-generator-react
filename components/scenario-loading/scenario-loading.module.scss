@@ -1,0 +1,14 @@
+.title-skeleton {
+  height: 100px;
+  width: 50vw !important;
+  @media only screen and (max-width: 600px) {
+    width: 75vw !important;
+  }
+}
+
+.button-skeleton {
+  width: 70vw !important;
+  @media only screen and (max-width: 600px) {
+    width: 100vw !important;
+  }
+}
