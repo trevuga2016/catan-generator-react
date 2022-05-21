@@ -18,6 +18,18 @@ export const ScenarioSelect = ({ scenarios }) => {
             })
           }
           {
+            scenarios?.map((entry) => {
+              return(
+                entry?.expansions?.map((exp, i) => {
+                  const pageUrl = [ entry?.pageUrl, exp?.fields?.expansionUrl ].toString();
+                  return(
+                    <MenuItem value={pageUrl} disabled={entry?.disabled} key={i}>{exp?.fields?.title}</MenuItem>
+                  );
+                })
+              );
+            })
+          }
+          {
             enableDemo && <MenuItem value='demo'>Demo</MenuItem>
           }
         </Select>

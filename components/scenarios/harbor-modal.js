@@ -11,7 +11,12 @@ export const HarborModal = () => {
   const { scenario, harbors } = useGameContext();
 
   const handleSubmit = () => {
-    router.push(`/scenario/${scenario}?ports=${harbors}`);
+    const values = scenario.split(',');
+    if (values.length > 1) {
+      router.push(`/scenario/${values[0]}?ports=${harbors}&expansion=${values[1]}`);
+    } else {
+      router.push(`/scenario/${scenario}?ports=${harbors}`);
+    }
   }
 
   return(
