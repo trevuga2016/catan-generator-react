@@ -31,7 +31,7 @@ export const GameSelect = () => {
     return(
       <Grid container direction="column">
         <fieldset>
-          <legend>&nbsp;Quick Select:&nbsp;</legend>
+          <legend>&nbsp;Select a Scenario&nbsp;</legend>
             <Grid item px={1} pt={1}>
               { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
             </Grid>

@@ -4,7 +4,7 @@ import { GameSelect } from '../components/game-select/game-select';
 import { Button, Grid } from '@mui/material';
 import { ShareButtons } from '../components/share-buttons/share-buttons';
 import styles from '../styles/home.module.scss';
-import ExploreIcon from '@mui/icons-material/Explore';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { useRouter } from 'next/router';
 
 export const Home = () => {
@@ -22,8 +22,8 @@ export const Home = () => {
           <Header title='Catan Board Generator' />
         </Grid>
         <Grid item pb={4} width="75%">
-          <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<ExploreIcon />} className={styles["scenario-selection"]}>
-            Select a Scenario
+          <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<DescriptionIcon />} className={styles["scenario-selection"]}>
+            Scenario Descriptions
           </Button>
         </Grid>
         <Grid item>
