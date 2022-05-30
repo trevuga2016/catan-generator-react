@@ -21,13 +21,13 @@ export const Home = () => {
         <Grid item>
           <Header title='Catan Board Generator' />
         </Grid>
-        <Grid item pb={4} width="75%">
+        <Grid item>
+          <GameSelect />
+        </Grid>
+        <Grid item pt={4} width="75%">
           <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<DescriptionIcon />} className={styles["scenario-selection"]}>
             Scenario Descriptions
           </Button>
-        </Grid>
-        <Grid item>
-          <GameSelect />
         </Grid>
         <Grid item p={4} className={styles["share-buttons"]}>
           <ShareButtons />

@@ -1,4 +1,4 @@
-import { Button, Grid, Skeleton } from '@mui/material';
+import { Button, Grid, Skeleton, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -30,8 +30,7 @@ export const GameSelect = () => {
 
     return(
       <Grid container direction="column">
-        <fieldset>
-          <legend>&nbsp;Select a Scenario&nbsp;</legend>
+        <fieldset className={styles["fieldset"]}>
             <Grid item px={1} pt={1}>
               { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
             </Grid>
