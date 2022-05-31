@@ -1,9 +1,22 @@
 .button-row {
   position: absolute;
   bottom: auto;
-  width: 75vw !important;
+  width: 50vw !important;
+  justify-content: center;
   @media only screen and (max-width: 600px) {
     width: 100vw !important;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 100vw !important;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 80vw !important;
+  }
+  @media only screen and (min-width: 992px) {
+    width: 70vw !important;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 60vw !important;
   }
   &__item {
     padding: 10px;

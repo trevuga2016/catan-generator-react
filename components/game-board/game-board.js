@@ -87,7 +87,7 @@ export const GameBoard = ({ props }) => {
               <Grid item>
                   <Header title={title} />
               </Grid>
-              <Grid item mb={2}>
+              <Grid item pb={2}>
                   <FormGroup>
                       <FormControlLabel control={<Switch onChange={handleChange} checked={ckCheck} name="c&k" />} label="Cities & Knights" />
                   </FormGroup>
@@ -103,7 +103,7 @@ export const GameBoard = ({ props }) => {
               </Grid>
           </Grid>
           <Grid container direction="column" alignItems="center">
-              <ButtonRow generate={() => generateBoardData()} stats={stats} top={topMargin} />
+              <ButtonRow generate={() => generateBoardData()} stats={stats} top={topMargin} ckChecked={ckCheck} />
           </Grid>
       </>
     );

@@ -7,7 +7,7 @@ export const Header = ({ title }) => {
     const router = useRouter();
 
     return(
-        <Typography variant="h4" className={styles["header"]} px={1} pt={3} pb={2} onClick={() => router.push('/')}>
+        <Typography variant="h4" className={styles["header"]} px={1} py={3} onClick={() => router.push('/')}>
           {title}
         </Typography>
     );
