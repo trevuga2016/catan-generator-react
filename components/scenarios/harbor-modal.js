@@ -25,7 +25,7 @@ export const HarborModal = () => {
         <Grid item>
           <HarborSelect isScenarioSelect="true" />
         </Grid>
-        <Grid item>
+        <Grid item pt={1}>
           <Button variant="contained" onClick={handleSubmit} size="small" endIcon={<AutorenewIcon />} className={styles["harbor-modal__button"]}>
             Generate
           </Button>

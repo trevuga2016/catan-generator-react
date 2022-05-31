@@ -8,8 +8,8 @@ export const ScenarioSelect = ({ scenarios }) => {
 
   return(
     <FormControl size="small">
-        <InputLabel>Scenario</InputLabel>
-        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario" sx={{ minWidth: 300 }}>
+        <InputLabel>Scenario Selection</InputLabel>
+        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 300 }}>
           {
             scenarios?.map((entry, i) => {
               return(
