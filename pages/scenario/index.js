@@ -6,11 +6,17 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from 'next/router';
 import { ShareButtons } from '../../components/share-buttons/share-buttons';
 import styles from './../../styles/home.module.scss';
+import { useTitleContext } from "../../contexts/title-context";
+import { useEffect } from "react";
 
 export const ScenarioPage = () => {
 
-  const title = 'Scenario Selection';
   const router = useRouter();
+  const { title, setTitle } = useTitleContext();
+
+  useEffect(() => {
+    setTitle('Scenario Selection');
+  }, []);
 
   return(
     <Grid container direction="column" alignItems="center">
@@ -19,7 +25,7 @@ export const ScenarioPage = () => {
         <link rel="icon" href="/catan-icon.ico"/>
       </Head>
       <Grid item>
-        <Header title={title} />
+        <Header />
       </Grid>
       <Grid item>
         <Scenarios />
