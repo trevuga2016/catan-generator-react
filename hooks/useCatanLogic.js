@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_config, port) => {
+export const useCatanLogic = (props, port) => {
 
+    const { numbersFrequency, resourcesFrequency, rowConfig, portConfig } = props;
     const [boardData, setBoardData] = useState(null);
     const [stats, setStats] = useState(null);
 
@@ -10,28 +11,28 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
         let resource_array = [];
         let hex_values = [];
 
-        let ports_list = port === 'randomize' ? getPortTypeList(port_config) : undefined;
+        let ports_list = port === 'randomize' ? getPortTypeList(portConfig) : undefined;
 
-        for (const [key, freq] of Object.entries(numbers_freq)) {
+        for (const [key, freq] of Object.entries(numbersFrequency)) {
             for (let i = 1; i <= freq; i++) {
                 numbers_array.push(key);
             }
         }
 
-        for (const [key, freq] of Object.entries(resources_freq)) {
+        for (const [key, freq] of Object.entries(resourcesFrequency)) {
             for (let i = 1; i <= freq; i++) {
                 resource_array.push(key);
             }
         }
 
-        if (resource_array.length === getTotalNumOfHexes(row_config)) {
+        if (resource_array.length === getTotalNumOfHexes(rowConfig)) {
 
-            port !== 'hide' ? hex_values.push(configureTopPorts(row_config, port_config, ports_list)) : undefined;
+            port !== 'hide' ? hex_values.push(configureTopPorts(rowConfig, portConfig, ports_list)) : undefined;
 
-            row_config.map((value, index) => {
+            rowConfig.map((value, index) => {
                 let row = [];
 
-                port !== 'hide' ? row.push(configureEndPorts(port_config, index, 1, ports_list)) : undefined;
+                port !== 'hide' ? row.push(configureEndPorts(portConfig, index, 1, ports_list)) : undefined;
 
                 Array.from(Array(value), () => {
                     let resource = getResource(resource_array);
@@ -47,13 +48,13 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
                     row : row
                 });
 
-                port !== 'hide' ? row.push(configureEndPorts(port_config, index, 2, ports_list)) : undefined;
+                port !== 'hide' ? row.push(configureEndPorts(portConfig, index, 2, ports_list)) : undefined;
             });
 
-            port !== 'hide' ? hex_values.push(configureBottomPorts(row_config, port_config, ports_list)) : undefined;
+            port !== 'hide' ? hex_values.push(configureBottomPorts(rowConfig, portConfig, ports_list)) : undefined;
         }
         setBoardData(hex_values);
-        generateBoardStats(hex_values, resources_freq);
+        generateBoardStats(hex_values, resourcesFrequency);
     };
 
     const generateBoardStats = (hex_values, resources_freq) => {
@@ -110,7 +111,7 @@ export const useCatanLogic = (numbers_freq, resources_freq, row_config, port_con
 
     useEffect(() => {
         generateBoardData();
-    }, [numbers_freq, resources_freq, row_config, port_config, port]);
+    }, [numbersFrequency, resourcesFrequency, rowConfig, portConfig, port]);
 
     return { boardData, stats, generateBoardData };
 }

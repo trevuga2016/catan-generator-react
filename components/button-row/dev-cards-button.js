@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 
 export const DevCardsButton = () => {
   return(
-    <Button variant="contained" size="small" endIcon={<HelpIcon />} className={styles["button-row__button"]}>
+    <Button variant="contained" disabled size="small" endIcon={<HelpIcon />} className={styles["button-row__button"]}>
       Dev Cards
     </Button>
   );

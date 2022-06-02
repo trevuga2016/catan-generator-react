@@ -6,10 +6,17 @@ import { ShareButtons } from '../components/share-buttons/share-buttons';
 import styles from '../styles/home.module.scss';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useTitleContext } from '../contexts/title-context';
 
 export const Home = () => {
 
   const router = useRouter();
+  const { setTitle } = useTitleContext();
+
+  useEffect(() => {
+    setTitle('Catan Board Generator');
+  }, []);
 
   return (
     <Grid container justifyContent="center">
@@ -19,7 +26,7 @@ export const Home = () => {
           <link rel="icon" href="/catan-icon.ico" />
         </Head>
         <Grid item>
-          <Header title='Catan Board Generator' />
+          <Header />
         </Grid>
         <Grid item>
           <GameSelect />
