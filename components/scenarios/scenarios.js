@@ -20,6 +20,12 @@ export const Scenarios = () => {
         <Grid item xs={6} md={4}>
           <ScenarioSkeleton />
         </Grid>
+        <Grid item xs={6} md={4}>
+          <ScenarioSkeleton />
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <ScenarioSkeleton />
+        </Grid>
       </Grid>
     );
   }
@@ -32,6 +38,22 @@ export const Scenarios = () => {
             <Grid item xs={6} md={4} key={i}>
               <ScenarioDetail scenario={scenario} />
             </Grid>
+          );
+        })
+      }
+      {
+        scenarios?.map((entry) => {
+          return(
+            entry?.expansions?.map((exp, i) => {
+              const imageUrl = exp?.fields?.image?.fields?.file?.url;
+              const pageUrl = [ entry?.pageUrl, exp?.fields?.expansionUrl ].toString();
+              const expScenario = { ...exp?.fields, imageUrl: imageUrl, pageUrl: pageUrl };
+              return(
+                <Grid item xs={6} md={4} key={i}>
+                  <ScenarioDetail scenario={expScenario} />
+                </Grid>
+              );
+            })
           );
         })
       }

@@ -18,10 +18,9 @@ export const useScenarioContent = () => {
   useEffect(() => {
     getScenarioDescription().then((data) => {
       const desc = data?.map(description => {
-        const imageUrl = `https:${description?.image?.fields?.file?.url}`;
         return {
           ...description,
-          imageUrl: imageUrl
+          imageUrl: description?.image?.fields?.file?.url
         }
       });
       setScenarios(desc);

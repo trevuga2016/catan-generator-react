@@ -7,15 +7,23 @@ import { useGameContext } from './game-context';
 import { ScenarioSelect } from './scenario-select';
 import { HarborSelect } from './harbor-select';
 import { useScenarioContext } from '../../contexts/scenario-context';
+import { useExpansionContext } from '../../contexts/expansion-context';
 
 export const GameSelect = () => {
 
     const router = useRouter();
     const { scenario, setScenario, harbors, setHarbors } = useGameContext();
     const { scenarios, isLoading } = useScenarioContext();
+    const { setExpansion } = useExpansionContext();
 
     const handleSubmit = () => {
+      const values = scenario.split(',');
+      if (values.length > 1) {
+        setExpansion(values[1]);
+        router.push(`/scenario/${values[0]}?ports=${harbors}&expansion=${values[1]}`);
+      } else {
         router.push(`/scenario/${scenario}?ports=${harbors}`);
+      }
     }
 
     useEffect(() => {
@@ -25,9 +33,8 @@ export const GameSelect = () => {
 
     return(
       <Grid container direction="column">
-        <fieldset>
-          <legend>&nbsp;Quick Select:&nbsp;</legend>
-            <Grid item px={1} pt={1}>
+        <fieldset className={styles["fieldset"]}>
+            <Grid item px={1} pt={2}>
               { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
             </Grid>
             <Grid item textAlign="center">
