@@ -6,8 +6,12 @@ import { CostsButton } from './costs-button';
 import { StatsButton } from './stats-button';
 import { ProgressCardsButton } from './progress-cards-button';
 import { DevCardsButton } from './dev-cards-button';
+import { useExpansionContext } from '../../contexts/expansion-context';
 
-export const ButtonRow = ({ generate, stats, top, ckChecked }) => {
+export const ButtonRow = ({ generate, stats, top }) => {
+
+    const { expansion } = useExpansionContext();
+
     return (
       <Grid container className={styles["button-row"]} top={top}>
         <Grid item xs={6} md={3} className={styles["button-row__item"]}>
@@ -24,7 +28,7 @@ export const ButtonRow = ({ generate, stats, top, ckChecked }) => {
         </Grid>
         <Grid item xs={6} md={3} className={styles["button-row__item"]}>
           {
-            ckChecked ? <ProgressCardsButton /> : <DevCardsButton />
+            expansion?.includes('ck') ? <ProgressCardsButton /> : <DevCardsButton />
           }
         </Grid>
       </Grid>

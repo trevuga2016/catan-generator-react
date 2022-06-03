@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
+import { Chip, FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
 import { useGameContext } from './game-context';
 
 export const ScenarioSelect = ({ scenarios }) => {
@@ -9,7 +9,7 @@ export const ScenarioSelect = ({ scenarios }) => {
   return(
     <FormControl size="small">
         <InputLabel>Scenario Selection</InputLabel>
-        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 300 }}>
+        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 325 }}>
           {
             scenarios?.map((entry, i) => {
               return(
@@ -23,7 +23,10 @@ export const ScenarioSelect = ({ scenarios }) => {
                 entry?.expansions?.map((exp, i) => {
                   const pageUrl = [ entry?.pageUrl, exp?.fields?.expansionUrl ].toString();
                   return(
-                    <MenuItem value={pageUrl} disabled={entry?.disabled} key={i}>{exp?.fields?.title}</MenuItem>
+                    <MenuItem value={pageUrl} disabled={entry?.disabled} key={i}>
+                      <Chip label="EXP" size="small" color="primary" sx={{ marginRight: 1}} />
+                      {exp?.fields?.title}
+                    </MenuItem>
                   );
                 })
               );

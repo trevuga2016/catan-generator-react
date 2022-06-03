@@ -1,8 +1,9 @@
-import { ButtonBase, Divider, Grid, Modal, Typography } from '@mui/material';
+import { ButtonBase, Chip, Divider, Grid, Modal, Typography } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { useEffect, useState } from 'react';
 import { useGameContext } from '../game-select/game-context';
 import { HarborModal } from './harbor-modal';
+import Image from 'next/image';
 
 export const ScenarioDetail = ({ scenario }) => {
 
@@ -25,9 +26,15 @@ export const ScenarioDetail = ({ scenario }) => {
     <ButtonBase sx={{ height: '100%' }} onClick={handleButtonClick} disabled={disabled}>
       <Grid container direction="column" className={styles["detail"]}>
         <Grid item>
-          <img className={styles["detail__image"]} src={imageUrl} alt={imageUrl}/>
+          {
+            scenario?.hasOwnProperty('expansionName') &&
+            <Grid container justifyContent="flex-end">
+              <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip"]} />
+            </Grid>
+          }
+          <Image src={`https:${imageUrl}?w=2600&h=1500&fm=webp`} width={2600} height={1500} alt={imageUrl} loading="lazy" className={styles["detail__image"]} />
         </Grid>
-        <Grid item pt={1}>
+        <Grid item pt={1} px={1}>
           <Typography variant="h6" lineHeight="1">{title}</Typography>
         </Grid>
         <Grid item pt={1}>
