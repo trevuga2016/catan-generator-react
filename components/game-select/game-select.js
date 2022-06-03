@@ -1,4 +1,4 @@
-import { Button, Grid, Skeleton, Typography } from '@mui/material';
+import { Button, Grid, Skeleton } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -7,16 +7,19 @@ import { useGameContext } from './game-context';
 import { ScenarioSelect } from './scenario-select';
 import { HarborSelect } from './harbor-select';
 import { useScenarioContext } from '../../contexts/scenario-context';
+import { useExpansionContext } from '../../contexts/expansion-context';
 
 export const GameSelect = () => {
 
     const router = useRouter();
     const { scenario, setScenario, harbors, setHarbors } = useGameContext();
     const { scenarios, isLoading } = useScenarioContext();
+    const { setExpansion } = useExpansionContext();
 
     const handleSubmit = () => {
       const values = scenario.split(',');
       if (values.length > 1) {
+        setExpansion(values[1]);
         router.push(`/scenario/${values[0]}?ports=${harbors}&expansion=${values[1]}`);
       } else {
         router.push(`/scenario/${scenario}?ports=${harbors}`);
