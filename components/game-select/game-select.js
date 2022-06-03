@@ -34,7 +34,7 @@ export const GameSelect = () => {
     return(
       <Grid container direction="column">
         <fieldset className={styles["fieldset"]}>
-            <Grid item px={1} pt={1}>
+            <Grid item px={1} pt={2}>
               { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
             </Grid>
             <Grid item textAlign="center">

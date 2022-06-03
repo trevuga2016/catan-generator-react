@@ -9,7 +9,7 @@ export const ScenarioSelect = ({ scenarios }) => {
   return(
     <FormControl size="small">
         <InputLabel>Scenario Selection</InputLabel>
-        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 325 }}>
+        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 300 }}>
           {
             scenarios?.map((entry, i) => {
               return(
@@ -41,4 +41,4 @@ export const ScenarioSelect = ({ scenarios }) => {
   );
 }
 
-ScenarioSelect.disabled = 'ScenarioSelect';
+ScenarioSelect.displayName = 'ScenarioSelect';
