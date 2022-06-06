@@ -41,7 +41,7 @@ export const ScenarioDetail = ({ scenario }) => {
           <Divider variant="middle" />
         </Grid>
         <Grid item p={1}>
-          <Typography variant="body2" lineHeight="1" textAlign="justify" color="secondary" fontFamily="Gill Sans !important">{subtitle}</Typography>
+          <Typography variant="body2" lineHeight="1" color="secondary" fontFamily="Gill Sans !important">{subtitle}</Typography>
         </Grid>
         {/*<Grid item>*/}
         {/*  <PersonIcon sx={{ verticalAlign: 'middle', fontSize: '0.75rem' }}/><Typography variant="caption">&nbsp;{players} players</Typography>*/}
