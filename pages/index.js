@@ -16,6 +16,12 @@ export const Home = () => {
 
   useEffect(() => {
     setTitle('Catan Board Generator');
+    if (typeof window !== "undefined") {
+      document.getElementsByTagName("html").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
+      document.getElementsByTagName("body").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
+      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
+      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
+    }
   }, []);
 
   return (
