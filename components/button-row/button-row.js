@@ -8,12 +8,12 @@ import { ProgressCardsButton } from './progress-cards-button';
 import { DevCardsButton } from './dev-cards-button';
 import { useExpansionContext } from '../../contexts/expansion-context';
 
-export const ButtonRow = ({ generate, stats, top }) => {
+export const ButtonRow = ({ generate, stats }) => {
 
     const { expansion } = useExpansionContext();
 
     return (
-      <Grid container className={styles["button-row"]} top={top}>
+      <Grid container className={styles["button-row"]}>
         <Grid item xs={6} md={3} className={styles["button-row__item"]}>
             <HomeButton />
         </Grid>
