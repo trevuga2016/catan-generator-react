@@ -5,20 +5,17 @@ import { useRouter } from 'next/router';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTitleContext } from '../contexts/title-context';
 import { useEffect } from 'react';
+import { useBackgroundImage } from '../hooks/useBackgroundImage';
 
 export const Legal = () => {
 
   const router = useRouter();
   const { setTitle } = useTitleContext();
+  const { setBackgroundImage } = useBackgroundImage();
 
   useEffect(() => {
     setTitle('Legal');
-    if (typeof window !== "undefined") {
-      document.getElementsByTagName("html").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("body").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
-      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
-    }
+    setBackgroundImage('catan_backdrop.png');
   }, []);
 
   return(
