@@ -8,27 +8,24 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useTitleContext } from '../contexts/title-context';
+import { useBackgroundImage } from '../hooks/useBackgroundImage';
 
 export const Home = () => {
 
   const router = useRouter();
-  const { setTitle } = useTitleContext();
+  const { title, setTitle } = useTitleContext();
+  const { setBackgroundImage } = useBackgroundImage();
 
   useEffect(() => {
     setTitle('Catan Board Generator');
-    if (typeof window !== "undefined") {
-      document.getElementsByTagName("html").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("body").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
-      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
-    }
+    setBackgroundImage('catan_backdrop.png');
   }, []);
 
   return (
     <Grid container justifyContent="center">
       <Grid container direction="column" alignItems="center" width="max-content">
         <Head>
-          <title>Catan Board Generator</title>
+          <title>{title}</title>
           <link rel="icon" href="/catan-icon.ico" />
         </Head>
         <Grid item>

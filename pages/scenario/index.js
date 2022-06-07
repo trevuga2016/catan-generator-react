@@ -6,16 +6,19 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useRouter } from 'next/router';
 import { ShareButtons } from '../../components/share-buttons/share-buttons';
 import styles from './../../styles/home.module.scss';
-import { useTitleContext } from "../../contexts/title-context";
-import { useEffect } from "react";
+import { useTitleContext } from '../../contexts/title-context';
+import { useEffect } from 'react';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 export const ScenarioPage = () => {
 
   const router = useRouter();
   const { title, setTitle } = useTitleContext();
+  const { setBackgroundImage } = useBackgroundImage();
 
   useEffect(() => {
     setTitle('Scenario Selection');
+    setBackgroundImage('catan_backdrop.png');
   }, []);
 
   return(

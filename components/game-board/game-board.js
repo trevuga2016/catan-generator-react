@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
 import { useExpansionContext } from '../../contexts/expansion-context';
+import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 
 export const GameBoard = ({props}) => {
 
@@ -22,6 +23,7 @@ export const GameBoard = ({props}) => {
   const widthRef = useRef();
   const heightRef = useRef();
   const { expansion } = useExpansionContext();
+  const { setBackgroundImage } = useBackgroundImage();
 
   const [availableWidth, setAvailableWidth] = useState(0);
   const [availableHeight, setAvailableHeight] = useState(0);
@@ -30,18 +32,8 @@ export const GameBoard = ({props}) => {
   const [transformOrigin, setTransformOrigin] = useState(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && expansion?.includes("ck")) {
-      document.getElementsByTagName("html").item(0).style.background = "url(../ck-backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("body").item(0).style.background = "url(../ck-backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
-      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
-    } else {
-      document.getElementsByTagName("html").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("body").item(0).style.background = "url(../catan_backdrop.png) no-repeat center center fixed";
-      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
-      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
-    }
-  }, [expansion]);
+    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.png') : setBackgroundImage('catan_backdrop.png');
+  }, [expansion, scale]);
 
   useEffect(() => {
     setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);
