@@ -15,11 +15,11 @@ export const Legal = () => {
 
   useEffect(() => {
     setTitle('Legal');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return(
-    <Grid container direction="column" alignItems="center" spacing={2} textAlign="center">
+    <Grid container direction="column" alignItems="center" spacing={2} textAlign="center" position="absolute">
       <Head>
         <title>Legal | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />

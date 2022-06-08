@@ -15,11 +15,11 @@ export const Custom404 = () => {
 
   useEffect(() => {
     setTitle('404 - Page Not Found');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return(
-    <Grid container direction="column" alignItems="center">
+    <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
         <title>404 | Page Not Found</title>
         <link rel="icon" href="/catan-icon.ico" />

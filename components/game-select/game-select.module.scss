@@ -1,7 +1,15 @@
 .fieldset {
   background-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 2px outset #E7E2AB;
+  border-right: 2px inset #E7E2AB;
+  border-top: 2px inset #E7E2AB;
+  border-left: 2px outset #E7E2AB;
+  min-width: 350px;
+  @media only screen and (max-width: 600px) {
+    width: 90vw;
+  }
 }
 
 .button {
-  width: 100%;
+  width: 75%;
 }

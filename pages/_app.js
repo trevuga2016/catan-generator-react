@@ -7,6 +7,7 @@ import { ContentfulProvider } from '../contexts/contentful-context';
 import { ScenarioProvider } from '../contexts/scenario-context';
 import { TitleProvider } from '../contexts/title-context';
 import { ExpansionProvider } from '../contexts/expansion-context';
+import { Box } from '@mui/material';
 
 function CatanGenerator({ Component, pageProps }) {
   return(
@@ -16,6 +17,7 @@ function CatanGenerator({ Component, pageProps }) {
       <ScenarioProvider>
       <TitleProvider>
       <ExpansionProvider>
+        <Box id="background-image" width="100vw" height="100vh" position="fixed" />
         <Component {...pageProps} />
         <Footer />
       </ExpansionProvider>

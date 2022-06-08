@@ -18,11 +18,11 @@ export const Home = () => {
 
   useEffect(() => {
     setTitle('Catan Board Generator');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return (
-    <Grid container justifyContent="center">
+    <Grid container justifyContent="center" position="absolute">
       <Grid container direction="column" alignItems="center" width="max-content">
         <Head>
           <title>{title}</title>

@@ -10,6 +10,7 @@ import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
 import { useExpansionContext } from '../../contexts/expansion-context';
 import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import styles from './game-board.module.scss';
 
 export const GameBoard = ({props}) => {
 
@@ -27,18 +28,24 @@ export const GameBoard = ({props}) => {
 
   const [availableWidth, setAvailableWidth] = useState(0);
   const [availableHeight, setAvailableHeight] = useState(0);
+  const [boardHeight, setBoardHeight] = useState(undefined);
   const [scale, setScale] = useState(1);
-  const [topMargin, setTopMargin] = useState(0);
   const [transformOrigin, setTransformOrigin] = useState(null);
 
   useEffect(() => {
-    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.png') : setBackgroundImage('catan_backdrop.png');
-  }, [expansion, scale]);
+    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.webp') : setBackgroundImage('catan_backdrop.webp');
+  }, [expansion]);
 
   useEffect(() => {
     setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);
     setAvailableHeight(typeof window !== "undefined" ? window.innerHeight : 0);
   }, [availableWidth, availableHeight]);
+
+  useEffect(() => {
+    const boardHeight = heightRef.current.clientHeight;
+    const calcHeight = boardHeight * scale;
+    setBoardHeight(calcHeight);
+  }, [scale]);
 
   useEffect(() => {
     const boardWidth = widthRef.current.clientWidth;
@@ -47,19 +54,16 @@ export const GameBoard = ({props}) => {
     if (availableWidth < boardWidth) {
       setScale(availableWidth / boardWidth);
       setTransformOrigin('top left');
-      setTopMargin((boardHeight * (availableWidth / boardWidth)) + titleRef.current.clientHeight + 30);
     } else if (totalHeight > availableHeight) {
       setScale(availableHeight / totalHeight);
       setTransformOrigin('top center');
-      setTopMargin((boardHeight * (availableHeight / totalHeight)) + titleRef.current.clientHeight + 30);
     } else {
       setScale(1);
-      setTopMargin(boardHeight + titleRef.current.clientHeight + 30);
     }
   }, [boardData]);
 
   return(
-    <>
+    <div className={styles["game-board"]}>
       <Head>
         <title>{title} | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico"/>
@@ -75,20 +79,22 @@ export const GameBoard = ({props}) => {
           </Grid>
         }
       </Grid>
-      <Grid container direction="column" ref={heightRef} alignItems="center"
-            sx={{transform: `scale(${scale})`, transformOrigin: `${transformOrigin}`}}>
-        <Grid item ref={widthRef}>
-          {boardData?.map((row, index) => {
-            return (
-              <HexRow row={row.row} key={index}/>
-            )
-          })}
+      <Grid container height={boardHeight}>
+        <Grid container direction="column" ref={heightRef} alignItems="center"
+              sx={{transform: `scale(${scale})`, transformOrigin: `${transformOrigin}`}}>
+          <Grid item ref={widthRef}>
+            {boardData?.map((row, index) => {
+              return (
+                <HexRow row={row.row} key={index}/>
+              )
+            })}
+          </Grid>
         </Grid>
       </Grid>
       <Grid container direction="column" alignItems="center">
-        <ButtonRow generate={() => generateBoardData()} stats={stats} top={topMargin}/>
+        <ButtonRow generate={() => generateBoardData()} stats={stats} />
       </Grid>
-    </>
+    </div>
   );
 }
 

@@ -32,20 +32,18 @@ export const GameSelect = () => {
     }, []);
 
     return(
-      <Grid container direction="column">
-        <fieldset className={styles["fieldset"]}>
-            <Grid item px={1} pt={2}>
-              { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
-            </Grid>
-            <Grid item textAlign="center">
-              { !isLoading ? <HarborSelect isDemo={scenario === 'demo'}/> : <Skeleton variant="rectangular" width={250} height={200} animation="wave" /> }
-            </Grid>
-            <Grid item width="100%" p={1}>
-              <Button variant="contained" onClick={handleSubmit} disabled={scenario === ''} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>
-                Generate
-              </Button>
-            </Grid>
-        </fieldset>
+      <Grid container direction="column" className={styles["fieldset"]}>
+        <Grid item px={2} pt={3}>
+          { !isLoading ? <ScenarioSelect scenarios={scenarios} /> : <Skeleton width="100%" animation="wave" />}
+        </Grid>
+        <Grid item textAlign="center">
+          { !isLoading ? <HarborSelect isDemo={scenario === 'demo'}/> : <Skeleton variant="rectangular" sx={{ marginX: 2, marginY: 1}} width={350} height={200} animation="wave" /> }
+        </Grid>
+        <Grid item width="100%" pt={1} pb={2} textAlign="center">
+          <Button variant="contained" onClick={handleSubmit} disabled={scenario === ''} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>
+            Generate
+          </Button>
+        </Grid>
       </Grid>
     );
 }
