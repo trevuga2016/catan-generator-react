@@ -15,7 +15,7 @@ export const Custom404 = () => {
 
   useEffect(() => {
     setTitle('404 - Page Not Found');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return(

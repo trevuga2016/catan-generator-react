@@ -18,7 +18,7 @@ export const ScenarioPage = () => {
 
   useEffect(() => {
     setTitle('Scenario Selection');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return(

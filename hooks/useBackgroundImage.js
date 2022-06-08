@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const useBackgroundImage = () => {
 
-  const [backgroundImage, setBackgroundImage] = useState('catan_backdrop.png');
+  const [backgroundImage, setBackgroundImage] = useState('catan_backdrop.webp');
 
   const updateBackgroundImage = () => {
     if (typeof window !== "undefined") {

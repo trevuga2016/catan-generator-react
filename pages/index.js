@@ -18,7 +18,7 @@ export const Home = () => {
 
   useEffect(() => {
     setTitle('Catan Board Generator');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return (

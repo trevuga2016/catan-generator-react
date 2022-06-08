@@ -33,7 +33,7 @@ export const GameBoard = ({props}) => {
   const [transformOrigin, setTransformOrigin] = useState(null);
 
   useEffect(() => {
-    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.png') : setBackgroundImage('catan_backdrop.png');
+    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.webp') : setBackgroundImage('catan_backdrop.webp');
   }, [expansion]);
 
   useEffect(() => {

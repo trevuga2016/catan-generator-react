@@ -15,7 +15,7 @@ export const Legal = () => {
 
   useEffect(() => {
     setTitle('Legal');
-    setBackgroundImage('catan_backdrop.png');
+    setBackgroundImage('catan_backdrop.webp');
   }, []);
 
   return(
