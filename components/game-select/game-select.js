@@ -40,7 +40,7 @@ export const GameSelect = () => {
             <Grid item textAlign="center">
               { !isLoading ? <HarborSelect isDemo={scenario === 'demo'}/> : <Skeleton variant="rectangular" width={250} height={200} animation="wave" /> }
             </Grid>
-            <Grid item width="100%" p={1}>
+            <Grid item width="100%" p={1} textAlign="center">
               <Button variant="contained" onClick={handleSubmit} disabled={scenario === ''} size="small" endIcon={<AutorenewIcon />} className={styles["button"]}>
                 Generate
               </Button>

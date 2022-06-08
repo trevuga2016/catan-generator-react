@@ -7,9 +7,9 @@ export const ScenarioSelect = ({ scenarios }) => {
   const enableDemo = process.env.NEXT_PUBLIC_ENABLE_DEMO === 'true';
 
   return(
-    <FormControl size="small">
+    <FormControl size="small" sx={{ minWidth: 350 }}>
         <InputLabel>Scenario Selection</InputLabel>
-        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection" sx={{ minWidth: 300 }}>
+        <Select value={scenario} onChange={(e) => setScenario(e?.target?.value)} label="Scenario Selection">
           {
             scenarios?.map((entry, i) => {
               return(
