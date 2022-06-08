@@ -53,7 +53,7 @@ export const GameBoard = ({props}) => {
     const totalHeight = boardHeight + titleRef.current.clientHeight + 161;
     if (availableWidth < boardWidth) {
       setScale(availableWidth / boardWidth);
-      setTransformOrigin('top left');
+      setTransformOrigin('top center');
     } else if (totalHeight > availableHeight) {
       setScale(availableHeight / totalHeight);
       setTransformOrigin('top center');
