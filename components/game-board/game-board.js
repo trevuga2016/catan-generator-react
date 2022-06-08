@@ -10,6 +10,7 @@ import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
 import { useExpansionContext } from '../../contexts/expansion-context';
 import { useBackgroundImage } from '../../hooks/useBackgroundImage';
+import styles from './game-board.module.scss';
 
 export const GameBoard = ({props}) => {
 
@@ -62,7 +63,7 @@ export const GameBoard = ({props}) => {
   }, [boardData]);
 
   return(
-    <>
+    <div className={styles["game-board"]}>
       <Head>
         <title>{title} | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico"/>
@@ -93,7 +94,7 @@ export const GameBoard = ({props}) => {
       <Grid container direction="column" alignItems="center">
         <ButtonRow generate={() => generateBoardData()} stats={stats} />
       </Grid>
-    </>
+    </div>
   );
 }
 

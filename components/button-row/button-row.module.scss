@@ -1,9 +1,8 @@
 .button-row {
-  position: absolute;
-  bottom: auto;
+  position: relative;
   width: 50vw !important;
   justify-content: center;
-  padding: 30px 0px;
+  padding: 30px 0;
   @media only screen and (max-width: 600px) {
     width: 100vw !important;
   }

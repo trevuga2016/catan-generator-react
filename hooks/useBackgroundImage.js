@@ -6,10 +6,8 @@ export const useBackgroundImage = () => {
 
   const updateBackgroundImage = () => {
     if (typeof window !== "undefined") {
-      document.getElementsByTagName("html").item(0).style.background = `url(../${backgroundImage}) no-repeat center center fixed`;
-      document.getElementsByTagName("body").item(0).style.background = `url(../${backgroundImage}) no-repeat center center fixed`;
-      document.getElementsByTagName("html").item(0).style.backgroundSize = "cover";
-      document.getElementsByTagName("body").item(0).style.backgroundSize = "cover";
+      document.getElementById("background-image").style.background = `url(../${backgroundImage}) no-repeat center center`;
+      document.getElementById("background-image").style.backgroundSize = "cover";
     }
   }
 

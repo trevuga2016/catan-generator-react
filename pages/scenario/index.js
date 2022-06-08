@@ -22,7 +22,7 @@ export const ScenarioPage = () => {
   }, []);
 
   return(
-    <Grid container direction="column" alignItems="center">
+    <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
         <title>{title} | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico"/>

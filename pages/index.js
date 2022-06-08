@@ -22,7 +22,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <Grid container justifyContent="center">
+    <Grid container justifyContent="center" position="absolute">
       <Grid container direction="column" alignItems="center" width="max-content">
         <Head>
           <title>{title}</title>

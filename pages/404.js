@@ -19,7 +19,7 @@ export const Custom404 = () => {
   }, []);
 
   return(
-    <Grid container direction="column" alignItems="center">
+    <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
         <title>404 | Page Not Found</title>
         <link rel="icon" href="/catan-icon.ico" />
