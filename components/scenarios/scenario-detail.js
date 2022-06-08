@@ -32,7 +32,7 @@ export const ScenarioDetail = ({ scenario }) => {
               <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip"]} />
             </Grid>
           }
-          <Image src={`https:${imageUrl}?w=2600&h=1500&fm=webp`} width={2600} height={1500} alt={imageUrl} loading="lazy" className={styles["detail__image"]} />
+          <Image src={`https:${imageUrl}?w=462&h=275&fm=webp`} width={462} height={275} alt={imageUrl} loading="lazy" className={styles["detail__image"]} />
         </Grid>
         <Grid item pt={1} px={1}>
           <Typography variant="h6" lineHeight="1">{title}</Typography>
