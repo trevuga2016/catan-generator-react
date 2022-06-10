@@ -8,6 +8,7 @@
 
 .button-skeleton {
   width: 70vw !important;
+  justify-content: center;
   @media only screen and (max-width: 600px) {
     width: 100vw !important;
   }

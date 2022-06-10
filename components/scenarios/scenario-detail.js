@@ -1,25 +1,21 @@
 import { ButtonBase, Chip, Divider, Grid, Modal, Typography } from '@mui/material';
 import styles from './scenarios.module.scss';
-import { useEffect, useState } from 'react';
-import { useGameContext } from '../game-select/game-context';
+import { useState } from 'react';
+import { useGameContext } from '../../contexts/game-context';
 import { HarborModal } from './harbor-modal';
 import Image from 'next/image';
 
 export const ScenarioDetail = ({ scenario }) => {
 
-  const { title, subtitle, imageUrl, pageUrl, disabled } = scenario;
+  const { title, subtitle, imageUrl, scenarioUrl, expansionUrl, disabled } = scenario;
   const [open, setOpen] = useState(false);
-  const { setScenario, setHarbors } = useGameContext();
+  const { setScenario, setExpansion } = useGameContext();
 
   const handleButtonClick = () => {
     setOpen(true);
-    setScenario(pageUrl);
+    setScenario(scenarioUrl);
+    setExpansion(expansionUrl);
   }
-
-  useEffect(() => {
-    setScenario('');
-    setHarbors('hide');
-  }, []);
 
   return(
     <>
@@ -27,7 +23,7 @@ export const ScenarioDetail = ({ scenario }) => {
       <Grid container direction="column" className={styles["detail"]}>
         <Grid item>
           {
-            scenario?.hasOwnProperty('expansionName') &&
+            expansionUrl &&
             <Grid container justifyContent="flex-end">
               <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip"]} />
             </Grid>

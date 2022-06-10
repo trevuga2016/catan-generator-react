@@ -1,16 +1,23 @@
 .scenario-selection {
   font-family: Gill Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
-  width: 100% !important;
+  width: 15vw;
+  @media only screen and (max-width: 600px) {
+    width: 70vw !important;
+  }
+  @media only screen and (min-width: 600px) {
+    width: 40vw !important;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 30vw !important;
+  }
+  @media only screen and (min-width: 992px) {
+    width: 30vw !important;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 20vw !important;
+  }
 }
-
-//.share-buttons {
-//  @media only screen and (max-width: 600px) {
-//    position: absolute;
-//    top: auto;
-//    bottom: 0;
-//  }
-//}
 
 .scenario-home {
   width: 25vw;

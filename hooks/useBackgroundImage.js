@@ -12,7 +12,7 @@ export const useBackgroundImage = () => {
   }
 
   useEffect(() => {
-    updateBackgroundImage();
+    backgroundImage && updateBackgroundImage();
   }, [backgroundImage]);
 
   return { setBackgroundImage };
