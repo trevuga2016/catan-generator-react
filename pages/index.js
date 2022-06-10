@@ -1,47 +1,41 @@
-import Head from 'next/head';
 import { Header } from '../components/header/header';
-import { GameSelect } from '../components/game-select/game-select';
-import { Button, Grid } from '@mui/material';
+import { CircularProgress, Grid, Skeleton, Typography } from '@mui/material';
 import { ShareButtons } from '../components/share-buttons/share-buttons';
-import styles from '../styles/home.module.scss';
-import DescriptionIcon from '@mui/icons-material/Description';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import Head from 'next/head';
 import { useTitleContext } from '../contexts/title-context';
 import { useBackgroundImage } from '../hooks/useBackgroundImage';
+import { useEffect } from 'react';
+import { usePageDefaults } from "../hooks/usePageDefaults";
+import { Scenarios } from '../components/scenarios/scenarios';
 
 export const Home = () => {
 
-  const router = useRouter();
   const { title, setTitle } = useTitleContext();
   const { setBackgroundImage } = useBackgroundImage();
+  const { pageDefaults, isLoading } = usePageDefaults();
 
   useEffect(() => {
-    setTitle('Catan Board Generator');
+    setTitle(pageDefaults?.title);
     setBackgroundImage('catan_backdrop.webp');
-  }, []);
+  });
 
-  return (
-    <Grid container justifyContent="center" position="absolute">
-      <Grid container direction="column" alignItems="center" width="max-content">
-        <Head>
-          <title>{title}</title>
-          <link rel="icon" href="/catan-icon.ico" />
-        </Head>
-        <Grid item>
-          <Header />
-        </Grid>
-        <Grid item>
-          <GameSelect />
-        </Grid>
-        <Grid item pt={4} width="75%">
-          <Button variant="contained" onClick={() => router.push('/scenario')} size="small" endIcon={<DescriptionIcon />} className={styles["scenario-selection"]}>
-            Scenario Descriptions
-          </Button>
-        </Grid>
-        <Grid item p={4} className={styles["share-buttons"]}>
-          <ShareButtons />
-        </Grid>
+  return(
+    <Grid container direction="column" alignItems="center" position="absolute">
+      <Head>
+        <title>{title}</title>
+        <link rel="icon" href="/catan-icon.ico" />
+      </Head>
+      <Grid item>
+        { !isLoading ? <Header /> : <Skeleton variant="text" width="50vw" height={75} animation="wave" /> }
+      </Grid>
+      <Grid item pb={2} px={2} textAlign="center">
+        { !isLoading ? <Typography variant="body1">{pageDefaults?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
+      </Grid>
+      <Grid item>
+        { !isLoading ? <Scenarios /> : <CircularProgress /> }
+      </Grid>
+      <Grid item p={4}>
+        <ShareButtons />
       </Grid>
     </Grid>
   );

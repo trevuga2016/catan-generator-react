@@ -2,13 +2,13 @@ import { Switch } from '@mui/material';
 import { useEffect } from 'react';
 import { useTitleContext } from '../../contexts/title-context';
 import { useRouter } from 'next/router';
-import { useExpansionContext } from '../../contexts/expansion-context';
+import { useGameContext } from '../../contexts/game-context';
 
 export const ExpansionSwitch = ({ expansionProps, parentTitle }) => {
 
-  const { expansion, setExpansion } = useExpansionContext();
-  const { setTitle } = useTitleContext();
   const router = useRouter();
+  const { expansion, setExpansion } = useGameContext();
+  const { setTitle } = useTitleContext();
 
   const handleChange = (e) => {
     if (e.target.checked) {

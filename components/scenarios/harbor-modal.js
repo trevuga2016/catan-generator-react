@@ -1,29 +1,25 @@
 import styles from './scenarios.module.scss';
 import { Box, Button, Grid } from '@mui/material';
-import { HarborSelect } from '../game-select/harbor-select';
+import { HarborSelect } from '../harbor-select/harbor-select';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { useRouter } from 'next/router';
-import { useGameContext } from '../game-select/game-context';
+import { useGameContext } from '../../contexts/game-context';
 
 export const HarborModal = () => {
 
   const router = useRouter();
-  const { scenario, harbors } = useGameContext();
+  const { scenario, harbors, expansion } = useGameContext();
 
   const handleSubmit = () => {
-    const values = scenario.split(',');
-    if (values.length > 1) {
-      router.push(`/scenario/${values[0]}?ports=${harbors}&expansion=${values[1]}`);
-    } else {
-      router.push(`/scenario/${scenario}?ports=${harbors}`);
-    }
+    const route = expansion ? `/scenario/${scenario}?ports=${harbors}&expansion=${expansion}` : `/scenario/${scenario}?ports=${harbors}`;
+    router.push(route);
   }
 
   return(
     <Box className={styles["harbor-modal"]}>
       <Grid container direction="column">
         <Grid item>
-          <HarborSelect isScenarioSelect="true" />
+          <HarborSelect />
         </Grid>
         <Grid item pt={1}>
           <Button variant="contained" onClick={handleSubmit} size="small" endIcon={<AutorenewIcon />} className={styles["harbor-modal__button"]}>

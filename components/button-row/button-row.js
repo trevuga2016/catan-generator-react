@@ -6,11 +6,11 @@ import { CostsButton } from './costs-button';
 import { StatsButton } from './stats-button';
 import { ProgressCardsButton } from './progress-cards-button';
 import { DevCardsButton } from './dev-cards-button';
-import { useExpansionContext } from '../../contexts/expansion-context';
+import { useGameContext } from '../../contexts/game-context';
 
 export const ButtonRow = ({ generate, stats }) => {
 
-    const { expansion } = useExpansionContext();
+    const { expansion } = useGameContext();
 
     return (
       <Grid container className={styles["button-row"]}>

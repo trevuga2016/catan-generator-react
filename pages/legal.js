@@ -19,26 +19,26 @@ export const Legal = () => {
   }, []);
 
   return(
-    <Grid container direction="column" alignItems="center" spacing={2} textAlign="center" position="absolute">
+    <Grid container direction="column" alignItems="center" textAlign="center" position="absolute">
       <Head>
         <title>Legal | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
-      <Grid item xs={12}>
+      <Grid item>
         <Header />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} px={2} py={1}>
         The contents of this application are original work and are not to be used without permission.
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} px={2} py={1}>
         All Catan images, names, and associated likenesses are licensed trademarks of&nbsp;
         <Link href="https://www.catan.com/" color="secondary">Catan GmbH and Catan Studio</Link>.
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} px={2} py={1}>
         Check out the project over on&nbsp;
         <Link href="https://github.com/trevuga2016/catan-generator-react" color="secondary">GitHub</Link>!
       </Grid>
-      <Grid item>
+      <Grid item py={1}>
         <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>
           Home
         </Button>

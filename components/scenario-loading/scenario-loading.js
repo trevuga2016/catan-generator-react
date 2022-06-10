@@ -17,16 +17,19 @@ export const ScenarioLoading = () => {
         <CircularProgress />
       </Grid>
       <Grid container className={styles["button-skeleton"]}>
-        <Grid item xs={6} md={3} p={1}>
+        <Grid item xs={6} md={3} px={1}>
           <Skeleton height="70px" animation="wave" />
         </Grid>
-        <Grid item xs={6} md={3} p={1}>
+        <Grid item xs={6} md={3} px={1}>
           <Skeleton height="70px" animation="wave" />
         </Grid>
-        <Grid item xs={6} md={3} p={1}>
+        <Grid item xs={6} md={3} px={1}>
           <Skeleton height="70px" animation="wave" />
         </Grid>
-        <Grid item xs={6} md={3} p={1}>
+        <Grid item xs={6} md={3} px={1}>
+          <Skeleton height="70px" animation="wave" />
+        </Grid>
+        <Grid item xs={6} md={3} px={1}>
           <Skeleton height="70px" animation="wave" />
         </Grid>
       </Grid>

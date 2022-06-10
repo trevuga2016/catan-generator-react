@@ -8,23 +8,21 @@ import { Header } from '../header/header';
 import { useRouter } from 'next/router';
 import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
-import { useExpansionContext } from '../../contexts/expansion-context';
-import { useBackgroundImage } from '../../hooks/useBackgroundImage';
 import styles from './game-board.module.scss';
+import { useBackgroundImage } from "../../hooks/useBackgroundImage";
+import { useGameContext } from "../../contexts/game-context";
 
-export const GameBoard = ({props}) => {
+export const GameBoard = ({ props }) => {
 
   const router = useRouter();
-  const port = router?.query['ports'];
-
-  const { boardData, stats, generateBoardData } = useCatanLogic(props, port);
+  const { boardData, stats, generateBoardData } = useCatanLogic(props, router?.query['ports']);
   const { title } = useTitleContext();
+  const { setBackgroundImage } = useBackgroundImage();
+  const { expansion } = useGameContext();
 
   const titleRef = useRef();
   const widthRef = useRef();
   const heightRef = useRef();
-  const { expansion } = useExpansionContext();
-  const { setBackgroundImage } = useBackgroundImage();
 
   const [availableWidth, setAvailableWidth] = useState(0);
   const [availableHeight, setAvailableHeight] = useState(0);
@@ -34,7 +32,7 @@ export const GameBoard = ({props}) => {
 
   useEffect(() => {
     expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.webp') : setBackgroundImage('catan_backdrop.webp');
-  }, [expansion]);
+  });
 
   useEffect(() => {
     setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);
@@ -75,7 +73,7 @@ export const GameBoard = ({props}) => {
         {
           props?.expansions?.length > 0 &&
           <Grid item pb={2}>
-            <Expansions props={props}/>
+            <Expansions props={props} />
           </Grid>
         }
       </Grid>

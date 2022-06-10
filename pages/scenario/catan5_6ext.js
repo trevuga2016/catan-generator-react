@@ -5,7 +5,7 @@ import { ScenarioLoading } from '../../components/scenario-loading/scenario-load
 export const Catan5_6Ext = () => {
 
     const { scenarios, isLoading } = useScenarioContext();
-    const props = scenarios !== null ? scenarios.find(scenario => scenario?.pageUrl === 'catan5_6ext') : undefined;
+    const props = scenarios !== null ? scenarios.find(scenario => scenario?.scenarioUrl === 'catan5_6ext') : undefined;
 
     return(
       !isLoading ? <GameBoard props={props} /> : <ScenarioLoading />
