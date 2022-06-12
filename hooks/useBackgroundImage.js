@@ -7,7 +7,7 @@ export const useBackgroundImage = () => {
   const updateBackgroundImage = () => {
     if (typeof window !== "undefined") {
       if (window.matchMedia("(max-width: 600px)").matches && backgroundImage?.includes('ck-backdrop')) {
-        document.getElementById("background-image").style.background = `url(../ck-backdrop_600px.png) no-repeat center center`;
+        document.getElementById("background-image").style.background = `url(../ck-backdrop_600px.webp) no-repeat center center`;
         document.getElementById("background-image").style.backgroundSize = "cover";
       }  else {
         document.getElementById("background-image").style.background = `url(../${backgroundImage}) no-repeat center center`;
