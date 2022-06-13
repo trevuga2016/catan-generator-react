@@ -41,7 +41,7 @@ export const Legal = () => {
         </Button>
       </Grid>
     </Grid> :
-    <Grid container direction="column" alignItems="center">
+    <Grid container direction="column" alignItems="center" position="absolute">
       <Grid item pt={2}>
         <Skeleton variant="text" width="50vw" height={75} animation="wave" />
       </Grid>

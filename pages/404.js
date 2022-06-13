@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Skeleton, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import HomeIcon from '@mui/icons-material/Home';
 import { Header } from '../components/header/header';
@@ -27,6 +27,7 @@ export const Custom404 = () => {
   }
 
   return(
+    !isLoading ?
     <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
         <title>{title}</title>
@@ -46,7 +47,23 @@ export const Custom404 = () => {
           Home
         </Button>
       </Grid>
-    </Grid>
+    </Grid> :
+      <Grid container direction="column" alignItems="center" position="absolute">
+        <Grid item pt={2}>
+          <Skeleton variant="text" width="50vw" height={75} animation="wave" />
+        </Grid>
+        <Grid item>
+          <Skeleton variant="text" width="50vw" height={40} animation="wave" />
+        </Grid>
+        <Grid item my={2}>
+          <Skeleton variant="rectangular" width={278} height={415} animation="wave" />
+        </Grid>
+        <Grid item>
+          <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>
+            Home
+          </Button>
+        </Grid>
+      </Grid>
     ); 
 }
 

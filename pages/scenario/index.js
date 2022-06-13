@@ -5,23 +5,26 @@ import { CircularProgress, Grid, Typography } from '@mui/material';
 import { Header } from '../../components/header/header';
 import { useTitleContext } from '../../contexts/title-context';
 import { useBackgroundProps } from '../../hooks/useBackgroundProps';
+import { useRedirectPageContent } from '../../hooks/useRedirectPageContent';
 
 export const Scenario = () => {
 
   const router = useRouter();
-  const { setTitle } = useTitleContext();
-  const { setBackgroundImage } = useBackgroundProps();
+  const { title, setTitle } = useTitleContext();
+  const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
+  const { redirectPageContent } = useRedirectPageContent();
 
   useEffect(() => {
-    setTitle('Catan Board Generator');
-    setBackgroundImage('catan_backdrop.webp');
-    router.push('/');
+    setTitle(redirectPageContent?.title);
+    setBackgroundImage(redirectPageContent?.backgroundImage);
+    setBackgroundColor(redirectPageContent?.backgroundColor);
+    redirectPageContent?.redirectUrl ? router.push(`/${redirectPageContent?.redirectUrl}`) : router.push('/');
   });
 
   return(
     <>
       <Head>
-        <title>Catan Board Generator</title>
+        <title>{title}</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid container direction="column" alignItems="center" position="absolute">
@@ -29,7 +32,7 @@ export const Scenario = () => {
           <Header />
         </Grid>
         <Grid item pb={2}>
-          <Typography variant="h6">Redirecting...</Typography>
+          <Typography variant="h6">{redirectPageContent?.message}</Typography>
         </Grid>
         <Grid item>
           <CircularProgress />
