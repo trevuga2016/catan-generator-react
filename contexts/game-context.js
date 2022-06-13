@@ -4,8 +4,8 @@ const GameContext = createContext(null);
 
 export const GameProvider = ({ children }) => {
 
-  const [scenario, setScenario] = useState('');
-  const [harbors, setHarbors] = useState('hide');
+  const [scenario, setScenario] = useState(null);
+  const [harbors, setHarbors] = useState(null);
   const [expansion, setExpansion] = useState(null);
 
   return (

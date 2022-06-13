@@ -4,6 +4,17 @@ import styles from './building-costs.module.scss';
 
 export const BuildingCosts = ({ open, onClose }) => {
 
+  // const { scenarios, isLoading } = useScenarioContext();
+  // const { scenario, expansion } = useGameContext();
+  // console.log(JSON.stringify(scenario));
+  // const [props, setProps] = useState(null); === scenario);
+  //
+  // useEffect(() => {
+  //   console.log(JSON.stringify(scenarios));
+  //   setProps(scenarios.find(s => s?.scenarioUrl === scenario));
+  //   console.log(JSON.stringify(props));
+  // }, []);
+
     const buildingCosts = [
       { buildType: 'Road', costs: ['Lumber', 'Brick'], points: '0' },
       { buildType: 'Settlement', costs: ['Lumber', 'Brick', 'Grain', 'Wool'], points: '1' },
