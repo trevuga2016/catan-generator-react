@@ -9,16 +9,14 @@ import { useRouter } from 'next/router';
 import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
 import styles from './game-board.module.scss';
-import { useBackgroundImage } from "../../hooks/useBackgroundImage";
-import { useGameContext } from "../../contexts/game-context";
+import { useGameContext } from '../../contexts/game-context';
 
 export const GameBoard = ({ props }) => {
 
   const router = useRouter();
-  const { boardData, stats, generateBoardData } = useCatanLogic(props, router?.query['ports']);
+  const { setScenario, harbors, setHarbors } = useGameContext();
+  const { boardData, stats, generateBoardData } = useCatanLogic(props, harbors);
   const { title } = useTitleContext();
-  const { setBackgroundImage } = useBackgroundImage();
-  const { expansion } = useGameContext();
 
   const titleRef = useRef();
   const widthRef = useRef();
@@ -31,7 +29,8 @@ export const GameBoard = ({ props }) => {
   const [transformOrigin, setTransformOrigin] = useState(null);
 
   useEffect(() => {
-    expansion?.includes("ck") ? setBackgroundImage('ck-backdrop.webp') : setBackgroundImage('catan_backdrop.webp');
+    setScenario(props?.scenarioUrl);
+    setHarbors(router?.query['ports']);
   });
 
   useEffect(() => {

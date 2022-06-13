@@ -12,7 +12,7 @@ export const Expansions = ({ props }) => {
             return(
               <Grid item key={i}>
                 <FormGroup>
-                  <FormControlLabel control={<ExpansionSwitch expansionProps={expansion} parentTitle={props?.title} />} label={expansion?.fields?.expansionName} />
+                  <FormControlLabel control={<ExpansionSwitch expansionProps={expansion} props={props} />} label={expansion?.fields?.expansionName} />
                 </FormGroup>
               </Grid>
             );

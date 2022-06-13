@@ -1,14 +1,13 @@
 import { GameBoard } from '../../components/game-board/game-board';
-import { useScenarioContext } from '../../contexts/scenario-context';
 import { ScenarioLoading } from '../../components/scenario-loading/scenario-loading';
+import { useScenarioContent } from '../../hooks/useScenarioContent';
 
 export const Catan = () => {
 
-    const { scenarios, isLoading } = useScenarioContext();
-    const props = scenarios !== null ? scenarios.find(scenario => scenario?.scenarioUrl === 'catan') : undefined;
+    const { scenarioContent, isLoading } = useScenarioContent(process.env.NEXT_PUBLIC_CATAN_SCENARIO_ID);
 
     return(
-        !isLoading ? <GameBoard props={props} /> : <ScenarioLoading />
+        !isLoading ? <GameBoard props={scenarioContent} /> : <ScenarioLoading />
     );
 };
 

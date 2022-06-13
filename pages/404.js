@@ -1,37 +1,45 @@
 import Head from 'next/head';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import HomeIcon from '@mui/icons-material/Home';
 import { Header } from '../components/header/header';
 import { useTitleContext } from '../contexts/title-context';
 import { useEffect } from 'react';
-import { useBackgroundImage } from '../hooks/useBackgroundImage';
+import { useBackgroundProps } from '../hooks/useBackgroundProps';
+import { useNotFoundPageContent } from '../hooks/useNotFoundPageContent';
+import Image from 'next/image';
 
 export const Custom404 = () => {
 
   const router = useRouter();
-  const { setTitle } = useTitleContext();
-  const { setBackgroundImage } = useBackgroundImage();
+  const { title, setTitle } = useTitleContext();
+  const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
+  const { notFoundPageContent, isLoading } = useNotFoundPageContent();
 
   useEffect(() => {
-    setTitle('404 - Page Not Found');
-    setBackgroundImage('catan_backdrop.webp');
-  }, []);
+    setTitle(notFoundPageContent?.title);
+    setBackgroundImage(notFoundPageContent?.backgroundImage);
+    setBackgroundColor(notFoundPageContent?.backgroundColor);
+  });
+
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&h=415&fm=webp&q=${quality || 75}`
+  }
 
   return(
     <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
-        <title>404 | Page Not Found</title>
+        <title>{title}</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid item>
           <Header />
       </Grid>
       <Grid item mb={2}>
-          The page you are looking for does not exist.
+          <Typography variant="body1">{notFoundPageContent?.message}</Typography>
       </Grid>
       <Grid item mb={2}>
-          <img src="/klaus.png"/>
+        <Image loader={imageLoader} src={`https:${notFoundPageContent?.errorPicture?.url}`} width={278} height={415} alt={notFoundPageContent?.errorPicture?.altText} />
       </Grid>
       <Grid item>
         <Button variant="contained" onClick={() => router.push('/')} size="small" endIcon={<HomeIcon />} sx={{ fontFamily: 'Gill Sans !important' }}>

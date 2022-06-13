@@ -3,20 +3,21 @@ import { CircularProgress, Grid, Skeleton, Typography } from '@mui/material';
 import { ShareButtons } from '../components/share-buttons/share-buttons';
 import Head from 'next/head';
 import { useTitleContext } from '../contexts/title-context';
-import { useBackgroundImage } from '../hooks/useBackgroundImage';
+import { useBackgroundProps } from '../hooks/useBackgroundProps';
 import { useEffect } from 'react';
-import { usePageDefaults } from "../hooks/usePageDefaults";
+import { useHomePageContent } from '../hooks/useHomePageContent';
 import { Scenarios } from '../components/scenarios/scenarios';
 
 export const Home = () => {
 
   const { title, setTitle } = useTitleContext();
-  const { setBackgroundImage } = useBackgroundImage();
-  const { pageDefaults, isLoading } = usePageDefaults();
+  const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
+  const { homePageContent, isLoading } = useHomePageContent();
 
   useEffect(() => {
-    setTitle(pageDefaults?.title);
-    setBackgroundImage('catan_backdrop.webp');
+    setTitle(homePageContent?.title);
+    setBackgroundImage(homePageContent?.backgroundImage);
+    setBackgroundColor(homePageContent?.backgroundColor);
   });
 
   return(
@@ -29,7 +30,7 @@ export const Home = () => {
         { !isLoading ? <Header /> : <Skeleton variant="text" width="50vw" height={75} animation="wave" /> }
       </Grid>
       <Grid item pb={2} px={2} textAlign="center">
-        { !isLoading ? <Typography variant="body1">{pageDefaults?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
+        { !isLoading ? <Typography variant="body1">{homePageContent?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
       </Grid>
       <Grid item>
         { !isLoading ? <Scenarios /> : <CircularProgress /> }
