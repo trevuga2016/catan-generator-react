@@ -1,17 +1,20 @@
 import { Avatar, Grid, ListItemAvatar, Typography } from '@mui/material';
+import styles from './building-costs.module.scss';
 
 export const BuildingCostsItem = ({ buildingCost }) => {
   return(
-    <Grid item p={1} m={0.5} border="1px solid #83B5DA">
-      <Grid container direction="column" alignItems="center">
+    <Grid item className={styles["modal__container__item"]}>
+      <Grid container direction="column" className={styles["modal__container__item__container"]}>
         <Typography variant="body1">{buildingCost?.fields?.buildType}</Typography>
-        <Grid container direction="row" wrap="nowrap" width="fit-content" align="center">
+        <Grid container direction="row" wrap="nowrap" align="center" className={styles["modal__container__item__resources"]}>
           {
-            buildingCost?.fields?.resources?.map((resource) => {
+            buildingCost?.fields?.resources?.map((resource, i) => {
               return (
-                <ListItemAvatar>
-                  <Avatar src={resource?.fields?.icon?.fields?.file?.url}/>
-                </ListItemAvatar>
+                <div key={i}>
+                  <ListItemAvatar>
+                    <Avatar src={resource?.fields?.icon?.fields?.file?.url}/>
+                  </ListItemAvatar>
+                </div>
               );
             })
           }

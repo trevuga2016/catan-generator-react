@@ -14,7 +14,7 @@ export const BuildingCosts = ({open, onClose}) => {
           <Grid item>
             <Typography variant="h5" p={1}>&#8213;&nbsp;Building Costs&nbsp;&#8213;</Typography>
           </Grid>
-          <Grid container direction="row" justifyContent="center">
+          <Grid container direction="row" className={styles["modal__container__wrapper"]}>
             {
               !expansion ? scenario?.buildingCosts?.map((cost, i) => {
                   return (

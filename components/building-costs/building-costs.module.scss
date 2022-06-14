@@ -13,5 +13,19 @@
   &__container {
     align-items: center;
     text-align: center;
+    &__wrapper {
+      justify-content: center;
+    }
+    &__item {
+      padding: 8px;
+      margin: 4px;
+      border: 1px solid #83B5DA;
+      &__container {
+        align-items: center;
+      }
+      &__resources {
+        width: fit-content;
+      }
+    }
   }
 }
