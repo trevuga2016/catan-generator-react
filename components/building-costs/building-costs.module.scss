@@ -3,14 +3,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  @media only screen and (max-width: 600px) {
-    transform: translate(-50%, -50%) scale(0.5);
+  @media only screen and (max-width: 930px) {
+    transform: translate(-50%, -50%) scale(.75);
   }
   background-color: #E7E2AB;
   border: 2px solid #000;
   box-shadow: #83B5DA;
+  padding: 20px;
   &__container {
     align-items: center;
     text-align: center;
+    &__wrapper {
+      justify-content: center;
+    }
+    &__item {
+      padding: 8px;
+      margin: 4px !important;
+      background-color: rgba(131, 181, 218, 0.3);
+      border-radius: 5px;
+      &__container {
+        align-items: center;
+      }
+      &__resources {
+        width: fit-content;
+        justify-content: center;
+      }
+    }
   }
 }

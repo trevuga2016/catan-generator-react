@@ -8,9 +8,12 @@ export const useScenarioContent = (scenarioId) => {
   const { client } = useContentfulContext();
 
   const getScenarioContent = async() => {
-    let results = await client.getEntry(scenarioId);
-    const { fields } = results;
-    return fields;
+    let results = await client.getEntries({
+      'sys.id': scenarioId,
+      include: '10'
+    });
+    const { items } = results;
+    return items?.[0]?.fields;
   }
 
   useEffect(() => {
