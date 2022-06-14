@@ -25,7 +25,13 @@ export const ExpansionSwitch = ({ expansionProps, props }) => {
   useEffect(() => {
     expansion === expansionProps?.fields?.expansionUrl ? setTitle(expansionProps?.fields?.title) : setTitle(props?.title);
     expansion === expansionProps?.fields?.expansionUrl ? setBackgroundColor(expansionProps?.fields?.backgroundColor) : setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
-    expansion === expansionProps?.fields?.expansionUrl ? setBackgroundImage(expansionProps?.fields?.backgroundImage?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+    if (typeof window !== "undefined") {
+      if (window.matchMedia("(max-width: 600px)").matches) {
+        expansion === expansionProps?.fields?.expansionUrl ? setBackgroundImage(expansionProps?.fields?.backgroundImageMobile?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+      } else {
+        expansion === expansionProps?.fields?.expansionUrl ? setBackgroundImage(expansionProps?.fields?.backgroundImage?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+      }
+    }
   });
 
   useEffect(() => {
