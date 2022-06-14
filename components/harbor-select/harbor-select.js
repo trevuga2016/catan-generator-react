@@ -13,7 +13,7 @@ export const HarborSelect = () => {
   return(
     <FormControl size="small">
       <Grid container direction="column" p={1}>
-        <FormLabel sx={{ textAlign: 'center'}}>Harbor Option</FormLabel>
+        <FormLabel sx={{ textAlign: 'center'}}>&#8213;&nbsp;Harbor Option&nbsp;&#8213;</FormLabel>
         <RadioGroup defaultValue="hide" onChange={(e) => setHarbors(e?.target?.value)} sx={{ alignContent: 'center' }}>
           <FormControlLabel value="hide" control={<Radio />} label="Hide Harbors" />
           <Grid container mt={-1}>

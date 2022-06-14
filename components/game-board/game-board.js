@@ -14,7 +14,7 @@ import { useGameContext } from '../../contexts/game-context';
 export const GameBoard = ({ props }) => {
 
   const router = useRouter();
-  const { setScenario, harbors, setHarbors } = useGameContext();
+  const { harbors, setHarbors } = useGameContext();
   const { boardData, stats, generateBoardData } = useCatanLogic(props, harbors);
   const { title } = useTitleContext();
 
@@ -29,9 +29,9 @@ export const GameBoard = ({ props }) => {
   const [transformOrigin, setTransformOrigin] = useState(null);
 
   useEffect(() => {
-    setScenario(props?.scenarioUrl);
+    if (!router.isReady) return;
     setHarbors(router?.query['ports']);
-  });
+  }, [router.isReady]);
 
   useEffect(() => {
     setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);

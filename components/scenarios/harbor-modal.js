@@ -11,7 +11,7 @@ export const HarborModal = () => {
   const { scenario, harbors, expansion } = useGameContext();
 
   const handleSubmit = () => {
-    const route = expansion ? `/scenario/${scenario}?ports=${harbors}&expansion=${expansion}` : `/scenario/${scenario}?ports=${harbors}`;
+    const route = expansion ? `/scenario/${scenario?.scenarioUrl}?ports=${harbors}&expansion=${expansion?.expansionUrl}` : `/scenario/${scenario?.scenarioUrl}?ports=${harbors}`;
     router.push(route);
   }
 

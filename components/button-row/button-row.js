@@ -28,7 +28,7 @@ export const ButtonRow = ({ generate, stats }) => {
         </Grid>
         <Grid item xs={6} md={3} className={styles["button-row__item"]}>
           {
-            expansion?.includes('ck') ? <ProgressCardsButton /> : <DevCardsButton />
+            expansion?.fields?.expansionUrl?.includes('ck') ? <ProgressCardsButton /> : <DevCardsButton />
           }
         </Grid>
       </Grid>

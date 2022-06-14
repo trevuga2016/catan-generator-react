@@ -14,8 +14,8 @@ export const ExpansionSwitch = ({ expansionProps, props }) => {
 
   const handleChange = (e) => {
     if (e.target.checked) {
-      setExpansion(expansionProps?.fields?.expansionUrl);
-      setTitle(expansionProps?.fields?.title);
+      setExpansion(expansionProps);
+      setTitle(expansionProps?.title);
     } else {
       setExpansion(undefined);
       setTitle(props?.title);
@@ -23,13 +23,13 @@ export const ExpansionSwitch = ({ expansionProps, props }) => {
   }
 
   useEffect(() => {
-    expansion === expansionProps?.fields?.expansionUrl ? setTitle(expansionProps?.fields?.title) : setTitle(props?.title);
-    expansion === expansionProps?.fields?.expansionUrl ? setBackgroundColor(expansionProps?.fields?.backgroundColor) : setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
+    expansion === expansionProps ? setTitle(expansionProps?.fields?.title) : setTitle(props?.title);
+    expansion === expansionProps ? setBackgroundColor(expansionProps?.fields?.backgroundColor) : setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
     if (typeof window !== "undefined") {
       if (window.matchMedia("(max-width: 600px)").matches) {
-        expansion === expansionProps?.fields?.expansionUrl ? setBackgroundImage(expansionProps?.fields?.backgroundImageMobile?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+        expansion === expansionProps ? setBackgroundImage(expansionProps?.fields?.backgroundImageMobile?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
       } else {
-        expansion === expansionProps?.fields?.expansionUrl ? setBackgroundImage(expansionProps?.fields?.backgroundImage?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+        expansion === expansionProps ? setBackgroundImage(expansionProps?.fields?.backgroundImage?.fields?.file?.url) : setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
       }
     }
   });
@@ -37,7 +37,7 @@ export const ExpansionSwitch = ({ expansionProps, props }) => {
   useEffect(() => {
     if (!router.isReady) return;
     if (router?.query['expansion']) {
-      setExpansion(router?.query['expansion']);
+      setExpansion(expansionProps);
       setTitle(expansionProps?.fields?.title);
     } else {
       setExpansion(null);
@@ -46,7 +46,7 @@ export const ExpansionSwitch = ({ expansionProps, props }) => {
   }, [router.isReady]);
 
   return(
-    <Switch onChange={handleChange} checked={expansion === expansionProps?.fields?.expansionUrl} name={expansionProps?.fields?.title} />
+    <Switch onChange={handleChange} checked={expansion === expansionProps} name={expansionProps?.fields?.title} />
   );
 }
 
