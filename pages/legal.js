@@ -3,7 +3,6 @@ import { Button, Grid, Skeleton } from '@mui/material';
 import { Header } from '../components/header/header';
 import { useRouter } from 'next/router';
 import HomeIcon from '@mui/icons-material/Home';
-import { useTitleContext } from '../contexts/title-context';
 import { useEffect } from 'react';
 import { useBackgroundProps } from '../hooks/useBackgroundProps';
 import { useLegalPageContent } from '../hooks/useLegalPageContent';
@@ -12,12 +11,10 @@ import ReactMarkdown from 'react-markdown';
 export const Legal = () => {
 
   const router = useRouter();
-  const { setTitle } = useTitleContext();
   const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
   const { legalPageContent, isLoading } = useLegalPageContent();
 
   useEffect(() => {
-    setTitle(legalPageContent?.title);
     setBackgroundImage(legalPageContent?.backgroundImage);
     setBackgroundColor(legalPageContent?.backgroundColor);
   });
@@ -30,7 +27,7 @@ export const Legal = () => {
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid item>
-        <Header />
+        <Header title={legalPageContent?.title} />
       </Grid>
       <Grid item px={2}>
         <ReactMarkdown>{legalPageContent?.message}</ReactMarkdown>

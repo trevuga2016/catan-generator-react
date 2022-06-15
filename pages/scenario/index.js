@@ -3,19 +3,16 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import { CircularProgress, Grid, Typography } from '@mui/material';
 import { Header } from '../../components/header/header';
-import { useTitleContext } from '../../contexts/title-context';
 import { useBackgroundProps } from '../../hooks/useBackgroundProps';
 import { useRedirectPageContent } from '../../hooks/useRedirectPageContent';
 
 export const Scenario = () => {
 
   const router = useRouter();
-  const { title, setTitle } = useTitleContext();
   const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
   const { redirectPageContent } = useRedirectPageContent();
 
   useEffect(() => {
-    setTitle(redirectPageContent?.title);
     setBackgroundImage(redirectPageContent?.backgroundImage);
     setBackgroundColor(redirectPageContent?.backgroundColor);
     redirectPageContent?.redirectUrl ? router.push(`/${redirectPageContent?.redirectUrl}`) : router.push('/');
@@ -24,12 +21,12 @@ export const Scenario = () => {
   return(
     <>
       <Head>
-        <title>{title}</title>
+        <title>{redirectPageContent?.title}</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid container direction="column" alignItems="center" position="absolute">
         <Grid item>
-          <Header />
+          <Header title={redirectPageContent?.title} />
         </Grid>
         <Grid item pb={2}>
           <Typography variant="h6">{redirectPageContent?.message}</Typography>

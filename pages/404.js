@@ -3,7 +3,6 @@ import { Button, Grid, Skeleton, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import HomeIcon from '@mui/icons-material/Home';
 import { Header } from '../components/header/header';
-import { useTitleContext } from '../contexts/title-context';
 import { useEffect } from 'react';
 import { useBackgroundProps } from '../hooks/useBackgroundProps';
 import { useNotFoundPageContent } from '../hooks/useNotFoundPageContent';
@@ -12,12 +11,10 @@ import Image from 'next/image';
 export const Custom404 = () => {
 
   const router = useRouter();
-  const { title, setTitle } = useTitleContext();
   const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
   const { notFoundPageContent, isLoading } = useNotFoundPageContent();
 
   useEffect(() => {
-    setTitle(notFoundPageContent?.title);
     setBackgroundImage(notFoundPageContent?.backgroundImage);
     setBackgroundColor(notFoundPageContent?.backgroundColor);
   });
@@ -30,11 +27,11 @@ export const Custom404 = () => {
     !isLoading ?
     <Grid container direction="column" alignItems="center" position="absolute">
       <Head>
-        <title>{title}</title>
+        <title>{notFoundPageContent?.title}</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
       <Grid item>
-          <Header />
+          <Header title={notFoundPageContent?.title} />
       </Grid>
       <Grid item mb={2}>
           <Typography variant="body1">{notFoundPageContent?.message}</Typography>
