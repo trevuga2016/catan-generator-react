@@ -6,7 +6,6 @@ import { useCatanLogic } from '../../hooks/useCatanLogic';
 import Head from 'next/head';
 import { Header } from '../header/header';
 import { useRouter } from 'next/router';
-import { useTitleContext } from '../../contexts/title-context';
 import styles from './game-board.module.scss';
 import { useGameContext } from '../../contexts/game-context';
 import { useBackgroundProps } from '../../hooks/useBackgroundProps';
@@ -16,7 +15,6 @@ export const GameBoard = ({ props }) => {
   const router = useRouter();
   const { harbors, setHarbors } = useGameContext();
   const { boardData, stats, generateBoardData } = useCatanLogic(props, harbors);
-  const { title, setTitle } = useTitleContext();
   const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
 
   const titleRef = useRef();
@@ -31,7 +29,6 @@ export const GameBoard = ({ props }) => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    setTitle(props?.title);
     setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
     setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
     setHarbors(router?.query['ports']);
@@ -66,12 +63,12 @@ export const GameBoard = ({ props }) => {
   return(
     <div className={styles["game-board"]}>
       <Head>
-        <title>{title} | Catan Board Generator</title>
+        <title>{props?.title} | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico"/>
       </Head>
       <Grid container direction="column" alignItems="center" ref={titleRef}>
         <Grid item>
-          <Header/>
+          <Header title={props?.title} />
         </Grid>
       </Grid>
       <Grid container height={boardHeight}>
