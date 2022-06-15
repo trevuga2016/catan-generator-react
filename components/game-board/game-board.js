@@ -6,17 +6,18 @@ import { useCatanLogic } from '../../hooks/useCatanLogic';
 import Head from 'next/head';
 import { Header } from '../header/header';
 import { useRouter } from 'next/router';
-import { Expansions } from '../expansions/expansions';
 import { useTitleContext } from '../../contexts/title-context';
 import styles from './game-board.module.scss';
 import { useGameContext } from '../../contexts/game-context';
+import { useBackgroundProps } from '../../hooks/useBackgroundProps';
 
 export const GameBoard = ({ props }) => {
 
   const router = useRouter();
   const { harbors, setHarbors } = useGameContext();
   const { boardData, stats, generateBoardData } = useCatanLogic(props, harbors);
-  const { title } = useTitleContext();
+  const { title, setTitle } = useTitleContext();
+  const { setBackgroundImage, setBackgroundColor } = useBackgroundProps();
 
   const titleRef = useRef();
   const widthRef = useRef();
@@ -30,6 +31,9 @@ export const GameBoard = ({ props }) => {
 
   useEffect(() => {
     if (!router.isReady) return;
+    setTitle(props?.title);
+    setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+    setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
     setHarbors(router?.query['ports']);
   }, [router.isReady]);
 
@@ -69,12 +73,6 @@ export const GameBoard = ({ props }) => {
         <Grid item>
           <Header/>
         </Grid>
-        {
-          props?.expansions?.length > 0 &&
-          <Grid item pb={2}>
-            <Expansions props={props} />
-          </Grid>
-        }
       </Grid>
       <Grid container height={boardHeight}>
         <Grid container direction="column" ref={heightRef} alignItems="center"

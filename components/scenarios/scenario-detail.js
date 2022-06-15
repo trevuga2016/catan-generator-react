@@ -9,12 +9,11 @@ import PersonIcon from '@mui/icons-material/Person';
 export const ScenarioDetail = ({ scenario }) => {
 
   const [open, setOpen] = useState(false);
-  const { setScenario, setExpansion } = useGameContext();
+  const { setScenario } = useGameContext();
 
   const handleButtonClick = () => {
     setOpen(true);
     setScenario(scenario);
-    scenario?.expansionUrl ? setExpansion(scenario) : setExpansion(undefined);
   }
 
   return(
@@ -29,7 +28,7 @@ export const ScenarioDetail = ({ scenario }) => {
           {/*  </Grid>*/}
           {/*}*/}
           {
-            scenario?.expansionUrl &&
+            scenario?.isExpansion &&
             <Grid container justifyContent="flex-end">
               <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip__right"]} />
             </Grid>
