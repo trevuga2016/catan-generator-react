@@ -5,7 +5,7 @@ import { BuildingCostsItem } from './building-costs-item';
 
 export const BuildingCosts = ({open, onClose}) => {
 
-  const {scenario, expansion} = useGameContext();
+  const {scenario} = useGameContext();
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -16,16 +16,11 @@ export const BuildingCosts = ({open, onClose}) => {
           </Grid>
           <Grid container direction="row" className={styles["modal__container__wrapper"]}>
             {
-              !expansion ? scenario?.buildingCosts?.map((cost, i) => {
-                  return (
-                    <BuildingCostsItem buildingCost={cost} key={i}/>
-                  );
-                }) :
-                expansion?.fields?.buildingCosts?.map((cost, i) => {
-                  return (
-                    <BuildingCostsItem buildingCost={cost} key={i}/>
-                  );
-                })
+              scenario?.buildingCosts?.map((cost, i) => {
+                return (
+                  <BuildingCostsItem buildingCost={cost} key={i}/>
+                );
+              })
             }
           </Grid>
         </Grid>

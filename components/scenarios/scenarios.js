@@ -19,21 +19,6 @@ export const Scenarios = () => {
           );
         })
       }
-      {
-        scenarios?.map((entry) => {
-          return(
-            entry?.expansions?.map((entry, i) => {
-              const expansion = entry?.fields;
-              expansion.imageUrl = entry?.fields?.image?.fields?.file?.url;
-              return(
-                <Grid item xs={6} md={4} key={i}>
-                  <ScenarioDetail scenario={expansion} />
-                </Grid>
-              );
-            })
-          );
-        })
-      }
     </Grid> :
     <CircularProgress />
   )

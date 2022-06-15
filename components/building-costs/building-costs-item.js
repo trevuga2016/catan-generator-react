@@ -12,7 +12,7 @@ export const BuildingCostsItem = ({ buildingCost }) => {
               return (
                 <div key={i}>
                   <ListItemAvatar>
-                    <Avatar src={resource?.fields?.icon?.fields?.file?.url}/>
+                    <Avatar src={resource?.fields?.icon?.fields?.file?.url} title={resource?.fields?.resource} />
                   </ListItemAvatar>
                 </div>
               );

@@ -1,32 +1,43 @@
-import { ButtonBase, Chip, Divider, Grid, Modal, Typography } from '@mui/material';
+import { Badge, ButtonBase, Chip, Divider, Grid, Modal, Typography } from '@mui/material';
 import styles from './scenarios.module.scss';
 import { useState } from 'react';
 import { useGameContext } from '../../contexts/game-context';
 import { HarborModal } from './harbor-modal';
 import Image from 'next/image';
+import PersonIcon from '@mui/icons-material/Person';
 
 export const ScenarioDetail = ({ scenario }) => {
 
   const [open, setOpen] = useState(false);
-  const { setScenario, setExpansion } = useGameContext();
+  const { setScenario } = useGameContext();
 
   const handleButtonClick = () => {
     setOpen(true);
     setScenario(scenario);
-    scenario?.expansionUrl ? setExpansion(scenario) : setExpansion(undefined);
   }
 
   return(
     <>
     <ButtonBase sx={{ height: '100%' }} onClick={handleButtonClick} disabled={scenario?.disabled}>
       <Grid container direction="column" className={styles["detail"]}>
-        <Grid item>
+        <Grid item position="relative">
+          {/*{*/}
+          {/*  scenario?.isExtension &&*/}
+          {/*  <Grid container>*/}
+          {/*    <Chip label="EXT" size="small" color="secondary" title="Extension Scenario" className={styles["detail__chip__left"]} />*/}
+          {/*  </Grid>*/}
+          {/*}*/}
           {
-            scenario?.expansionUrl &&
+            scenario?.isExpansion &&
             <Grid container justifyContent="flex-end">
-              <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip"]} />
+              <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip__right"]} />
             </Grid>
           }
+          {/*{*/}
+          {/*  <Grid container justifyContent="flex-end">*/}
+          {/*    <Chip icon={<PersonIcon />} label={scenario?.players} size="small" color="primary" title="Players" className={styles["detail__chip__bright"]} />*/}
+          {/*  </Grid>*/}
+          {/*}*/}
           <Image src={`https:${scenario?.imageUrl}?w=462&h=275&fm=webp`} width={462} height={275} alt={scenario?.imageUrl} loading="lazy" className={styles["detail__image"]} />
         </Grid>
         <Grid item pt={1} px={1}>

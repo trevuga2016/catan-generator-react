@@ -6,10 +6,9 @@ export const GameProvider = ({ children }) => {
 
   const [scenario, setScenario] = useState(null);
   const [harbors, setHarbors] = useState(null);
-  const [expansion, setExpansion] = useState(null);
 
   return (
-    <GameContext.Provider value={{ scenario, setScenario, harbors, setHarbors, expansion, setExpansion }}>
+    <GameContext.Provider value={{ scenario, setScenario, harbors, setHarbors }}>
       {children}
     </GameContext.Provider>
   );

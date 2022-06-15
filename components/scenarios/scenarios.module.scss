@@ -20,8 +20,20 @@
     position: absolute;
     z-index: 1;
     margin-top: 8px;
-    margin-right: 8px;
     cursor: pointer;
+    &__left {
+      @extend .detail__chip;
+      margin-left: 8px;
+    }
+    &__right {
+      @extend .detail__chip;
+      margin-right: 8px;
+    }
+    &__bright {
+      @extend .detail__chip;
+      margin-right: 8px;
+      bottom: 10px;
+    }
   }
 }
 
