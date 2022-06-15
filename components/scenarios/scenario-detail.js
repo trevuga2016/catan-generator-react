@@ -27,17 +27,17 @@ export const ScenarioDetail = ({ scenario }) => {
           {/*    <Chip label="EXT" size="small" color="secondary" title="Extension Scenario" className={styles["detail__chip__left"]} />*/}
           {/*  </Grid>*/}
           {/*}*/}
-          {
-            scenario?.isExpansion &&
-            <Grid container justifyContent="flex-end">
-              <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip__right"]} />
-            </Grid>
-          }
           {/*{*/}
+          {/*  scenario?.isExpansion &&*/}
           {/*  <Grid container justifyContent="flex-end">*/}
-          {/*    <Chip icon={<PersonIcon />} label={scenario?.players} size="small" color="primary" title="Players" className={styles["detail__chip__bright"]} />*/}
+          {/*    <Chip label="EXP" size="small" color="primary" title="Expansion Scenario" className={styles["detail__chip__right"]} />*/}
           {/*  </Grid>*/}
           {/*}*/}
+          {
+            <Grid container justifyContent="flex-end">
+              <Chip icon={<PersonIcon />} label={scenario?.players} size="small" color="primary" title="Players" className={styles["detail__chip__right"]} />
+            </Grid>
+          }
           <Image src={`https:${scenario?.imageUrl}?w=462&h=275&fm=webp`} width={462} height={275} alt={scenario?.imageUrl} loading="lazy" className={styles["detail__image"]} />
         </Grid>
         <Grid item pt={1} px={1}>
