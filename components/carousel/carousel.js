@@ -1,7 +1,7 @@
 import { Grid, IconButton, MobileStepper, Slide, Typography } from '@mui/material';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './carousel.module.scss';
 
 export const Carousel = ({ title, children }) => {
@@ -11,26 +11,53 @@ export const Carousel = ({ title, children }) => {
   const [currentSlide, setCurrentSlide] = useState(min);
   const [slideIn, setSlideIn] = useState(true);
   const [slideDirection, setSlideDirection] = useState('left');
+  const [touchstartX, setTouchstartX] = useState(0);
+  const [touchendX, setTouchendX] = useState(0);
 
   const handleClickLeft = () => {
+    const timeout = window.matchMedia("max-width: 930px").matches ? 200 : 300;
     setSlideDirection('left');
     setSlideIn(false);
     setTimeout(() => {
       currentSlide - 1 >= min ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(max);
       setSlideDirection('right');
       setSlideIn(true);
-    }, 300);
+    }, timeout);
   }
 
   const handleClickRight = () => {
+    const timeout = window.matchMedia("max-width: 930px").matches ? 200 : 300;
     setSlideDirection('right');
     setSlideIn(false);
     setTimeout(() => {
       currentSlide + 1 <= max ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(min);
       setSlideDirection('left');
       setSlideIn(true);
-    }, 300);
+    }, timeout);
   }
+
+  const checkDirection = () => {
+    if (touchendX > touchstartX) {
+      console.log('click right');
+      handleClickLeft();
+    } if (touchendX < touchstartX) {
+      console.log('click left');
+      handleClickRight();
+    }
+  }
+
+  if (typeof window !== "undefined") {
+    document.addEventListener('touchstart', e => {
+      setTouchstartX(e.changedTouches[0].screenX);
+    })
+    document.addEventListener('touchend', e => {
+      setTouchendX(e.changedTouches[0].screenX);
+    })
+  }
+
+  useEffect(() => {
+    checkDirection();
+  }, [touchendX]);
 
   return(
     <>
