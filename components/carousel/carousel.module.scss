@@ -5,19 +5,19 @@
     justify-content: center;
   }
   &__navButtons {
-    background-color: rgba(194, 31, 38, 0.5);
+    background-color: rgba(194, 31, 38, 0.5) !important;
     &:hover {
-      background-color: rgba(194, 31, 38, 0.5);
+      background-color: rgba(194, 31, 38, 0.5) !important;
       @media(hover: none) {
         &:active {
-          background-color: rgba(194, 31, 38, 0.5);
+          background-color: rgba(194, 31, 38, 0.5) !important;
         }
       }
     }
   }
   &__stepper {
-    background-color: #E7E2AB;
-    justify-content: center;
+    background-color: #E7E2AB !important;
+    justify-content: center !important;
     max-width: 100%;
     &__cont {
       margin-top: 35px;
