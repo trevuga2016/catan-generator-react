@@ -20,7 +20,7 @@ export const Carousel = ({ title, children }) => {
 
   return(
     <>
-      <Grid container p={3} justifyContent="center">
+      <Grid container py={3} justifyContent="center">
         <Typography variant="h5">&#8213;&nbsp;{title}&nbsp;&#8213;</Typography>
       </Grid>
       <Grid container direction="row" wrap="nowrap" className={styles["carousel"]}>
@@ -40,7 +40,9 @@ export const Carousel = ({ title, children }) => {
           </IconButton>
         </Grid>
       </Grid>
-      <MobileStepper variant="dots" activeStep={currentSlide} steps={children?.length} sx={{padding: '15px', backgroundColor: '#E7E2AB', justifyContent: 'center', maxWidth: '100%'}} backButton={null} nextButton={null}/>
+      <Grid container marginTop="35px">
+        <MobileStepper variant="dots" activeStep={currentSlide} steps={children?.length} sx={{backgroundColor: '#E7E2AB', justifyContent: 'center', maxWidth: '100%'}} backButton={null} nextButton={null}/>
+      </Grid>
     </>
   );
 }
