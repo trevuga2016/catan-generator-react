@@ -1,4 +1,4 @@
-import { Grid, IconButton, MobileStepper, Typography } from '@mui/material';
+import { Grid, IconButton, MobileStepper, Slide, Typography } from '@mui/material';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useState } from 'react';
@@ -9,13 +9,27 @@ export const Carousel = ({ title, children }) => {
   const min = 0;
   const max = children?.length - 1;
   const [currentSlide, setCurrentSlide] = useState(min);
+  const [slideIn, setSlideIn] = useState(true);
+  const [slideDirection, setSlideDirection] = useState('left');
 
   const handleClickLeft = () => {
-    currentSlide - 1 >= min ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(max);
+    setSlideDirection('left');
+    setSlideIn(false);
+    setTimeout(() => {
+      currentSlide - 1 >= min ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(max);
+      setSlideDirection('right');
+      setSlideIn(true);
+    }, 300);
   }
 
   const handleClickRight = () => {
-    currentSlide + 1 <= max ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(min);
+    setSlideDirection('right');
+    setSlideIn(false);
+    setTimeout(() => {
+      currentSlide + 1 <= max ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(min);
+      setSlideDirection('left');
+      setSlideIn(true);
+    }, 300);
   }
 
   return(
@@ -30,9 +44,11 @@ export const Carousel = ({ title, children }) => {
           </IconButton>
         </Grid>
         <Grid item xs justifyContent="center">
-          <Grid container direction="column" alignItems="center">
-            <Grid item>{children[currentSlide]}</Grid>
-          </Grid>
+          <Slide in={slideIn} direction={slideDirection}>
+            <Grid container direction="column" alignItems="center">
+              <Grid item>{children[currentSlide]}</Grid>
+            </Grid>
+          </Slide>
         </Grid>
         <Grid item alignSelf="center" p={1}>
           <IconButton onClick={handleClickRight} className={styles["carousel__navButtons"]}>
