@@ -2,7 +2,7 @@ import { Grid, IconButton, MobileStepper, Typography } from '@mui/material';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useState } from 'react';
-import styles from './dev-cards.module.scss';
+import styles from './carousel.module.scss';
 
 export const Carousel = ({ title, children }) => {
 
@@ -20,13 +20,13 @@ export const Carousel = ({ title, children }) => {
 
   return(
     <>
-      <Grid container py={3} justifyContent="center">
+      <Grid container className={styles["carousel__title"]}>
         <Typography variant="h5">&#8213;&nbsp;{title}&nbsp;&#8213;</Typography>
       </Grid>
       <Grid container direction="row" wrap="nowrap" className={styles["carousel"]}>
         <Grid item alignSelf="center" p={1}>
-          <IconButton onClick={handleClickLeft} sx={{ backgroundColor: "white" }}>
-            <KeyboardArrowLeftIcon />
+          <IconButton onClick={handleClickLeft} className={styles["carousel__navButtons"]}>
+            <KeyboardArrowLeftIcon color="secondary" />
           </IconButton>
         </Grid>
         <Grid item xs justifyContent="center">
@@ -35,13 +35,13 @@ export const Carousel = ({ title, children }) => {
           </Grid>
         </Grid>
         <Grid item alignSelf="center" p={1}>
-          <IconButton onClick={handleClickRight} sx={{ backgroundColor: "white" }}>
-            <KeyboardArrowRightIcon />
+          <IconButton onClick={handleClickRight} className={styles["carousel__navButtons"]}>
+            <KeyboardArrowRightIcon color="secondary" />
           </IconButton>
         </Grid>
       </Grid>
-      <Grid container marginTop="35px">
-        <MobileStepper variant="dots" activeStep={currentSlide} steps={children?.length} sx={{backgroundColor: '#E7E2AB', justifyContent: 'center', maxWidth: '100%'}} backButton={null} nextButton={null}/>
+      <Grid container className={styles["carousel__stepper__cont"]}>
+        <MobileStepper variant="dots" activeStep={currentSlide} steps={children?.length} className={styles["carousel__stepper"]} backButton={null} nextButton={null}/>
       </Grid>
     </>
   );

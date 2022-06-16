@@ -2,7 +2,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import styles from './button-row.module.scss';
 import { Button } from '@mui/material';
 import { useState } from 'react';
-import { DevCardsModal } from '../dev-cards-modal/dev-cards-modal';
+import { DevCards } from '../dev-cards/dev-cards';
 
 export const DevCardsButton = () => {
 
@@ -13,7 +13,7 @@ export const DevCardsButton = () => {
       <Button variant="contained" onClick={() => setOpenDevCards(true)} size="small" endIcon={<HelpIcon />} className={styles["button-row__button"]}>
         Dev Cards
       </Button>
-      <DevCardsModal open={openDevCards} onClose={() => setOpenDevCards(false)} />
+      <DevCards open={openDevCards} onClose={() => setOpenDevCards(false)} />
     </>
   );
 }

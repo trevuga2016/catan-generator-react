@@ -1,0 +1,26 @@
+.carousel {
+  align-items: center;
+  &__title {
+    padding: 24px 0;
+    justify-content: center;
+  }
+  &__navButtons {
+    background-color: rgba(194, 31, 38, 0.5);
+    &:hover {
+      background-color: rgba(194, 31, 38, 0.5);
+      @media(hover: none) {
+        &:active {
+          background-color: rgba(194, 31, 38, 0.5);
+        }
+      }
+    }
+  }
+  &__stepper {
+    background-color: #E7E2AB;
+    justify-content: center;
+    max-width: 100%;
+    &__cont {
+      margin-top: 35px;
+    }
+  }
+}

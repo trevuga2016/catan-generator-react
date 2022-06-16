@@ -1,0 +1,27 @@
+.dev-cards {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media only screen and (max-width: 930px) {
+    transform: translate(-50%, -50%) scale(.8);
+  }
+  background-color: #E7E2AB !important;
+  border: 2px solid #000;
+  box-shadow: #83B5DA;
+  &__container {
+    align-items: center;
+    text-align: center;
+    width: 275px;
+    &__name {
+      background-color: rgba(194, 31, 38, 0.5);
+      width: 100%;
+      border-radius: 5px 5px 0 0;
+      color: white;
+    }
+    &__desc {
+      background-color: rgba(194, 31, 38, 0.5);
+      border-radius: 0 0 5px 5px;
+    }
+  }
+}
