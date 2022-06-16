@@ -22,6 +22,7 @@ export const useDevelopmentCards = () => {
           name: content?.name,
           image: content?.image?.fields?.file?.url,
           description: content?.description,
+          cardColor: content?.cardColor
         }
       });
       setDevCards(desc);

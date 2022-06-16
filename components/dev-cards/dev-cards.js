@@ -19,11 +19,13 @@ export const DevCards = ({ open, onClose }) => {
         <Carousel title="Development Cards">
           {
             devCards?.map((card, i) => {
-              const color = card?.name === 'Victory Point' ? 'gold' : 'white';
+              const textColor = card?.name === 'Victory Point' ? 'black' : 'white';
+              const border = card?.name === 'Victory Point' ? '2px solid black' : `2px solid #${card?.cardColor}`;
+              const bgColor = `#${card?.cardColor}7F`;
               return(
                 <Grid container justifyContent="center" key={i}>
-                  <Grid container direction="column" className={styles["dev-cards__container"]}>
-                    <Grid item color={color} className={styles["dev-cards__container__name"]}>
+                  <Grid container direction="column" border={border} sx={{ backgroundColor: `${bgColor} !important`}} className={styles["dev-cards__container"]}>
+                    <Grid item color={textColor} className={styles["dev-cards__container__name"]}>
                       <Typography variant="h6">&#8213;&nbsp;{card?.name}&nbsp;&#8213;</Typography>
                     </Grid>
                     <Image loader={imageLoader} src={`https:${card?.image}`} width={275} height={215} />

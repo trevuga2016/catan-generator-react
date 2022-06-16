@@ -10,12 +10,10 @@
   border: 2px solid #000;
   box-shadow: #83B5DA;
   &__container {
-    border: 2px solid rgba(194, 31, 38, 1);
     border-radius: 5px;
     align-items: center;
     text-align: center;
     width: 275px !important;
-    background-color: rgba(194, 31, 38, 0.5) !important;
     &__name {
       width: 100%;
     }
