@@ -1,0 +1,27 @@
+.carousel {
+  align-items: center;
+  overflow: hidden;
+  &__title {
+    padding: 24px 0;
+    justify-content: center;
+  }
+  &__navButtons {
+    background-color: #83B5DAB3 !important;
+    &:hover {
+      background-color: #83B5DAB3 !important;
+      @media(hover: none) {
+        &:active {
+          background-color: #83B5DAB3 !important;
+        }
+      }
+    }
+  }
+  &__stepper {
+    background-color: #E7E2AB !important;
+    justify-content: center !important;
+    max-width: 100%;
+    &__cont {
+      margin-top: 35px;
+    }
+  }
+}
