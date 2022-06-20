@@ -8,28 +8,28 @@ import { ProgressCardsButton } from './progress-cards-button';
 import { DevCardsButton } from './dev-cards-button';
 import { useGameContext } from '../../contexts/game-context';
 
-export const ButtonRow = ({generate, stats}) => {
+export const ButtonRow = ({ generate, stats }) => {
 
-  const {scenario} = useGameContext();
+  const { scenario } = useGameContext();
 
   return (
     <Grid container className={styles["button-row"]}>
       <Grid item xs={6} md={3} className={styles["button-row__item"]}>
-        <HomeButton/>
-      </Grid>
-      <Grid item xs={6} md={3} className={styles["button-row__item"]}>
         <GenerateButton generate={generate}/>
-      </Grid>
-      <Grid item xs={6} md={3} className={styles["button-row__item"]}>
-        <CostsButton/>
       </Grid>
       <Grid item xs={6} md={3} className={styles["button-row__item"]}>
         <StatsButton stats={stats}/>
       </Grid>
       <Grid item xs={6} md={3} className={styles["button-row__item"]}>
+        <CostsButton/>
+      </Grid>
+      <Grid item xs={6} md={3} className={styles["button-row__item"]}>
         {
           scenario?.scenarioUrl?.includes('ck') ? <ProgressCardsButton/> : <DevCardsButton/>
         }
+      </Grid>
+      <Grid item xs={6} md={3} className={styles["button-row__item"]}>
+        <HomeButton/>
       </Grid>
     </Grid>
   );
