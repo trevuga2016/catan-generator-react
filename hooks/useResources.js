@@ -20,7 +20,11 @@ export const useResources = () => {
       const resource = data?.map(r => {
         return {
           resource: r?.fields?.resource,
-          icon: r?.fields?.icon?.fields?.file?.url
+          icon: r?.fields?.icon?.fields?.file?.url,
+          commodity: {
+            name: r?.fields?.commodity?.fields?.commodity,
+            icon: r?.fields?.commodity?.fields?.icon?.fields?.file?.url
+          }
         }
       });
       setResources(resource);

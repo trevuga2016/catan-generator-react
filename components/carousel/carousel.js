@@ -38,10 +38,8 @@ export const Carousel = ({ title, children }) => {
 
   const checkDirection = () => {
     if (touchendX > touchstartX) {
-      console.log('click right');
       handleClickLeft();
     } if (touchendX < touchstartX) {
-      console.log('click left');
       handleClickRight();
     }
   }
@@ -73,7 +71,7 @@ export const Carousel = ({ title, children }) => {
         <Grid item xs justifyContent="center">
           <Slide in={slideIn} direction={slideDirection}>
             <Grid container direction="column" alignItems="center">
-              <Grid item>{children[currentSlide]}</Grid>
+              <Grid item>{children?.[currentSlide]}</Grid>
             </Grid>
           </Slide>
         </Grid>
