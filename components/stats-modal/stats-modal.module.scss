@@ -5,20 +5,11 @@
   transform: translate(-50%, -50%);
   @media only screen and (max-width: 600px) {
     transform: translate(-50%, -50%) scale(0.7);
+    width: 85vw !important;
   }
   background-color: #E7E2AB;
   border: 2px solid #000;
   box-shadow: #83B5DA;
-  &__container {
-    align-items: center;
-    padding: 40px;
-    &__stats {
-      justify-content: center;
-      width: 40vw !important;
-      padding: 4px 0;
-      @media only screen and (max-width: 600px) {
-        width: 100vw !important;
-      }
-    }
-  }
+  text-align: center;
+  padding: 40px;
 }

@@ -1,55 +1,39 @@
-import { Avatar, Grid, Typography } from '@mui/material';
-import { useResources } from '../../hooks/useResources';
+import { Avatar, Stack, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
 import { useGameContext } from '../../contexts/game-context';
-import styles from './stats-modal.module.scss';
 
 export const ResourceStats = ({ stats }) => {
 
-  const { resources } = useResources();
   const { scenario } = useGameContext();
 
   return (
-    <>
-      {
-        stats?.map((stat, i) => {
-          let icon;
-          let commodity;
-          let commodityIcon;
-
-          resources?.forEach((r) => {
-            if (stat?.resource === r?.resource) {
-              icon = r?.icon;
-              commodity = r?.commodity?.name;
-              commodityIcon = r?.commodity?.icon;
-            }
-          });
-          return(
-            <Grid container direction="row" className={styles["modal__container__stats"]} key={i}>
-              <Grid item xs={4}>
-                <Grid container direction="row" justifyContent="center">
-                  <Grid item px={0.5}>
-                    {icon && <Avatar src={`https:${icon}?fm=webp`} title={stat?.resource}/>}
-                  </Grid>
+    <Table>
+      <TableBody>
+        {
+          stats?.map((stat, i) => {
+            return (
+              <TableRow key={i}>
+                <TableCell>
+                  <Stack direction="row" spacing={1} justifyContent="center">
+                    <Avatar src={`https:${stat?.icon}?fm=webp`} title={stat?.resource}/>
+                    {
+                      scenario?.scenarioUrl?.includes('ck') && stat?.commodity?.icon &&
+                      <Avatar src={`https:${stat?.commodity?.icon}?fm=webp`} title={stat?.commodity?.name}/>
+                    }
+                  </Stack>
+                </TableCell>
+                <TableCell>
                   {
-                    scenario?.scenarioUrl?.includes('ck') && commodityIcon &&
-                    <Grid item px={0.5}>
-                      {commodityIcon && <Avatar src={`https:${commodityIcon}?fm=webp`} title={commodity}/>}
-                    </Grid>
+                    scenario?.scenarioUrl?.includes('ck') && stat?.commodity?.icon ?
+                      <Typography variant="body1">Probability of {stat?.resource}/{stat?.commodity?.name}: {stat?.probability}%</Typography> :
+                      <Typography variant="body1">Probability of {stat?.resource}: {stat?.probability}%</Typography>
                   }
-                </Grid>
-              </Grid>
-              <Grid item xs alignSelf="center">
-                {
-                  scenario?.scenarioUrl?.includes('ck') && commodityIcon ?
-                    <Typography variant="body1">Probability of {stat.resource}/{commodity}: {stat.probability}%</Typography> :
-                    <Typography variant="body1">Probability of {stat.resource}: {stat.probability}%</Typography>
-                }
-              </Grid>
-            </Grid>
-          )
-        })
-      }
-    </>
+                </TableCell>
+              </TableRow>
+            )
+          })
+        }
+      </TableBody>
+    </Table>
   );
 }
 
