@@ -29,7 +29,11 @@ export const GameBoard = ({ props }) => {
 
   useEffect(() => {
     if (!router.isReady) return;
-    setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+    if (window.matchMedia("(max-width: 600px)").matches) {
+      props?.backgroundProps?.fields?.mobileBackground && setBackgroundImage(props?.backgroundProps?.fields?.mobileBackground?.fields?.file?.url);
+    } else {
+      setBackgroundImage(props?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url);
+    }
     setBackgroundColor(props?.backgroundProps?.fields?.backgroundColor);
     setHarbors(router?.query['ports']);
   }, [router.isReady]);
