@@ -20,7 +20,7 @@ export const useProgressCards = () => {
       const desc = data?.map(content => {
         return {
           name: content?.name,
-          category: content?.progCategory?.fields?.title,
+          category: content?.category?.fields?.title,
           image: content?.image?.fields?.file?.url,
           description: content?.description,
           noOfCards: content?.noOfCards
