@@ -16,7 +16,10 @@ export const DevCards = ({ open, onClose }) => {
   return(
     <Modal open={open} onClose={onClose}>
       <Paper className={styles["dev-cards"]}>
-        <Carousel title="Development Cards">
+        <Grid container justifyContent="center" p={4}>
+          <Typography variant="h5">&#8213;&nbsp;Development Cards&nbsp;&#8213;</Typography>
+        </Grid>
+        <Carousel>
           {
             devCards?.map((card, i) => {
               const textColor = card?.name === 'Victory Point' ? 'black' : 'white';

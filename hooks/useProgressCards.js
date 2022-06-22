@@ -20,10 +20,9 @@ export const useProgressCards = () => {
       const desc = data?.map(content => {
         return {
           name: content?.name,
-          category: content?.category,
+          category: content?.progCategory?.fields?.title,
           image: content?.image?.fields?.file?.url,
           description: content?.description,
-          cardColor: content?.cardColor,
           noOfCards: content?.noOfCards
         }
       });

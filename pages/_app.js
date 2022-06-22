@@ -11,6 +11,8 @@ function CatanGenerator({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <ContentfulProvider>
       <GameProvider>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet" />
         <Box id="background-image" width="100vw" height="100vh" position="fixed" />
         <Component {...pageProps} />
         <Footer />
