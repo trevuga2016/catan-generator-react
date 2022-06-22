@@ -1,10 +1,10 @@
-import { Grid, IconButton, MobileStepper, Slide, Typography } from '@mui/material';
+import { Grid, IconButton, MobileStepper, Slide } from '@mui/material';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useEffect, useState } from 'react';
 import styles from './carousel.module.scss';
 
-export const Carousel = ({ title, children }) => {
+export const Carousel = ({ children }) => {
 
   const min = 0;
   const max = children?.length - 1;
@@ -59,9 +59,6 @@ export const Carousel = ({ title, children }) => {
 
   return(
     <>
-      <Grid container className={styles["carousel__title"]}>
-        <Typography variant="h5">&#8213;&nbsp;{title}&nbsp;&#8213;</Typography>
-      </Grid>
       <Grid container direction="row" wrap="nowrap" className={styles["carousel"]}>
         <Grid item alignSelf="center" p={1}>
           <IconButton onClick={handleClickLeft} className={styles["carousel__navButtons"]}>

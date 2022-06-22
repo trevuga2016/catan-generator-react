@@ -1,10 +1,6 @@
 .carousel {
   align-items: center;
   overflow: hidden;
-  &__title {
-    padding: 24px 0;
-    justify-content: center;
-  }
   &__navButtons {
     background-color: #83B5DAB3 !important;
     &:hover {
