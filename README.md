@@ -24,3 +24,5 @@ Demo mode is disabled in production, but still accessible via url
 The contents of this application are original work and are not to be used without permission.
 
 All Catan images, names, and associated likenesses are licensed trademarks of Catan GmbH and Catan Studio.
+
+Testing deployment
