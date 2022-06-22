@@ -1,0 +1,3 @@
+# Use Contentful staging branch for non-prod deploys
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_CONTENTFUL_ENV = "staging"
