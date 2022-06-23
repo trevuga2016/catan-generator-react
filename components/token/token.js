@@ -13,7 +13,7 @@ export const Token = ({ number, probability }) => {
                     {number}
                 </Grid>
                 <Grid item className={styles["token-prob"]} sx={{ color: color }}>
-                    {probability}
+                    {probability?.text}
                 </Grid>
             </Grid>
         </Box>

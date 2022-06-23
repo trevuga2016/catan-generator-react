@@ -141,23 +141,65 @@ const getTerrain = (resource) => {
 
 const getToken = (numbers_array, resource) => {
     if (resource === 'Desert') {
-        return { number: '', probability: '' }
+        return {
+            number: '',
+            probability: {
+                text: '',
+                value: ((6 / 36) * 100).toFixed(2)
+            }
+        }
     } else {
         let i = Math.floor(Math.random() * numbers_array.length);
         let n = numbers_array[i];
         numbers_array.splice(i, 1);
         if (n === '2' || n === '12') {
-            return { number: n, probability: '\u2022' }
+            return {
+                number: n,
+                probability: {
+                    text: '\u2022',
+                    value: ((1 / 36) * 100).toFixed(2)
+                }
+            }
         } else if (n === '3' || n === '11') {
-            return { number: n, probability: '\u2022\u2022' }
+            return {
+                number: n,
+                probability: {
+                    text: '\u2022\u2022',
+                    value: ((2 / 36) * 100).toFixed(2)
+                }
+            }
         } else if (n === '4' || n === '10') {
-            return { number: n, probability: '\u2022\u2022\u2022' }
+            return {
+                number: n,
+                probability: {
+                    text: '\u2022\u2022\u2022',
+                    value: ((3 / 36) * 100).toFixed(2)
+                }
+            }
         } else if (n === '5' || n === '9') {
-            return { number: n, probability: '\u2022\u2022\u2022\u2022' }
+            return {
+                number: n,
+                probability: {
+                    text: '\u2022\u2022\u2022\u2022',
+                    value: ((4 / 36) * 100).toFixed(2)
+                }
+            }
         } else if (n === '6' || n === '8') {
-            return { number: n, probability: '\u2022\u2022\u2022\u2022\u2022' }
+            return {
+                number: n,
+                probability: {
+                    text: '\u2022\u2022\u2022\u2022\u2022',
+                    value: ((5 / 36) * 100).toFixed(2)
+                }
+            }
         } else {
-            return { number: '', probability: '' }
+            return {
+                number: '',
+                probability: {
+                    text: '',
+                    value: undefined
+                }
+            }
         }
     }
 }
