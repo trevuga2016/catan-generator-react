@@ -1,15 +1,15 @@
 .hex {
-    width: 104px;
-    height: 120px;
+  width: 104px;
+  height: 120px;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  margin-left: 1.5px;
+  margin-right: 1.5px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  &__button:hover {
+    z-index: 1;
     clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    margin-left: 1.5px;
-    margin-right: 1.5px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-size: contain;
-    &__button:hover {
-        z-index: 1;
-        clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    }
+  }
 }

@@ -22,6 +22,7 @@ export const useResources = () => {
           resource: r?.fields?.resource,
           terrain: r?.fields?.terrain,
           icon: r?.fields?.icon?.fields?.file?.url,
+          hexImage: r?.fields?.hexImage?.fields?.file?.url,
           cardImage: r?.fields?.cardImage?.fields?.file?.url,
           commodity: {
             name: r?.fields?.commodity?.fields?.commodity,
