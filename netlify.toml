@@ -1,7 +1,0 @@
-# Use Contentful master branch for prod deploys
-[context.production.environment]
-  NEXT_PUBLIC_CONTENTFUL_ENV = "master"
-
-# Use Contentful staging branch for non-prod deploys
-[context.branch-deploy.environment]
-  NEXT_PUBLIC_CONTENTFUL_ENV = "staging"
