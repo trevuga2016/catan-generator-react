@@ -29,6 +29,9 @@ export const useDevelopmentCards = () => {
       setIsLoading(false);
     }).catch(() => {
     });
+    return(() => {
+      setDevCards(null);
+    });
   }, []);
 
   return { devCards, isLoading };

@@ -26,6 +26,10 @@ export const ProgressCards = ({ open, onClose }) => {
 
   useEffect(() => {
     setShowCategory(false);
+    return(() => {
+      setShowCategory(false);
+      setCategory(null);
+    })
   }, [ onClose ]);
 
   return (

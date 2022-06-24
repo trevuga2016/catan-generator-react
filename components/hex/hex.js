@@ -3,14 +3,12 @@ import styles from './hex.module.scss';
 import { Token } from '../token/token';
 import { useEffect, useState } from 'react';
 import { HexModal } from '../hex-modal/hex-modal';
-import { useResources } from '../../hooks/useResources';
 import Image from 'next/image';
-import { useHarbors } from '../../hooks/useHarbors';
+import { useContentContext } from '../../contexts/content-context';
 
 export const Hex = ({ hex }) => {
 
-  const { resources } = useResources();
-  const { harbors } = useHarbors();
+  const { resources, harbors } = useContentContext();
   const [ open, setOpen ] = useState(false);
   const [ backgroundImage, setBackgroundImage ] = useState(undefined);
 

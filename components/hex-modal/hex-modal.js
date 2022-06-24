@@ -1,14 +1,12 @@
 import { Box, Grid, Modal, Typography } from '@mui/material';
 import styles from './hex-modal.module.scss';
-import { useResources } from '../../hooks/useResources';
 import { useEffect, useState } from 'react';
-import { useHarbors } from '../../hooks/useHarbors';
 import { useGameContext } from '../../contexts/game-context';
+import { useContentContext } from '../../contexts/content-context';
 
 export const HexModal = ({ open, onClose, hex }) => {
 
-  const { resources } = useResources();
-  const { harbors } = useHarbors();
+  const { resources, harbors } = useContentContext();
   const { scenario } = useGameContext();
   const [ activeResource, setActiveResource ] = useState(undefined);
   const [ resourceSubtext, setResourceSubtext ] = useState(undefined);

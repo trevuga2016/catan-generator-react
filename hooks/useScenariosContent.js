@@ -27,6 +27,9 @@ export const useScenariosContent = () => {
       setIsLoading(false);
     }).catch(() => {
     });
+    return(() => {
+      setScenarios(null);
+    });
   }, []);
 
   return {scenarios, isLoading};

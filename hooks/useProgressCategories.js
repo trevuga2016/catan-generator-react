@@ -31,6 +31,9 @@ export const useProgressCategories = () => {
       setIsLoading(false);
     }).catch(() => {
     });
+    return(() => {
+      setProgressCategories(null);
+    });
   }, []);
 
   return { progressCategories, isLoading };

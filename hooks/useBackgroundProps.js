@@ -16,6 +16,10 @@ export const useBackgroundProps = () => {
 
   useEffect(() => {
     backgroundImage && updateBackgroundProps();
+    return(() => {
+      setBackgroundImage(null);
+      setBackgroundColor(null);
+    })
   }, [backgroundImage]);
 
   return { setBackgroundImage, setBackgroundColor };

@@ -27,6 +27,9 @@ export const useHomePageContent = () => {
       setHomePageContent(content);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setHomePageContent(null);
+    });
   }, []);
 
   return { homePageContent, isLoading };
