@@ -25,7 +25,8 @@ export const useResources = () => {
           cardImage: r?.fields?.cardImage?.fields?.file?.url,
           commodity: {
             name: r?.fields?.commodity?.fields?.commodity,
-            icon: r?.fields?.commodity?.fields?.icon?.fields?.file?.url
+            icon: r?.fields?.commodity?.fields?.icon?.fields?.file?.url,
+            cardImage: r?.fields?.commodity?.fields?.cardImage?.fields?.file?.url
           }
         }
       });

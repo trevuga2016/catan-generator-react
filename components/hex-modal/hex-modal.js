@@ -3,30 +3,49 @@ import styles from './hex-modal.module.scss';
 import { useResources } from '../../hooks/useResources';
 import { useEffect, useState } from 'react';
 import { useHarbors } from '../../hooks/useHarbors';
+import { useGameContext } from '../../contexts/game-context';
 
 export const HexModal = ({ open, onClose, hex }) => {
 
   const { resources } = useResources();
   const { harbors } = useHarbors();
+  const { scenario } = useGameContext();
   const [ activeResource, setActiveResource ] = useState(null);
   const [ resourceSubtext, setResourceSubtext ] = useState('');
   const [ backgroundImage, setBackgroundImage ] = useState(null);
 
-  useEffect(() => {
-    if (hex?.terrain === "Harbor") {
-      const harbor = harbors?.find(h => h?.id === hex?.resource);
-      setActiveResource(harbor);
-      setResourceSubtext(harbor?.type);
-      setBackgroundImage(`https:${harbor?.cardImage}`);
-    } else if (hex?.terrain !== "") {
-      const resource = resources?.find(r => r?.terrain === hex?.terrain);
-      setActiveResource(resource);
+  const setHarborDetails = () => {
+    const harbor = harbors?.find(h => h?.id === hex?.resource);
+    setActiveResource(harbor);
+    setResourceSubtext(harbor?.type);
+    setBackgroundImage(`https:${harbor?.cardImage}`);
+  }
+
+  const setResourceDetails = () => {
+    const resource = resources?.find(r => r?.terrain === hex?.terrain);
+    setActiveResource(resource);
+    if (scenario?.scenarioUrl?.includes('ck') && resource?.commodity?.name) {
+      setResourceSubtext(`Produce ${resource?.resource} and ${resource?.commodity?.name}`);
+      setBackgroundImage(`https:${resource?.commodity?.cardImage}`);
+    } else {
       resource?.resource === "Desert" ? setResourceSubtext('Produces Nothing') : setResourceSubtext(`Produce ${resource?.resource}`);
       setBackgroundImage(`https:${resource?.cardImage}`);
+    }
+  }
+
+  const setSeaDetails = () => {
+    const sea = resources?.find(r => r?.terrain === "Sea")
+    setActiveResource(sea);
+    setBackgroundImage(`https:${sea?.cardImage}`);
+  }
+
+  useEffect(() => {
+    if (hex?.terrain === "Harbor") {
+      setHarborDetails();
+    } else if (hex?.terrain !== "") {
+      setResourceDetails();
     } else {
-      const sea = resources?.find(r => r?.terrain === "Sea")
-      setActiveResource(sea);
-      setBackgroundImage(`https:${sea?.cardImage}`);
+      setSeaDetails();
     }
   });
 
