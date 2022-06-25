@@ -111,6 +111,10 @@ export const useCatanLogic = (props, port) => {
 
     useEffect(() => {
         generateBoardData();
+        return(() => {
+            setBoardData(null);
+            setStats(null);
+        })
     }, [numbersFrequency, resourcesFrequency, rowConfig, portConfig, port]);
 
     return { boardData, stats, generateBoardData };

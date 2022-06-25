@@ -31,6 +31,9 @@ export const useNotFoundPageContent = () => {
       setNotFoundPageContent(content);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setNotFoundPageContent(null);
+    });
   }, []);
 
   return { notFoundPageContent, isLoading };

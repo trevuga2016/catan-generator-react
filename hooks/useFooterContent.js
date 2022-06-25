@@ -20,6 +20,9 @@ export const useFooterContent = () => {
       setFooterContent(data?.footerRefs);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setFooterContent(null);
+    });
   }, []);
 
   return { footerContent, isLoading };

@@ -1,11 +1,11 @@
 import { Box, Grid, Modal, Typography } from '@mui/material';
 import styles from './stats-modal.module.scss';
 import { ResourceStats } from './resource-stats';
-import { useResources } from '../../hooks/useResources';
+import { useContentContext } from '../../contexts/content-context';
 
 export const StatsModal = ({ open, onClose, stats }) => {
 
-  const { resources } = useResources();
+  const { resources } = useContentContext();
 
   const cleanStats = stats?.map((stat) => {
     const found = resources?.find(r => r?.resource === stat?.resource);

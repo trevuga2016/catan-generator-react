@@ -37,6 +37,9 @@ export const useHarbors = () => {
       setHarbors(harbor);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setHarbors(null);
+    });
   }, []);
 
   return { harbors, isLoading };

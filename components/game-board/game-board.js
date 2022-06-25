@@ -41,12 +41,19 @@ export const GameBoard = ({ props }) => {
   useEffect(() => {
     setAvailableWidth(typeof window !== "undefined" ? window.innerWidth : 0);
     setAvailableHeight(typeof window !== "undefined" ? window.innerHeight : 0);
+    return(() => {
+      setAvailableWidth(0);
+      setAvailableHeight(0);
+    })
   }, [availableWidth, availableHeight]);
 
   useEffect(() => {
     const boardHeight = heightRef.current.clientHeight;
     const calcHeight = boardHeight * scale;
     setBoardHeight(calcHeight);
+    return(() => {
+      setBoardHeight(undefined);
+    })
   }, [scale]);
 
   useEffect(() => {
@@ -62,6 +69,10 @@ export const GameBoard = ({ props }) => {
     } else {
       setScale(1);
     }
+    return(() => {
+      setScale(1);
+      setTransformOrigin(null);
+    })
   }, [boardData]);
 
   return(

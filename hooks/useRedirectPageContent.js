@@ -28,6 +28,9 @@ export const useRedirectPageContent = () => {
       setRedirectPageContent(content);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setRedirectPageContent(null);
+    });
   }, []);
 
   return { redirectPageContent, isLoading };

@@ -30,6 +30,9 @@ export const useProgressCards = () => {
       setIsLoading(false);
     }).catch(() => {
     });
+    return(() => {
+      setProgressCards(null);
+    });
   }, []);
 
   return { progressCards, isLoading };

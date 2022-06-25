@@ -27,6 +27,9 @@ export const useLegalPageContent = () => {
       setLegalPageContent(content);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setLegalPageContent(null);
+    });
   }, []);
 
   return { legalPageContent, isLoading };

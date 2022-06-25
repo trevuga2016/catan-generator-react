@@ -34,6 +34,9 @@ export const useResources = () => {
       setResources(resource);
       setIsLoading(false);
     }).catch(() => {});
+    return(() => {
+      setResources(null);
+    })
   }, []);
 
   return { resources, isLoading };
