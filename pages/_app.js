@@ -1,27 +1,23 @@
 import '../styles/globals.scss';
-import { Footer } from '../components/footer/footer';
-import { theme } from '../styles/theme';
-import { ThemeProvider } from '@emotion/react';
-import { GameProvider } from '../contexts/game-context';
-import { ContentfulProvider } from '../contexts/contentful-context';
-import { Box } from '@mui/material';
-import { ContentProvider } from '../contexts/content-context';
+import {theme} from '../styles/theme';
+import {ThemeProvider} from '@emotion/react';
+import {GameProvider} from '../contexts/game-context';
+import {ContentProvider} from '../contexts/content-context';
+import Layout from "../components/layout";
 
 function CatanGenerator({ Component, pageProps }) {
   return(
-    <ThemeProvider theme={theme}>
-      <ContentfulProvider>
-      <GameProvider>
-      <ContentProvider>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet" />
-        <Box id="background-image" width="100vw" height="100vh" position="fixed" />
-        <Component {...pageProps} />
-        <Footer />
-      </ContentProvider>
-      </GameProvider>
-      </ContentfulProvider>
-    </ThemeProvider>
+      <Layout>
+          <ThemeProvider theme={theme}>
+              <GameProvider>
+                  <ContentProvider>
+                      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+                            rel="stylesheet" />
+                      <Component {...pageProps} />
+                  </ContentProvider>
+              </GameProvider>
+          </ThemeProvider>
+      </Layout>
   );
 }
 

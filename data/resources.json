@@ -1,0 +1,70 @@
+[
+  {
+    "resource": "Wool",
+    "terrain": "Pastures",
+    "icon": "/assets/icons/wool_icon.jpg",
+    "hexImage": "/assets/hexes/resources/wool_hex.png",
+    "cardImage": "/assets/cards/wool_card.jpg",
+    "commodity": {
+      "name": "Cloth",
+      "icon": "/assets/icons/cloth_icon.png",
+      "cardImage": "/assets/cards/ck_clothwool.png"
+    }
+  },
+  {
+    "resource": "Sea",
+    "terrain": "Sea",
+    "icon": "",
+    "hexImage": "/assets/hexes/resources/sea_hex.png",
+    "cardImage": "/assets/cards/sea_card.jpg",
+    "commodity": null
+  },
+  {
+    "resource": "Desert",
+    "terrain": "Desert",
+    "icon": "",
+    "hexImage": "/assets/hexes/resources/desert_hex.png",
+    "cardImage": "/assets/cards/desert_card.jpg",
+    "commodity": null
+  },
+  {
+    "resource": "Lumber",
+    "terrain": "Forests",
+    "icon": "/assets/icons/lumber_icon.jpg",
+    "hexImage": "/assets/hexes/resources/lumber_hex.png",
+    "cardImage": "/assets/cards/lumber_card.jpg",
+    "commodity": {
+      "name": "Paper",
+      "icon": "/assets/icons/paper_icon.png",
+      "cardImage": "/assets/cards/ck_paperlumber.png"
+    }
+  },
+  {
+    "resource": "Ore",
+    "terrain": "Mountains",
+    "icon": "/assets/icons/ore_icon.jpg",
+    "hexImage": "/assets/hexes/resources/ore_hex.png",
+    "cardImage": "/assets/cards/ore_card.jpg",
+    "commodity": {
+      "name": "Coin",
+      "icon": "/assets/icons/coin_icon.png",
+      "cardImage": "/assets/cards/ck_coinore.png"
+    }
+  },
+  {
+    "resource": "Grain",
+    "terrain": "Fields",
+    "icon": "/assets/icons/grain_icon.jpg",
+    "hexImage": "/assets/hexes/resources/grain_hex.png",
+    "cardImage": "/assets/cards/grain_card.jpg",
+    "commodity": null
+  },
+  {
+    "resource": "Brick",
+    "terrain": "Hills",
+    "icon": "/assets/icons/brick_icon.jpg",
+    "hexImage": "/assets/hexes/resources/brick_hex.png",
+    "cardImage": "/assets/cards/brick_card.jpg",
+    "commodity": null
+  }
+]

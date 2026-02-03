@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Politics",
+    "icon": "/assets/icons/progdice_blue.png",
+    "color": "0000ff",
+    "textColor": "white",
+    "chipColor": "secondary",
+    "buttonIcon": "balance"
+  },
+  {
+    "title": "Trade",
+    "icon": "/assets/icons/progdice_yellow.png",
+    "color": "ffd700",
+    "textColor": "black",
+    "chipColor": "primary",
+    "buttonIcon": "account_balance"
+  },
+  {
+    "title": "Science",
+    "icon": "/assets/icons/progdice_green.png",
+    "color": "008000",
+    "textColor": "white",
+    "chipColor": "secondary",
+    "buttonIcon": "biotech"
+  }
+]

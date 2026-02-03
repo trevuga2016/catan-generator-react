@@ -1,13 +1,10 @@
-import { Grid, Link, Tooltip, Typography } from '@mui/material';
-import styles from './footer.module.scss';
-import { useRouter } from 'next/router';
-import { makeStyles } from '@mui/styles';
-import { useFooterContent } from '../../hooks/useFooterContent';
+import {Grid, Link, Tooltip} from '@mui/material';
+import {useRouter} from 'next/router';
+import {makeStyles} from '@mui/styles';
 
 export const Footer = () => {
 
     const router = useRouter();
-    const { footerContent, isLoading } = useFooterContent();
 
     const useStyles = makeStyles({
       tooltip: {
@@ -18,28 +15,17 @@ export const Footer = () => {
     const classes = useStyles();
 
     return(
-        <Grid container direction="row" className={styles["footer"]}>
-          {
-            !isLoading && footerContent?.map((content, k) => {
-              const textAlignment = k % 2 ? 'right' : 'left';
-              return(
-                <Grid item xs textAlign={textAlignment} key={k}>
-                  {
-                    content?.fields?.text &&
-                    <Tooltip title={content?.fields?.text} placement="top-end" classes={{tooltip: classes.tooltip}}>
-                      <Typography variant="body2">{content?.fields?.title}</Typography>
-                    </Tooltip>
-                  }
-                  {
-                    content?.fields?.url &&
-                    <Link onClick={() => router.push(content?.fields?.url)} color="secondary" sx={{ cursor: "pointer" }}>
-                      <Typography variant="body2">{content?.fields?.title}</Typography>
-                    </Link>
-                  }
-                </Grid>
-              );
-            })
-          }
+        <Grid container direction="row" pb={1}>
+            <Grid size={6} pl={5}>
+                <Tooltip title="Hey Rebecca :)" placement="top-end" classes={{tooltip: classes.tooltip}}>
+                    © 2026 trevuga2016
+                </Tooltip>
+            </Grid>
+            <Grid item size={6} textAlign="right" pr={5}>
+                <Link variant="body2" color="#000000" onClick={() => router.push('/legal')} sx={{ cursor: "pointer" }}>
+                    Legal
+                </Link>
+            </Grid>
         </Grid>
     );
 }

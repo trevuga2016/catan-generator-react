@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 export const CitiesAndKnights = () => {
 
-  const {scenarioContent, isLoading} = useScenarioContent(process.env.NEXT_PUBLIC_CK_SCENARIO_ID);
+  const {scenarioContent, isLoading} = useScenarioContent('ck');
   const {setScenario} = useGameContext();
 
   useEffect(() => {

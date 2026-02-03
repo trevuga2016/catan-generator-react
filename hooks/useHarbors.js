@@ -1,42 +1,31 @@
 import { useEffect, useState } from 'react';
-import { useContentfulContext } from '../contexts/contentful-context';
+import data from '../data/harbors.json';
 
 export const useHarbors = () => {
 
   const [harbors, setHarbors] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { client } = useContentfulContext();
-
-  const getHarbors = async() => {
-    let results = await client.getEntries({
-      content_type: 'harbors'
-    });
-    const { items } = results;
-    return items || [];
-  }
 
   useEffect(() => {
-    getHarbors().then((data) => {
       const harbor = data?.map(h => {
-        const images = h?.fields?.hexImage?.map(hex => {
-          const key = hex?.fields?.title?.split('_')?.[1];
-          const value = hex?.fields?.file?.url;
+        const images = h.hexImage.map(hex => {
+          const key = hex.title.split('_')?.[1];
+          const value = hex.url;
           return {
             [key] : value
           }
         });
         return {
-          type: h?.fields?.type,
-          id: h?.fields?.id,
-          cardImage: h?.fields?.cardImage?.fields?.file?.url,
+          type: h.type,
+          id: h.id,
+          cardImage: h.cardImage,
           hexImage: images,
-          terrain: h?.fields?.terrain,
-          description: h?.fields?.description
+          terrain: h.terrain,
+          description: h.description
         }
       });
       setHarbors(harbor);
       setIsLoading(false);
-    }).catch(() => {});
     return(() => {
       setHarbors(null);
     });

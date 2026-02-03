@@ -1,36 +1,28 @@
-import { useEffect, useState } from 'react';
-import { useContentfulContext } from '../contexts/contentful-context';
+import {useEffect, useState} from 'react';
 
 export const useLegalPageContent = () => {
 
-  const [legalPageContent, setLegalPageContent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const { client } = useContentfulContext();
+    const [legalPageContent, setLegalPageContent] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-  const getLegalPageContent = async() => {
-    let results = await client.getEntries({
-      content_type: 'legalPage'
-    });
-    const { items } = results;
-    return items[0]?.fields || [];
-  }
+    useEffect(() => {
+        const content =
+            {
+                title: "Legal",
+                message: "The contents of this application are original work and are not to be used without permission.\n" +
+                    "\n" +
+                    "All Catan images, names, and associated likenesses are licensed trademarks of [Catan GmbH and Catan Studio](https://www.catan.com/).\n" +
+                    "\n" +
+                    "Check out the project over on [GitHub](https://github.com/trevuga2016/catan-generator-react)!",
+                backgroundImage: "",
+                backgroundColor: "c21f26"
+            }
+        setLegalPageContent(content);
+        setIsLoading(false);
+        return (() => {
+            setLegalPageContent(null);
+        });
+    }, []);
 
-  useEffect(() => {
-    getLegalPageContent().then((data) => {
-      const content =
-      {
-        title: data?.title,
-        message: data?.message,
-        backgroundImage: data?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url,
-        backgroundColor: data?.backgroundProps?.fields?.backgroundColor
-      }
-      setLegalPageContent(content);
-      setIsLoading(false);
-    }).catch(() => {});
-    return(() => {
-      setLegalPageContent(null);
-    });
-  }, []);
-
-  return { legalPageContent, isLoading };
+    return {legalPageContent, isLoading};
 }

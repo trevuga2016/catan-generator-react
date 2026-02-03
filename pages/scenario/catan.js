@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 export const Catan = () => {
 
-    const { scenarioContent, isLoading } = useScenarioContent(process.env.NEXT_PUBLIC_CATAN_SCENARIO_ID);
+    const { scenarioContent, isLoading } = useScenarioContent('catan');
     const { setScenario } = useGameContext();
 
     useEffect(() => {

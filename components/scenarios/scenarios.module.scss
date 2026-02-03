@@ -8,11 +8,10 @@
 }
 
 .detail {
-  box-shadow: #E7E2AB 0 5px 15px;
   border-radius: 15px;
   background-color: #83B5DA;
   height: 100%;
-  border: 1px solid #E7E2AB;
+  border: 1px solid black;
   &__image {
     border-radius: 15px 15px 0 0;
   }
@@ -24,6 +23,7 @@
     &__left {
       @extend .detail__chip;
       margin-left: 8px;
+      border: 1px solid black;
     }
     &__right {
       @extend .detail__chip;
@@ -48,7 +48,6 @@
   }
   background-color: #E7E2AB;
   border: 2px solid #000;
-  box-shadow: #83B5DA;
   padding: 20px 50px 30px;
   text-align: center;
   &__button {

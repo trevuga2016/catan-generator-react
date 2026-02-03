@@ -1,40 +1,25 @@
-import { useEffect, useState } from 'react';
-import { useContentfulContext } from '../contexts/contentful-context';
+import {useEffect, useState} from 'react';
 
 export const useNotFoundPageContent = () => {
 
-  const [notFoundPageContent, setNotFoundPageContent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const { client } = useContentfulContext();
+    const [notFoundPageContent, setNotFoundPageContent] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-  const getNotFoundPageContent = async() => {
-    let results = await client.getEntries({
-      content_type: 'notFoundPage'
-    });
-    const { items } = results;
-    return items[0]?.fields || [];
-  }
+    useEffect(() => {
+        const content =
+            {
+                title: "404 - Page Not Found",
+                message: "The page you are looking for does not exist.",
+                errorPicture: "",
+                backgroundImage: "",
+                backgroundColor: "c21f26"
+            }
+        setNotFoundPageContent(content);
+        setIsLoading(false);
+        return (() => {
+            setNotFoundPageContent(null);
+        });
+    }, []);
 
-  useEffect(() => {
-    getNotFoundPageContent().then((data) => {
-      const content =
-      {
-        title: data?.title,
-        message: data?.message,
-        errorPicture: {
-          url: data?.errorPicture?.fields?.file?.url,
-          altText: data?.errorPicture?.fields?.title,
-        },
-        backgroundImage: data?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url,
-        backgroundColor: data?.backgroundProps?.fields?.backgroundColor
-      }
-      setNotFoundPageContent(content);
-      setIsLoading(false);
-    }).catch(() => {});
-    return(() => {
-      setNotFoundPageContent(null);
-    });
-  }, []);
-
-  return { notFoundPageContent, isLoading };
+    return {notFoundPageContent, isLoading};
 }

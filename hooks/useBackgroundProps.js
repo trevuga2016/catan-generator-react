@@ -7,8 +7,8 @@ export const useBackgroundProps = () => {
 
   const updateBackgroundProps = () => {
     if (typeof window !== "undefined") {
-      document.getElementById("background-image").style.background = `url(https:${backgroundImage}) no-repeat center center`;
-      document.getElementById("background-image").style.backgroundSize = "cover";
+      document.getElementById("background").style.background = `url(${backgroundImage}) no-repeat center center`;
+      document.getElementById("background").style.backgroundSize = "cover";
       document.getElementsByTagName('html').item(0).style.backgroundColor = `#${backgroundColor}`;
       document.getElementsByTagName('body').item(0).style.backgroundColor = `#${backgroundColor}`;
     }

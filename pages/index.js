@@ -1,11 +1,10 @@
-import { Header } from '../components/header/header';
-import { CircularProgress, Grid, Skeleton, Typography } from '@mui/material';
-import { ShareButtons } from '../components/share-buttons/share-buttons';
+import {Header} from '../components/header/header';
+import {CircularProgress, Grid, Skeleton, Typography} from '@mui/material';
 import Head from 'next/head';
-import { useBackgroundProps } from '../hooks/useBackgroundProps';
-import { useEffect } from 'react';
-import { useHomePageContent } from '../hooks/useHomePageContent';
-import { Scenarios } from '../components/scenarios/scenarios';
+import {useBackgroundProps} from '../hooks/useBackgroundProps';
+import {useEffect} from 'react';
+import {useHomePageContent} from '../hooks/useHomePageContent';
+import {Scenarios} from '../components/scenarios/scenarios';
 
 export const Home = () => {
 
@@ -18,7 +17,7 @@ export const Home = () => {
   });
 
   return(
-    <Grid container direction="column" alignItems="center" position="absolute">
+    <Grid container direction="column" alignItems="center" width="100%">
       <Head>
         <title>{homePageContent?.title}</title>
         <link rel="icon" href="/catan-icon.ico" />
@@ -27,13 +26,10 @@ export const Home = () => {
         { !isLoading ? <Header title={homePageContent?.title} /> : <Skeleton variant="text" width="50vw" height={75} animation="wave" /> }
       </Grid>
       <Grid item pb={2} px={2} textAlign="center">
-        { !isLoading ? <Typography variant="body1">{homePageContent?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
+        { !isLoading ? <Typography variant="h6" fontFamily="Gill Sans !important">{homePageContent?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
       </Grid>
       <Grid item>
         { !isLoading ? <Scenarios /> : <CircularProgress /> }
-      </Grid>
-      <Grid item p={4}>
-        <ShareButtons />
       </Grid>
     </Grid>
   );

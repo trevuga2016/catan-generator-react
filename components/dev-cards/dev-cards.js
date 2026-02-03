@@ -1,4 +1,4 @@
-import { Grid, Modal, Paper, Typography } from '@mui/material';
+import {Box, Grid, Modal, Paper, Typography} from '@mui/material';
 import styles from './dev-cards.module.scss';
 import Image from 'next/image';
 import { Carousel } from '../carousel/carousel';
@@ -8,10 +8,6 @@ import ReactMarkdown from 'react-markdown';
 export const DevCards = ({ open, onClose }) => {
 
   const { devCards } = useDevelopmentCards();
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&h=215&fm=webp&q=${quality || 75}`
-  }
 
   return(
     <Modal open={open} onClose={onClose}>
@@ -31,7 +27,11 @@ export const DevCards = ({ open, onClose }) => {
                     <Grid item color={textColor} className={styles["dev-cards__container__name"]}>
                       <Typography variant="h6">&#8213;&nbsp;{card?.name}&nbsp;&#8213;</Typography>
                     </Grid>
-                    <Image loader={imageLoader} src={`https:${card?.image}`} width={275} height={215} />
+                    <Grid item>
+                      <Box sx={{ width: 271, height: 215 }}>
+                        <Image src={card?.image} width={271} height={215} alt="Development Card" />
+                      </Box>
+                    </Grid>
                     <Grid item>
                       <Grid container className={styles["dev-cards__container__desc"]}>
                         <ReactMarkdown>{card?.description}</ReactMarkdown>

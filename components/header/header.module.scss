@@ -1,13 +1,31 @@
 .header {
   text-align: center;
   cursor: pointer;
-  @media(hover: hover) and (pointer: fine) {
-    &:hover {
-      background-color: #83B5DA;
-      border-radius: 15px;
-    }
-  }
+  position: relative;
+  display: inline-block;
   @media only screen and (max-width: 600px) {
     font-size: 1.5rem !important;
   }
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #000000);
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  //transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+
+.header::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.header:hover::after {
+  transform: scaleX(1);
 }

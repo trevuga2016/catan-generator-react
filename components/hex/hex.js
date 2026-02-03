@@ -10,7 +10,7 @@ export const Hex = ({ hex }) => {
 
   const { resources, harbors } = useContentContext();
   const [ open, setOpen ] = useState(false);
-  const [ backgroundImage, setBackgroundImage ] = useState(undefined);
+  const [ backgroundImage, setBackgroundImage ] = useState('');
 
   useEffect(() => {
       if (hex?.terrain !== "Harbor" && hex?.terrain !== "") {
@@ -29,15 +29,11 @@ export const Hex = ({ hex }) => {
     }
   });
 
-  const imageLoader = ({ src }) => {
-    return `${src}?w=500&h=575&fm=webp`;
-  }
-
   return (
     <>
       <ButtonBase className={styles["hex__button"]} onClick={() => setOpen(true)}>
         <Box className={styles["hex"]} position="relative">
-          <Image loader={imageLoader} src={`https:${backgroundImage}`} layout="fill" priority={true} />
+          <Image src={backgroundImage} layout="fill" priority={true} alt="hex" />
           <Token number={hex?.token?.number} probability={hex?.token?.probability}/>
         </Box>
       </ButtonBase>

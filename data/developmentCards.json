@@ -1,0 +1,37 @@
+[
+  {
+    "order": 1,
+    "name": "Knight",
+    "image": "/assets/dev_cards/knight_devCard.png",
+    "description": "Move the robber, steal 1 resource card from the owner of an adjacent settlement or city.",
+    "cardColor": "C21F26"
+  },
+  {
+    "order": 2,
+    "name": "Road Building",
+    "image": "/assets/dev_cards/rb_catan.png",
+    "description": "Place 2 new roads as if you had just built them.",
+    "cardColor": "006400"
+  },
+  {
+    "order": 3,
+    "name": "Year of Plenty",
+    "image": "/assets/dev_cards/yop_devCard.png",
+    "description": "Take any 2 resources from the bank. Add them to your hand. They can be 2 of the same resource or 2 different resources.",
+    "cardColor": "006400"
+  },
+  {
+    "order": 4,
+    "name": "Monopoly",
+    "image": "/assets/dev_cards/monop_devCard.png",
+    "description": "When you play this card, announce 1 type of resource. All other players must give you all of their resources of that type.",
+    "cardColor": "006400"
+  },
+  {
+    "order": 5,
+    "name": "Victory Point",
+    "image": "/assets/dev_cards/vp_devCards.png",
+    "description": "Reveal this card on your turn if, with it, you reach the number of points required for victory.",
+    "cardColor": "FFD700"
+  }
+]

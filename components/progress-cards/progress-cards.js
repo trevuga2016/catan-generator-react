@@ -1,4 +1,4 @@
-import { Button, Chip, Grid, IconButton, Icon, Modal, Paper, Typography } from '@mui/material';
+import {Button, Chip, Grid, IconButton, Icon, Modal, Paper, Typography, Box} from '@mui/material';
 import styles from './progress-cards.module.scss';
 import { useEffect, useState } from 'react';
 import { Carousel } from '../carousel/carousel';
@@ -18,10 +18,6 @@ export const ProgressCards = ({ open, onClose }) => {
   const handleOnClick = (category) => {
     setShowCategory(true);
     setCategory(category);
-  }
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&h=215&fm=webp&q=${quality || 75}`
   }
 
   useEffect(() => {
@@ -54,36 +50,40 @@ export const ProgressCards = ({ open, onClose }) => {
               </Grid>
             </Grid> :
             <>
-              <Grid container direction="row" alignItems="center" py={2} px={1}>
-                <Grid item xs={1}>
+              <Grid container direction="row" alignItems="center" py={2} px={2}>
+                <Grid item size={1}>
                   <IconButton color="primary" onClick={() => setShowCategory(false)}>
                     <ArrowBackIcon/>
                   </IconButton>
                 </Grid>
-                <Grid item xs textAlign="center">
+                <Grid item size="grow" textAlign="center">
                   <Typography variant="h5" whiteSpace="nowrap">&#8213;&nbsp;{category?.title}&nbsp;&#8213;</Typography>
                 </Grid>
-                <Grid item xs={1} borderRadius="5px" border={`1px solid #${category?.color}`}>
-                  <Image src={`https:${category?.icon}?fm=webp`} width={40} height={40} layout="responsive" alt={`${category?.title}_cards`}/>
+                <Grid item size="auto">
+                  <Box sx={{ width: 40, height: 40, borderRadius: '5px', border: `1px solid #${category?.color}` }}>
+                    <Image src={category?.icon} width={40} height={40} alt={`${category?.title}_cards`}/>
+                  </Box>
                 </Grid>
               </Grid>
               <Carousel>
                 {
                   progressCards?.filter(card => card?.category === category?.title)?.sort((a, b) => a?.name?.localeCompare(b?.name))?.map((c, i) => {
                     return (
-                      <Grid container justifyContent="center" key={i}>
-                        <Grid container direction="column" border={`2px solid #${category?.color}`} sx={{ backgroundColor: `#${category?.color}7F !important` }} className={styles["progress-cards__container"]}>
-                          <Grid item color={category?.textColor} className={styles["progress-cards__container__name"]}>
-                            <Grid container justifyContent="flex-end">
-                              <Chip label={c?.noOfCards} size="small" color={category?.chipColor} title="Number of Cards" className={styles["progress-cards__container__chip"]}/>
-                            </Grid>
-                            <Typography variant="h6">&#8213;&nbsp;{c?.name}&nbsp;&#8213;</Typography>
+                      <Grid container direction="column" justifyContent="center" border={`2px solid #${category?.color}`} sx={{ backgroundColor: `#${category?.color}7F !important` }} className={styles["progress-cards__container"]} key={i}>
+                        <Grid item className={styles["progress-cards__container__name"]}>
+                          <Grid container justifyContent="flex-end">
+                            <Chip label={c?.noOfCards} size="small" color={category?.chipColor} title="Number of Cards" className={styles["progress-cards__container__chip"]}/>
                           </Grid>
-                          <Image loader={imageLoader} src={`https:${c?.image}`} width={275} height={215} loading="lazy"/>
-                          <Grid item>
-                            <Grid container className={styles["progress-cards__container__desc"]}>
-                              <ReactMarkdown>{c?.description}</ReactMarkdown>
-                            </Grid>
+                          <Typography variant="h6">&#8213;&nbsp;{c?.name}&nbsp;&#8213;</Typography>
+                        </Grid>
+                        <Grid item>
+                          <Box sx={{ width: 271, height: 215 }}>
+                            <Image src={c?.image} width={271} height={215} loading="lazy" alt="Progress card"/>
+                          </Box>
+                        </Grid>
+                        <Grid item>
+                          <Grid container className={styles["progress-cards__container__desc"]}>
+                            <ReactMarkdown>{c?.description}</ReactMarkdown>
                           </Grid>
                         </Grid>
                       </Grid>

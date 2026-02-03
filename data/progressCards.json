@@ -1,0 +1,177 @@
+[
+  {
+    "name": "Bishop",
+    "category": "Politics",
+    "image": "/assets/progress_cards/bishop_progress.png",
+    "description": "Move the robber. You may draw 1 random card (resource or commodity) from the hand of each player who has a settlement or city adjacent to the robber's new hex.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Constitution",
+    "category": "Politics",
+    "image": "/assets/progress_cards/constitution_progress.png",
+    "description": "1 Victory Point! Reveal this card immediately when you draw it. This card cannot be stolen by a spy.",
+    "noOfCards": 1
+  },
+  {
+    "name": "Deserter",
+    "category": "Politics",
+    "image": "/assets/progress_cards/deserter_progress.png",
+    "description": "Choose an opponent. He must remove 1 of his knights of his choice from the board. In return, you may play 1 of your own knights on the board that is of equal strength to the one removed.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Diplomat",
+    "category": "Politics",
+    "image": "/assets/progress_cards/diplomat_progress.png",
+    "description": "You may remove any open road (a road with nothing - including settlements or cities - attached at one end. If you remove one of your own roads, you may place it in another location.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Intrigue",
+    "category": "Politics",
+    "image": "/assets/progress_cards/intrigue_progress.png",
+    "description": "You may displace one of you opponent's knights, without using a knight of your own. The knight must be on an intersection connected to one of your roads or lines of ships.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Saboteur",
+    "category": "Politics",
+    "image": "/assets/progress_cards/saboteur_progress.png",
+    "description": "Each player who has as many or more victory points than you must discard half his cards to the bank (resource and/or commodity)",
+    "noOfCards": 2
+  },
+  {
+    "name": "Spy",
+    "category": "Politics",
+    "image": "/assets/progress_cards/spy_progress.png",
+    "description": "Examine an opponent's hand of progress cards. You may take 1 card of your choice and add it to your hand.",
+    "noOfCards": 3
+  },
+  {
+    "name": "Warlord",
+    "category": "Politics",
+    "image": "/assets/progress_cards/warlord_progress.png",
+    "description": "You may activate all of your knights for free.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Wedding",
+    "category": "Politics",
+    "image": "/assets/progress_cards/wedding_progress.png",
+    "description": "Each player who has more victory points than you must give you 2 cards of his choice (resource and/or commodity).",
+    "noOfCards": 2
+  },
+  {
+    "name": "Commercial Harbor",
+    "category": "Trade",
+    "image": "/assets/progress_cards/commercialharbor_progress.png",
+    "description": "You may offer each opponent a resource card from your hand. In exchange, each player must give you a commodity card of his choice. If he has none, your resource card is returned.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Master Merchant",
+    "category": "Trade",
+    "image": "/assets/progress_cards/mastermerchant_progress.png",
+    "description": "Select an opponent who has more victory points than you. You may examine his hand of resource cards and select any 2 cards, which you may add to your hand.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Merchant",
+    "category": "Trade",
+    "image": "/assets/progress_cards/merchant_progress.png",
+    "description": "Place the merchant on a land hex next to your settlement or city. While the merchant remains here, you may trade the resource produced by this terrain at a 2:1 ratio. Control of the merchant also allots 1 Victory Point.",
+    "noOfCards": 6
+  },
+  {
+    "name": "Merchant Fleet",
+    "category": "Trade",
+    "image": "/assets/progress_cards/merchantfleet_progress.png",
+    "description": "For the rest of your turn, you may trade one resource or commodity of your choice with the bank at a 2:1 rate. You may make as many trades as you wish.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Resource Monopoly",
+    "category": "Trade",
+    "image": "/assets/progress_cards/resourcemonopoly_progress.png",
+    "description": "Name a resource (not a commodity). Each opponent must give you 2 cards of that type (if he has any).",
+    "noOfCards": 4
+  },
+  {
+    "name": "Trade Monopoly",
+    "category": "Trade",
+    "image": "/assets/progress_cards/trademonopoly_progress.png",
+    "description": "Name a commodity (not a resource). Each opponent must give you 1 card of that type (if he has any).",
+    "noOfCards": 2
+  },
+  {
+    "name": "Alchemist",
+    "category": "Science",
+    "image": "/assets/progress_cards/alchemist_progress.png",
+    "description": "Play this card before you roll the dice. You decide what the results of both numbered dice will be. Then roll the event die normally. Resolve the event die first.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Crane",
+    "category": "Science",
+    "image": "/assets/progress_cards/crane_progress.png",
+    "description": "One city improvement that you build this turn costs one less commodity than usual.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Engineer",
+    "category": "Science",
+    "image": "/assets/progress_cards/engineer_progress.png",
+    "description": "You may build 1 city wall for free.",
+    "noOfCards": 1
+  },
+  {
+    "name": "Inventor",
+    "category": "Science",
+    "image": "/assets/progress_cards/inventor_progress.png",
+    "description": "You may swap 2 number tokens of your choice on the game board. You may not choose any 2, 12, 6, or 8 tokens.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Irrigation",
+    "category": "Science",
+    "image": "/assets/progress_cards/irrigation_progress.png",
+    "description": "You may take 2 grain cards from the bank for each fields hex which is adjacent to at least one of your cities or settlements.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Medicine",
+    "category": "Science",
+    "image": "/assets/progress_cards/medicine_progress.png",
+    "description": "For 2 ore and 1 grain, you may upgrade one of your settlements into a city.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Mining",
+    "category": "Science",
+    "image": "/assets/progress_cards/mining_progress.png",
+    "description": "You may take 2 ore cards from the bank for each mountains hex adjacent to at least one of your cities or settlements.",
+    "noOfCards": 2
+  },
+  {
+    "name": "Printer",
+    "category": "Science",
+    "image": "/assets/progress_cards/printer_progress.png",
+    "description": "1 Victory Point! Reveal this card immediately when you draw it. This card cannot be stolen by a spy.",
+    "noOfCards": 1
+  },
+  {
+    "name": "Road Building",
+    "category": "Science",
+    "image": "/assets/progress_cards/roadbuilding_progress.png",
+    "description": "When you play this card, you may place 2 roads for free (if playing with Catan: Seafarers, you may place 2 ships or 1 ship and 1 road instead)",
+    "noOfCards": 2
+  },
+  {
+    "name": "Smith",
+    "category": "Science",
+    "image": "/assets/progress_cards/smith_progress.png",
+    "description": "You may promote up to 2 of your knights for free (the normal rules for promoting knights still apply). Mighty knights may not be promoted.",
+    "noOfCards": 2
+  }
+]

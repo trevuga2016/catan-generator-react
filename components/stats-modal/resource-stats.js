@@ -14,10 +14,10 @@ export const ResourceStats = ({ stats }) => {
               <TableRow key={i}>
                 <TableCell>
                   <Stack direction="row" spacing={1} justifyContent="center">
-                    <Avatar src={`https:${stat?.icon}?fm=webp`} title={stat?.resource}/>
+                    <Avatar src={stat?.icon} title={stat?.resource}/>
                     {
                       scenario?.scenarioUrl?.includes('ck') && stat?.commodity?.icon &&
-                      <Avatar src={`https:${stat?.commodity?.icon}?fm=webp`} title={stat?.commodity?.name}/>
+                      <Avatar src={stat?.commodity?.icon} title={stat?.commodity?.name}/>
                     }
                   </Stack>
                 </TableCell>

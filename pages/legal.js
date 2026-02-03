@@ -21,7 +21,7 @@ export const Legal = () => {
 
   return(
     !isLoading ?
-    <Grid container direction="column" alignItems="center" textAlign="center" position="absolute">
+    <Grid container direction="column" alignItems="center">
       <Head>
         <title>{legalPageContent?.title} | Catan Board Generator</title>
         <link rel="icon" href="/catan-icon.ico" />
@@ -29,7 +29,7 @@ export const Legal = () => {
       <Grid item>
         <Header title={legalPageContent?.title} />
       </Grid>
-      <Grid item px={2}>
+      <Grid item px={2} textAlign="center">
         <ReactMarkdown>{legalPageContent?.message}</ReactMarkdown>
       </Grid>
       <Grid item py={1}>

@@ -1,0 +1,200 @@
+[
+  {
+    "type": "2 for 1 Lumber",
+    "id": "2for1_lumber",
+    "hexImage": [
+      {
+        "title": "2for1lumber_bl",
+        "url": "/assets/hexes/harbors/2for1_lumber_bl.png"
+      },
+      {
+        "title": "2for1lumber_br",
+        "url": "/assets/hexes/harbors/2for1_lumber_br.png"
+      },
+      {
+        "title": "2for1lumber_l",
+        "url": "/assets/hexes/harbors/2for1_lumber_l.png"
+      },
+      {
+        "title": "2for1lumber_r",
+        "url": "/assets/hexes/harbors/2for1_lumber_r.png"
+      },
+      {
+        "title": "2for1lumber_tl",
+        "url": "/assets/hexes/harbors/2for1_lumber_tl.png"
+      },
+      {
+        "title": "2for1lumber_tr",
+        "url": "/assets/hexes/harbors/2for1_lumber_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/2for1_lumber_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 2 lumber for 1 of any other resource"
+  },
+  {
+    "type": "2 for 1 Brick",
+    "id": "2for1_brick",
+    "hexImage": [
+      {
+        "title": "2for1brick_bl",
+        "url": "/assets/hexes/harbors/2for1_brick_bl.png"
+      },
+      {
+        "title": "2for1brick_br",
+        "url": "/assets/hexes/harbors/2for1_brick_br.png"
+      },
+      {
+        "title": "2for1brick_l",
+        "url": "/assets/hexes/harbors/2for1_brick_l.png"
+      },
+      {
+        "title": "2for1brick_r",
+        "url": "/assets/hexes/harbors/2for1_brick_r.png"
+      },
+      {
+        "title": "2for1brick_tl",
+        "url": "/assets/hexes/harbors/2for1_brick_tl.png"
+      },
+      {
+        "title": "2for1brick_tr",
+        "url": "/assets/hexes/harbors/2for1_brick_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/2for1_brick_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 2 brick for 1 of any other resource"
+  },
+  {
+    "type": "2 for 1 Grain",
+    "id": "2for1_grain",
+    "hexImage": [
+      {
+        "title": "2for1grain_bl",
+        "url": "/assets/hexes/harbors/2for1_grain_bl.png"
+      },
+      {
+        "title": "2for1grain_br",
+        "url": "/assets/hexes/harbors/2for1_grain_br.png"
+      },
+      {
+        "title": "2for1grain_l",
+        "url": "/assets/hexes/harbors/2for1_grain_l.png"
+      },
+      {
+        "title": "2for1grain_r",
+        "url": "/assets/hexes/harbors/2for1_grain_r.png"
+      },
+      {
+        "title": "2for1grain_tl",
+        "url": "/assets/hexes/harbors/2for1_grain_tl.png"
+      },
+      {
+        "title": "2for1grain_tr",
+        "url": "/assets/hexes/harbors/2for1_grain_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/2for1_grain_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 2 grain for 1 of any other resource"
+  },
+  {
+    "type": "2 for 1 Ore",
+    "id": "2for1_ore",
+    "hexImage": [
+      {
+        "title": "2for1ore_bl",
+        "url": "/assets/hexes/harbors/2for1_ore_bl.png"
+      },
+      {
+        "title": "2for1ore_br",
+        "url": "/assets/hexes/harbors/2for1_ore_br.png"
+      },
+      {
+        "title": "2for1ore_l",
+        "url": "/assets/hexes/harbors/2for1_ore_l.png"
+      },
+      {
+        "title": "2for1ore_r",
+        "url": "/assets/hexes/harbors/2for1_ore_r.png"
+      },
+      {
+        "title": "2for1ore_tl",
+        "url": "/assets/hexes/harbors/2for1_ore_tl.png"
+      },
+      {
+        "title": "2for1ore_tr",
+        "url": "/assets/hexes/harbors/2for1_ore_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/2for1_ore_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 2 ore for 1 of any other resource"
+  },
+  {
+    "type": "2 for 1 Wool",
+    "id": "2for1_wool",
+    "hexImage": [
+      {
+        "title": "2for1wool_bl",
+        "url": "/assets/hexes/harbors/2for1_wool_bl.png"
+      },
+      {
+        "title": "2for1wool_br",
+        "url": "/assets/hexes/harbors/2for1_wool_br.png"
+      },
+      {
+        "title": "2for1wool_l",
+        "url": "/assets/hexes/harbors/2for1_wool_l.png"
+      },
+      {
+        "title": "2for1wool_r",
+        "url": "/assets/hexes/harbors/2for1_wool_r.png"
+      },
+      {
+        "title": "2for1wool_tl",
+        "url": "/assets/hexes/harbors/2for1_wool_tl.png"
+      },
+      {
+        "title": "2for1wool_tr",
+        "url": "/assets/hexes/harbors/2for1_wool_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/2for1_wool_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 2 wool for 1 of any other resource"
+  },
+  {
+    "type": "3 for 1",
+    "id": "3for1",
+    "hexImage": [
+      {
+        "title": "3for1_bl",
+        "url": "/assets/hexes/harbors/3for1_bl.png"
+      },
+      {
+        "title": "3for1_br",
+        "url": "/assets/hexes/harbors/3for1_br.png"
+      },
+      {
+        "title": "3for1_l",
+        "url": "/assets/hexes/harbors/3for1_l.png"
+      },
+      {
+        "title": "3for1_r",
+        "url": "/assets/hexes/harbors/3for1_r.png"
+      },
+      {
+        "title": "3for1_tl",
+        "url": "/assets/hexes/harbors/3for1_tl.png"
+      },
+      {
+        "title": "3for1_tr",
+        "url": "/assets/hexes/harbors/3for1_tr.png"
+      }
+    ],
+    "cardImage": "/assets/cards/3for1_card.jpg",
+    "terrain": "Harbor",
+    "description": "Trade 3 of any identical resource for 1 of any other resource"
+  }
+]

@@ -9,14 +9,14 @@ export const HexModal = ({ open, onClose, hex }) => {
   const { resources, harbors } = useContentContext();
   const { scenario } = useGameContext();
   const [ activeResource, setActiveResource ] = useState(undefined);
-  const [ resourceSubtext, setResourceSubtext ] = useState(undefined);
+  const [ resourceSubtext, setResourceSubtext ] = useState('');
   const [ backgroundImage, setBackgroundImage ] = useState(undefined);
 
   const setHarborDetails = () => {
     const harbor = harbors?.find(h => h?.id === hex?.resource);
     setActiveResource(harbor);
     setResourceSubtext(harbor?.type);
-    setBackgroundImage(`https:${harbor?.cardImage}?fm=webp`);
+    setBackgroundImage(`${harbor?.cardImage}`);
   }
 
   const setResourceDetails = () => {
@@ -24,17 +24,17 @@ export const HexModal = ({ open, onClose, hex }) => {
     setActiveResource(resource);
     if (scenario?.scenarioUrl?.includes('ck') && resource?.commodity?.name) {
       setResourceSubtext(`Produce ${resource?.resource} and ${resource?.commodity?.name}`);
-      setBackgroundImage(`https:${resource?.commodity?.cardImage}`);
+      setBackgroundImage(`${resource?.commodity?.cardImage}`);
     } else {
       resource?.resource === "Desert" ? setResourceSubtext('Produces Nothing') : setResourceSubtext(`Produce ${resource?.resource}`);
-      setBackgroundImage(`https:${resource?.cardImage}?fm=webp`);
+      setBackgroundImage(`${resource?.cardImage}`);
     }
   }
 
   const setSeaDetails = () => {
     const sea = resources?.find(r => r?.terrain === "Sea")
     setActiveResource(sea);
-    setBackgroundImage(`https:${sea?.cardImage}?fm=webp`);
+    setBackgroundImage(`${sea?.cardImage}`);
   }
 
   useEffect(() => {

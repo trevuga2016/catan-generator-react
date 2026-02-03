@@ -1,32 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useContentfulContext } from '../contexts/contentful-context';
 
 export const useHomePageContent = () => {
 
   const [homePageContent, setHomePageContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { client } = useContentfulContext();
-
-  const getHomePageContent = async() => {
-    let results = await client.getEntries({
-      content_type: 'homePage'
-    });
-    const { items } = results;
-    return items[0]?.fields || [];
-  }
 
   useEffect(() => {
-    getHomePageContent().then((data) => {
-      const content =
-        {
-          title: data?.title,
-          description: data?.description,
-          backgroundImage: data?.backgroundProps?.fields?.backgroundImage?.fields?.file?.url,
-          backgroundColor: data?.backgroundProps?.fields?.backgroundColor
-        }
-      setHomePageContent(content);
-      setIsLoading(false);
-    }).catch(() => {});
+    const content =
+      {
+        title: "Catan Board Generator",
+        description: "Generate a random Catan board setup by selecting from one of the scenarios below",
+        backgroundImage: "/assets/catan_backdrop.webp",
+        backgroundColor: "c21f26"
+      }
+    setHomePageContent(content);
+    setIsLoading(false);
     return(() => {
       setHomePageContent(null);
     });
