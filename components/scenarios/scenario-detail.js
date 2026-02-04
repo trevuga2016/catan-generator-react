@@ -1,9 +1,8 @@
-import { ButtonBase, Chip, Divider, Grid, Modal, Typography } from '@mui/material';
+import {Box, ButtonBase, Chip, Divider, Grid, Modal, Typography} from '@mui/material';
 import styles from './scenarios.module.scss';
-import { useState } from 'react';
-import { useGameContext } from '../../contexts/game-context';
-import { HarborModal } from './harbor-modal';
-import Image from 'next/image';
+import {useState} from 'react';
+import {useGameContext} from '../../contexts/game-context';
+import {HarborModal} from './harbor-modal';
 import PersonIcon from '@mui/icons-material/Person';
 
 export const ScenarioDetail = ({ scenario }) => {
@@ -18,19 +17,21 @@ export const ScenarioDetail = ({ scenario }) => {
 
   return(
     <>
-    <ButtonBase sx={{ height: '100%', width: '462px' }} onClick={handleButtonClick} disabled={scenario?.disabled}>
-      <Grid container direction="column" className={styles["detail"]}>
-        <Grid item>
-          <Chip icon={<PersonIcon />} label={scenario?.players} size="small" color="primary" title="Players" className={styles["detail__chip__left"]} />
-          <Image src={scenario?.imageUrl} width={460} height={275} alt={scenario?.imageUrl} loading="lazy" className={styles["detail__image"]} />
+    <ButtonBase onClick={handleButtonClick} disabled={scenario?.disabled} className={styles["detail"]}>
+      <Grid container direction="column" className={styles["detail__container"]}>
+        <Grid>
+          <Box sx={{ position: 'relative', display: 'inline-block' }}>
+            <Chip icon={<PersonIcon />} label={scenario?.players} size="small" color="primary" title="Players" className={styles["detail__chip"]} />
+            <img src={scenario?.imageUrl} alt="scenario" className={styles["detail__image"]} />
+          </Box>
         </Grid>
-        <Grid item pt={1} px={1}>
+        <Grid p={1}>
           <Typography variant="h6" lineHeight="1">{scenario?.title}</Typography>
         </Grid>
-        <Grid item pt={1}>
+        <Grid>
           <Divider variant="middle" />
         </Grid>
-        <Grid item p={1}>
+        <Grid p={1}>
           <Typography variant="body2" lineHeight="1" color="black" fontFamily="Gill Sans !important">{scenario?.subtitle}</Typography>
         </Grid>
       </Grid>

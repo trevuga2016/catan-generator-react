@@ -17,18 +17,18 @@ export const Home = () => {
   });
 
   return(
-    <Grid container direction="column" alignItems="center" width="100%">
+    <Grid container direction="column" alignItems="center">
       <Head>
         <title>{homePageContent?.title}</title>
         <link rel="icon" href="/catan-icon.ico" />
       </Head>
-      <Grid item>
+      <Grid>
         { !isLoading ? <Header title={homePageContent?.title} /> : <Skeleton variant="text" width="50vw" height={75} animation="wave" /> }
       </Grid>
-      <Grid item pb={2} px={2} textAlign="center">
-        { !isLoading ? <Typography variant="h6" fontFamily="Gill Sans !important">{homePageContent?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
+      <Grid pb={2} px={2} textAlign="center">
+        { !isLoading ? <Typography variant="h6" fontFamily="Gill Sans !important" lineHeight="1.25">{homePageContent?.description}</Typography> : <Skeleton variant="text" width="50vw" height={30} animation="wave" /> }
       </Grid>
-      <Grid item>
+      <Grid>
         { !isLoading ? <Scenarios /> : <CircularProgress /> }
       </Grid>
     </Grid>

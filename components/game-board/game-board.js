@@ -82,14 +82,14 @@ export const GameBoard = ({ props }) => {
         <link rel="icon" href="/catan-icon.ico"/>
       </Head>
       <Grid container direction="column" alignItems="center" ref={titleRef}>
-        <Grid item>
+        <Grid>
           <Header title={props?.title} />
         </Grid>
       </Grid>
-      <Grid container height={boardHeight}>
+      <Grid container height={boardHeight} justifyContent="center">
         <Grid container direction="column" ref={heightRef} alignItems="center"
               sx={{transform: `scale(${scale})`, transformOrigin: `${transformOrigin}`}}>
-          <Grid item ref={widthRef}>
+          <Grid ref={widthRef}>
             {boardData?.map((row, index) => {
               return (
                 <HexRow row={row.row} key={index}/>

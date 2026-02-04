@@ -1,39 +1,35 @@
 .scenarios {
-  width: 75vw !important;
+  width: 85vw !important;
   justify-content: center;
-  text-align: center;
-  @media only screen and (max-width: 600px) {
-    width: 100vw !important;
-  }
 }
 
 .detail {
-  border-radius: 15px;
-  background-color: #83B5DA;
+  max-width: 460px;
+  width: auto;
   height: 100%;
-  border: 1px solid black;
+  &__container {
+    border-radius: 15px;
+    background-color: #83B5DA;
+    border: 1px solid black;
+    height: 100%;
+    @media only screen and (max-width: 600px) {
+      width: 85vw;
+      height: auto;
+    }
+  }
   &__image {
     border-radius: 15px 15px 0 0;
+    max-width: 460px;
+    max-height: 275px;
+    width: 100%;
+    height: auto;
+    display: block;
   }
   &__chip {
     position: absolute;
-    z-index: 1;
-    margin-top: 8px;
-    cursor: pointer;
-    &__left {
-      @extend .detail__chip;
-      margin-left: 8px;
-      border: 1px solid black;
-    }
-    &__right {
-      @extend .detail__chip;
-      margin-right: 8px;
-    }
-    &__bright {
-      @extend .detail__chip;
-      margin-right: 8px;
-      bottom: 10px;
-    }
+    z-index: 2;
+    top: 8px;
+    left: 8px;
   }
 }
 

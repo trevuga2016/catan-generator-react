@@ -9,11 +9,11 @@ export const Scenarios = () => {
 
   return(
     !isLoading ?
-    <Grid container className={styles["scenarios"]} spacing={2} >
+    <Grid container className={styles["scenarios"]} spacing={2} pb={4}>
       {
         scenarios?.map((scenario, i) => {
           return(
-            <Grid item xs={6} key={i}>
+            <Grid key={i}>
               <ScenarioDetail scenario={scenario} />
             </Grid>
           );
